@@ -2,47 +2,84 @@ package fxutils;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class TaskRunner implements Runnable {
 
-    private List<Thread> threads;
+    private List<Runnable> tasks;
     private Runnable onTaskFinished;
+    private boolean inOrder;
+
+    public TaskRunner(List<Runnable> tasks, Runnable onTaskFinished, boolean inOrder) {
+        this.tasks = new ArrayList<>();
+        this.tasks.addAll(tasks);
+        this.onTaskFinished = onTaskFinished;
+        this.inOrder = inOrder;
+    }
+
+    public TaskRunner(List<Runnable> tasks) {
+        this(tasks, null, false);
+    }
+
+    public TaskRunner(List<Runnable> tasks, boolean inOrder) {
+        this(tasks, null, inOrder);
+    }
 
     public TaskRunner(List<Runnable> tasks, Runnable onTaskFinished) {
-        threads = new ArrayList<>();
-        for (Runnable r : tasks) {
-            threads.add(new Thread(r));
-        }
-        this.onTaskFinished = onTaskFinished;
+        this(tasks, onTaskFinished, false);
     }
 
     public TaskRunner(Runnable task, Runnable onTaskFinished) {
-        threads = new ArrayList<>();
-        threads.add(new Thread(task));
-        this.onTaskFinished = onTaskFinished;
+        this(task, onTaskFinished, false);
     }
 
-    @Override
-    public void run() {
+    public TaskRunner(Runnable task, Runnable onTaskFinished, boolean inOrder) {
+        tasks = new ArrayList<>();
+        tasks.add(task);
+        this.onTaskFinished = onTaskFinished;
+        this.inOrder = inOrder;
+    }
+
+    private void executeInOrder() {
+        new Thread(() -> {
+            for (Runnable r : tasks) {
+                r.run();
+            }
+            if (onTaskFinished != null)
+                onTaskFinished.run();
+        }).start();
+
+    }
+
+    private void executeOutOfOrder() {
+        List<Thread> threads = tasks.stream().map(Thread::new).collect(Collectors.toList());
         new Thread(() -> {
             boolean done = false;
             for (Thread t : threads) {
                 t.start();
             }
-
             while (!done) {
-                done = checkAllThreadsDone();
+                done = checkAllThreadsDone(threads);
                 try {
                     Thread.sleep(100);
                 } catch (InterruptedException ignored) {
                 }
             }
-
-            onTaskFinished.run();
+            if (onTaskFinished != null)
+                onTaskFinished.run();
         }).start();
     }
 
-    private boolean checkAllThreadsDone() {
+    @Override
+    public void run() {
+        if (inOrder) {
+            executeInOrder();
+        } else {
+            executeOutOfOrder();
+        }
+    }
+
+    private boolean checkAllThreadsDone(List<Thread> threads) {
         return threads.stream().noneMatch(Thread::isAlive);
     }
 }

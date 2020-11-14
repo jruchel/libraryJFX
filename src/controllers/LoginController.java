@@ -10,8 +10,9 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class LoginController {
 
@@ -31,6 +32,8 @@ public class LoginController {
 
     public void initialize() {
         this.requests = Requests.getInstance();
+        usernameField.setText("user");
+        passwordField.setText("admin1");
     }
 
     public void register() {
@@ -48,6 +51,8 @@ public class LoginController {
 
         final boolean[] loggedIn = {false};
 
+        Map<String, Object> parameters = new HashMap<>();
+
         Runnable loginRequest = () -> {
             try {
                 loggedIn[0] = (requests.sendPostRequest("http://localhost:8080/temp/login", properties) == 200);
@@ -55,21 +60,46 @@ public class LoginController {
             }
         };
 
+        Runnable getUserData = () -> {
+            if (loggedIn[0]) {
+                try {
+                    String data = requests.getResponseBody("http://localhost:8080/user");
+                    parameters.put("username", getUsername(data));
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+
+        };
+
         Runnable onTaskComplete = () -> {
             if (loggedIn[0]) {
                 Platform.runLater(() -> {
                     try {
-                        SceneController.startScene("userPane");
+                        SceneController.startScene("userPane", parameters);
                     } catch (IOException e) {
-                        System.out.println("Failed to log in");
+                        System.out.printf("Failed to log in, reason: %s", e.getMessage());
                     }
                 });
             } else {
                 System.out.println("Failed to log in");
             }
         };
-        TaskRunner taskRunner = new TaskRunner(loginRequest, onTaskComplete);
-        taskRunner.run();
+        TaskRunner loginTask = new TaskRunner(Arrays.asList(loginRequest, getUserData), onTaskComplete, true);
+        loginTask.run();
+    }
+
+    private String getUsername(String data) {
+        String regex = "\\\"username\\\"\\:\\\"(\\w+)\\\"";
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher;
+        for (String s : data.split(",")) {
+            matcher = pattern.matcher(s);
+            if (matcher.matches()) {
+                return matcher.group(1);
+            }
+        }
+        return "";
     }
 
 }
