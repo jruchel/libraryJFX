@@ -1,4 +1,4 @@
-package connection;
+package models;
 
 public class Book {
     private String author;
