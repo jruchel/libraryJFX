@@ -1,5 +1,6 @@
 package controllers;
 
+import connection.Book;
 import connection.Requests;
 import fxutils.SceneController;
 import fxutils.TaskRunner;
@@ -7,17 +8,20 @@ import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
+import javafx.scene.control.ProgressIndicator;
 import javafx.scene.control.TextField;
+import tasks.UserDataRetrievalTask;
 
 import java.io.IOException;
 import java.util.*;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class LoginController {
 
     @FXML
     private TextField usernameField;
+
+    @FXML
+    private ProgressIndicator progressIndicator;
 
     @FXML
     private PasswordField passwordField;
@@ -51,32 +55,31 @@ public class LoginController {
 
         final boolean[] loggedIn = {false};
 
+        progressIndicator.setVisible(true);
+
         Map<String, Object> parameters = new HashMap<>();
 
+        //Pobieranie danych uzytkownika z api
+        UserDataRetrievalTask getUserData = new UserDataRetrievalTask(parameters);
+
+        //Logowanie uzytkownika z podanymi w aplikacji danymi
         Runnable loginRequest = () -> {
             try {
-                loggedIn[0] = (requests.sendPostRequest("http://localhost:8080/temp/login", properties) == 200);
+                getUserData.setSuccess(loggedIn[0] = (requests.sendPostRequest("http://localhost:8080/temp/login", properties) == 200));
             } catch (IOException ignored) {
             }
         };
+        int startTime = (int) System.nanoTime();
 
-        Runnable getUserData = () -> {
-            if (loggedIn[0]) {
-                try {
-                    String data = requests.getResponseBody("http://localhost:8080/user");
-                    parameters.put("username", getUsername(data));
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-
-        };
-
+        //To jest wywolywane po zakonczeniu poprzednich zadan
         Runnable onTaskComplete = () -> {
             if (loggedIn[0]) {
                 Platform.runLater(() -> {
                     try {
+                        //Jesli zalogowano pomyslnie, wyswietlanie sceny z panelem uzytkownika
                         SceneController.startScene("userPane", parameters);
+                        int endTime = (int) System.nanoTime();
+                        System.out.printf("Time to load: %.2fs\n", (endTime - startTime) / Math.pow(10, 9));
                     } catch (IOException e) {
                         System.out.printf("Failed to log in, reason: %s", e.getMessage());
                     }
@@ -84,22 +87,11 @@ public class LoginController {
             } else {
                 System.out.println("Failed to log in");
             }
+            progressIndicator.setVisible(false);
         };
-        TaskRunner loginTask = new TaskRunner(Arrays.asList(loginRequest, getUserData), onTaskComplete, true);
-        loginTask.run();
-    }
 
-    private String getUsername(String data) {
-        String regex = "\\\"username\\\"\\:\\\"(\\w+)\\\"";
-        Pattern pattern = Pattern.compile(regex);
-        Matcher matcher;
-        for (String s : data.split(",")) {
-            matcher = pattern.matcher(s);
-            if (matcher.matches()) {
-                return matcher.group(1);
-            }
-        }
-        return "";
+        TaskRunner taskRunner = new TaskRunner(Arrays.asList(loginRequest, getUserData), onTaskComplete, true);
+        taskRunner.run();
     }
 
 }

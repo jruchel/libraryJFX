@@ -1,22 +1,22 @@
 package controllers;
 
+import connection.Book;
 import connection.Requests;
 import fxutils.SceneController;
 import fxutils.TaskRunner;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 
 import java.io.IOException;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class UserPaneController extends Controller {
 
-    private AnchorPane currentlyShowing = null;
+    private AnchorPane currentPane = null;
 
     @FXML
     private Label usernameLabel;
@@ -25,22 +25,22 @@ public class UserPaneController extends Controller {
     private Label motdLabel;
 
     @FXML
-    private Button changeUsername;
+    private Button changeUsernameButton;
 
     @FXML
-    private Button changePassword;
+    private Button changePasswordButton;
 
     @FXML
-    private Button showBooks;
+    private Button showBooksButton;
 
     @FXML
-    private Button showTransactions;
+    private Button showTransactionButton;
 
     //Change username subwindow
     @FXML
     private AnchorPane usernameChangePane;
     @FXML
-    private TextField currentUsername;
+    private TextField newUsernameField;
 
     @FXML
     private Button acceptButton;
@@ -50,10 +50,10 @@ public class UserPaneController extends Controller {
     private AnchorPane passwordChangePane;
 
     @FXML
-    private Button acceptPassword;
+    private Button acceptPasswordButton;
 
     @FXML
-    private PasswordField currentPassword;
+    private PasswordField currentPasswordField;
 
     @FXML
     private PasswordField newPasswordField;
@@ -61,14 +61,40 @@ public class UserPaneController extends Controller {
     @FXML
     private PasswordField confirmPasswordField;
 
+
+    //Books pane
+    @FXML
+    private AnchorPane booksPane;
+
+    @FXML
+    private ListView<Book> rentedListView;
+    @FXML
+    private ListView<Book> reservedListView;
+    @FXML
+    private Button cancelReservedButton;
+    @FXML
+    private Button reserveButton;
+
     private String userdata;
+
+    private List<Book> reservedBookList;
+    private List<Book> rentedBookList;
 
     private Requests requests;
 
+    public void initialize() {
+        requests = Requests.getInstance();
+    }
+
     public void initializeManually() {
         try {
-            usernameLabel.setText(parameters.get("username").toString());
+            reservedBookList = (List<Book>) parameters.get("reservedBooks");
+            rentedBookList = (List<Book>) parameters.get("rentedBooks");
+            usernameLabel.setText(String.format("Username: %s", parameters.get("username").toString()));
+            reservedListView.getItems().addAll(reservedBookList);
+            rentedListView.getItems().addAll(rentedBookList);
         } catch (Exception ignored) {
+            System.out.println();
         }
     }
 
@@ -77,14 +103,44 @@ public class UserPaneController extends Controller {
     }
 
     private void showPane(Pane pane) {
-        if (currentlyShowing != null) {
-            currentlyShowing.setVisible(false);
-            currentlyShowing = (AnchorPane) pane;
-            currentlyShowing.setVisible(true);
+        if (currentPane != null) {
+            currentPane.setVisible(false);
+            currentPane = (AnchorPane) pane;
+            currentPane.setVisible(true);
         } else {
-            currentlyShowing = (AnchorPane) pane;
-            currentlyShowing.setVisible(true);
+            currentPane = (AnchorPane) pane;
+            currentPane.setVisible(true);
         }
+    }
+
+    public void reserve() {
+
+    }
+
+    public void cancelReserved() {
+        final int[] id = {reservedListView.getSelectionModel().getSelectedItem().getId()};
+        Runnable cancelReservationTask = () -> {
+            try {
+                requests.sendDeleteRequest(String.format("http://localhost:8080/rental/reserve/%d", id[0]));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        };
+        Runnable onTaskComplete = () -> {
+            reservedBookList = reservedBookList.stream().filter(b -> b.getId() != id[0]).collect(Collectors.toList());
+            Platform.runLater(() -> {
+                reservedListView.getItems().clear();
+                reservedListView.getItems().addAll(reservedBookList);
+                reservedListView.getSelectionModel().clearSelection();
+            });
+
+        };
+        TaskRunner taskRunner = new TaskRunner(cancelReservationTask, onTaskComplete);
+        taskRunner.run();
+    }
+
+    private void hideCurrentPane() {
+        currentPane.setVisible(false);
     }
 
     public void showPasswordChange() {
@@ -104,7 +160,7 @@ public class UserPaneController extends Controller {
     }
 
     public void showBooks() {
-
+        showPane(booksPane);
     }
 
     public void logout() {

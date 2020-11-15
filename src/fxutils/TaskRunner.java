@@ -48,7 +48,6 @@ public class TaskRunner implements Runnable {
             if (onTaskFinished != null)
                 onTaskFinished.run();
         }).start();
-
     }
 
     private void executeOutOfOrder() {

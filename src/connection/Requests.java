@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
 import java.nio.charset.StandardCharsets;
@@ -55,11 +56,53 @@ public class Requests {
         return sendPostRequest(url, new HashMap<>());
     }
 
+    public int sendPostRequest(String url, String data) throws IOException {
+        URL url1 = new URL(url);
+        URLConnection con = url1.openConnection();
+        HttpURLConnection http = (HttpURLConnection) con;
+        http.setRequestMethod("POST");
+        http.setDoOutput(true);
+        http.setRequestProperty("Content-Type", "application/json; utf-8");
+        http.setRequestProperty("Accept", "application/json");
+        addCookies(http);
+        try (OutputStream os = http.getOutputStream()) {
+            byte[] input = data.getBytes(StandardCharsets.UTF_8);
+            os.write(input, 0, input.length);
+        }
+
+        http.connect();
+        saveCookies(http);
+        return http.getResponseCode();
+    }
+
+    public int sendDeleteRequest(String url) throws IOException {
+        return sendDeleteRequest(url, "");
+    }
+
+    public int sendDeleteRequest(String url, String data) throws IOException {
+        URL url1 = new URL(url);
+        URLConnection con = url1.openConnection();
+        HttpURLConnection http = (HttpURLConnection) con;
+        http.setRequestMethod("DELETE");
+        http.setDoOutput(true);
+        http.setRequestProperty("Content-Type", "application/json; utf-8");
+        http.setRequestProperty("Accept", "application/json");
+        addCookies(http);
+        try (OutputStream os = http.getOutputStream()) {
+            byte[] input = data.getBytes(StandardCharsets.UTF_8);
+            os.write(input, 0, input.length);
+        }
+
+        http.connect();
+        saveCookies(http);
+        return http.getResponseCode();
+    }
+
     public int sendPostRequest(String url, Map<String, String> body) throws IOException {
         URL url1 = new URL(url);
         URLConnection con = url1.openConnection();
         HttpURLConnection http = (HttpURLConnection) con;
-        http.setRequestMethod("POST"); // PUT is another valid option
+        http.setRequestMethod("POST");
         http.setDoOutput(true);
         http.setRequestProperty("Content-Type", "application/json; utf-8");
         http.setRequestProperty("Accept", "application/json");
@@ -85,6 +128,5 @@ public class Requests {
         saveCookies(http);
         return http.getResponseCode();
     }
-
 
 }

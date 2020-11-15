@@ -54,16 +54,19 @@ public class SceneController {
     }
 
     public static void startScene(Scene scene) {
+        primaryStage.setResizable(false);
         primaryStage.setScene(scene);
         primaryStage.show();
     }
 
     public static void startScene(String file) throws IOException {
+        primaryStage.setResizable(false);
         primaryStage.setScene(getScene(file));
         primaryStage.show();
     }
 
     public static void startScene(String file, Scene parameters) throws IOException {
+        primaryStage.setResizable(false);
         primaryStage.setScene(getScene(file, parameters));
         primaryStage.show();
     }
