@@ -1,5 +1,8 @@
 package models;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Transaction {
 
     private int id;
@@ -9,8 +12,9 @@ public class Transaction {
     private int time;
     private boolean refunded;
     private String description;
+    private List<Refund> refundList;
 
-    public Transaction(int id, double amount, String currency, String chargeID, int time, boolean refunded, String description) {
+    public Transaction(int id, double amount, String currency, String chargeID, int time, boolean refunded, String description, List<Refund> refunds) {
         this.id = id;
         this.amount = amount;
         this.currency = currency;
@@ -18,6 +22,23 @@ public class Transaction {
         this.time = time;
         this.refunded = refunded;
         this.description = description;
+        this.refundList = refunds;
+    }
+
+    public List<Refund> getRefundList() {
+        return refundList;
+    }
+
+    public void setRefundList(List<Refund> refundList) {
+        this.refundList = refundList;
+    }
+
+    public Transaction(int id, double amount, String currency, String chargeID, int time, boolean refunded, String description) {
+        this(id, amount, currency, chargeID, time, refunded, description, new ArrayList<>());
+    }
+
+    public boolean hasPendingRefunds() {
+        return refundList.stream().anyMatch(r -> r.getStatus().equals("Pending"));
     }
 
     public int getId() {

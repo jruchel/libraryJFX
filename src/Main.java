@@ -1,4 +1,4 @@
-import fxutils.SceneController;
+import utils.SceneController;
 import javafx.application.Application;
 import javafx.stage.Stage;
 

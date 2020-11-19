@@ -3,8 +3,11 @@ package controllers;
 import javafx.scene.control.cell.PropertyValueFactory;
 import models.Book;
 import connection.Requests;
-import fxutils.SceneController;
-import fxutils.TaskRunner;
+import models.Refund;
+import models.RefundTableRepresentation;
+import tasks.UserDataRetrievalTask;
+import utils.SceneController;
+import utils.TaskRunner;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -13,14 +16,16 @@ import javafx.scene.layout.Pane;
 import models.Transaction;
 
 import java.io.IOException;
-import java.util.Arrays;
-import java.util.Currency;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class UserPaneController extends Controller {
 
+    private String appAdress = "http://localhost:8080";
+
     private AnchorPane currentPane = null;
+
+    private boolean autoUpdate = false;
 
     @FXML
     private Label usernameLabel;
@@ -80,15 +85,19 @@ public class UserPaneController extends Controller {
     private Button reserveButton;
 
     @FXML
-    private ListView<Transaction> transactionListView;
-
-    @FXML
     private TableView<Transaction> transactionsTableView;
 
     @FXML
     private AnchorPane transactionsPane;
 
-    private String userdata;
+    @FXML
+    private AnchorPane refundsPane;
+
+    @FXML
+    private TableView<RefundTableRepresentation> refundsTableView;
+
+    private List<RefundTableRepresentation> refunds;
+
 
     private List<Book> reservedBookList;
     private List<Book> rentedBookList;
@@ -108,9 +117,38 @@ public class UserPaneController extends Controller {
             reservedListView.getItems().addAll(reservedBookList);
             rentedListView.getItems().addAll(rentedBookList);
             initializeTransactions();
+            initializeRefunds();
         } catch (Exception ignored) {
             System.out.println();
         }
+        startAutoUpdateTask(30000);
+    }
+
+    private void initializeRefunds() {
+        updateRefunds();
+
+        TableColumn<RefundTableRepresentation, String> column1 = new TableColumn<>("Transaction description");
+        column1.setCellValueFactory(new PropertyValueFactory<>("description"));
+
+        TableColumn<RefundTableRepresentation, Double> column2 = new TableColumn<>("Amount");
+        column2.setCellValueFactory(new PropertyValueFactory<>("amount"));
+
+        TableColumn<RefundTableRepresentation, Currency> column3 = new TableColumn<>("Currency");
+        column3.setCellValueFactory(new PropertyValueFactory<>("currency"));
+
+        TableColumn<RefundTableRepresentation, String> column4 = new TableColumn<>("Status");
+        column4.setCellValueFactory(new PropertyValueFactory<>("status"));
+
+        TableColumn<RefundTableRepresentation, String> column5 = new TableColumn<>("Message");
+        column5.setCellValueFactory(new PropertyValueFactory<>("status"));
+
+        TableColumn<RefundTableRepresentation, String> column6 = new TableColumn<>("Reason");
+        column6.setCellValueFactory(new PropertyValueFactory<>("reason"));
+
+        refundsTableView.getColumns().clear();
+        refundsTableView.getColumns().addAll(Arrays.asList(column1, column2, column3, column4, column5, column6));
+        refundsTableView.getColumns().forEach(c -> c.setResizable(false));
+        refundsTableView.getItems().addAll(refunds);
     }
 
     private void initializeTransactions() {
@@ -157,11 +195,34 @@ public class UserPaneController extends Controller {
 
     }
 
+    public void requestRefund() {
+        Transaction toRefund = transactionsTableView.getSelectionModel().getSelectedItem();
+        if (toRefund.isRefunded()) return;
+        Map<String, String> params = new TreeMap<>();
+        params.put("chargeid", toRefund.getChargeID());
+        params.put("message", "Refund request");
+        boolean[] success = {true};
+        new TaskRunner(() -> {
+            try {
+                success[0] = requests.sendPostRequest(String.format("%s/payments/user/refund", appAdress), params) == 200;
+            } catch (IOException e) {
+                success[0] = false;
+            }
+        }, () -> {
+            if (success[0]) {
+                System.out.println("Refund request sent, view your pending refunds under Refunds button in the user pane");
+            } else {
+                System.out.println("Refund request was not submitted due to a server error");
+            }
+        }).run();
+
+    }
+
     public void cancelReserved() {
         final int[] id = {reservedListView.getSelectionModel().getSelectedItem().getId()};
         Runnable cancelReservationTask = () -> {
             try {
-                requests.sendDeleteRequest(String.format("http://localhost:8080/rental/reserve/%d", id[0]));
+                requests.sendDeleteRequest(String.format("%s/rental/reserve/%d", appAdress, id[0]));
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -177,6 +238,10 @@ public class UserPaneController extends Controller {
         };
         TaskRunner taskRunner = new TaskRunner(cancelReservationTask, onTaskComplete);
         taskRunner.run();
+    }
+
+    public void cancelRefund() {
+
     }
 
     private void hideCurrentPane() {
@@ -195,18 +260,25 @@ public class UserPaneController extends Controller {
 
     }
 
+    public void showRefunds() {
+        updateData();
+        showPane(refundsPane);
+    }
+
     public void showTransactions() {
+        updateData();
         showPane(transactionsPane);
     }
 
     public void showBooks() {
+        updateData();
         showPane(booksPane);
     }
 
     public void logout() {
         Runnable logoutRequest = () -> {
             try {
-                requests.sendPostRequest("http://localhost:8080/logout");
+                requests.sendPostRequest(String.format("%s/logout", appAdress));
             } catch (IOException ignored) {
             }
         };
@@ -223,6 +295,48 @@ public class UserPaneController extends Controller {
 
         };
         TaskRunner taskRunner = new TaskRunner(logoutRequest, onTaskComplete);
+        taskRunner.run();
+    }
+
+    /**
+     * Updates the data automatically in the background for this controller
+     *
+     * @param milis to wait between each update
+     */
+    private void startAutoUpdateTask(int milis) {
+        this.autoUpdate = true;
+        Runnable autoUpdate = () -> {
+            while (this.autoUpdate) {
+                updateData();
+                try {
+                    Thread.sleep(milis);
+                } catch (InterruptedException ignored) {
+
+                }
+            }
+        };
+        TaskRunner taskRunner = new TaskRunner(autoUpdate);
+        taskRunner.run();
+    }
+
+    private void updateRefunds() {
+        transactions = (List<Transaction>) parameters.get("transactions");
+        refunds = new ArrayList<>();
+
+        for (Transaction t : transactions) {
+            for (Refund r : t.getRefundList()) {
+                refunds.add(new RefundTableRepresentation(t.getDescription(), t.getAmount(), t.getCurrency(), r.getStatus(), r.getMessage(), r.getReason()));
+            }
+        }
+    }
+
+    private void updateData() {
+        Runnable onTaskComplete = () -> {
+            reservedBookList = (List<Book>) parameters.get("reservedBooks");
+            rentedBookList = (List<Book>) parameters.get("rentedBooks");
+            usernameLabel.setText(String.format("Username: %s", parameters.get("username").toString()));
+        };
+        TaskRunner taskRunner = new TaskRunner(new UserDataRetrievalTask(parameters), onTaskComplete);
         taskRunner.run();
     }
 }

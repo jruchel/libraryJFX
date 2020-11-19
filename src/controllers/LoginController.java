@@ -1,8 +1,8 @@
 package controllers;
 
 import connection.Requests;
-import fxutils.SceneController;
-import fxutils.TaskRunner;
+import utils.SceneController;
+import utils.TaskRunner;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;

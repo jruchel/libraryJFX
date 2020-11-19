@@ -1,7 +1,10 @@
-package fxutils;
+package utils;
+
+import javafx.concurrent.Task;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.CyclicBarrier;
 import java.util.stream.Collectors;
 
 /**
@@ -23,6 +26,10 @@ public class TaskRunner implements Runnable {
         this.tasks.addAll(tasks);
         this.onTaskFinished = onTaskFinished;
         this.inOrder = inOrder;
+    }
+
+    public TaskRunner(Runnable task) {
+        this(task, null, false);
     }
 
     public TaskRunner(List<Runnable> tasks) {
