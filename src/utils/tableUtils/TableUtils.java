@@ -13,13 +13,12 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.lang.reflect.Field;
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+import java.util.*;
 
 public class TableUtils {
-    public static class Table {
+    public static class Table<V> {
 
         private LinkedHashMap<String, List> table;
 
@@ -27,22 +26,41 @@ public class TableUtils {
             this.table = table;
         }
 
-        public Table(List objects, Class cls) {
+        public Table(List<V> values) {
             table = new LinkedHashMap<>();
-            for (Field f : cls.getFields()) {
-                addColumn(f.getName(), getProperty(f.getName(), objects, cls));
+            for (Field f : getTableFields(values)) {
+                addColumn(firstLetterUppercase(f.getName()), getProperty(f, values));
             }
         }
 
-        private List<String> getProperty(String property, List objects, Class cls) {
+        private List<String> getProperty(Field field, List<V> values) {
             List<String> result = new ArrayList<>();
-            for (Object object : objects) {
+            for (V value : values) {
+                String v = "";
                 try {
-                    String value = cls.getField(property).get(object).toString();
-                    result.add(value);
-                } catch (IllegalAccessException | NoSuchFieldException e) {
-                    e.printStackTrace();
+                    v = field.get(value).toString();
+                } catch (IllegalAccessException ex) {
+                    Method getterMethod = Arrays.stream(
+                            value.getClass().getMethods())
+                            .filter(
+                                    m -> m.getName().toLowerCase().equals(String.format("get%s", field.getName()))
+                            ).findFirst().orElse(null);
+                    if (getterMethod == null) {
+                        getterMethod = Arrays.stream(
+                                value.getClass().getMethods())
+                                .filter(
+                                        m -> m.getName().toLowerCase().equals(String.format("is%s", field.getName()))
+                                ).findFirst().orElse(null);
+                    }
+                    if (getterMethod != null) {
+                        try {
+                            v = getterMethod.invoke(value).toString();
+                        } catch (IllegalAccessException | InvocationTargetException e) {
+                            e.printStackTrace();
+                        }
+                    }
                 }
+                result.add(v);
             }
             return result;
         }
@@ -182,15 +200,20 @@ public class TableUtils {
         }
     }
 
-    public static <E> void toJavaFXTableView(List<E> elements, TableView<E> tableView) {
-        List<TableColumn<E, String>> columns = new ArrayList<>();
+    private static <E> List<Field> getTableFields(List<E> elements) {
         List<Field> tableFields = new ArrayList<>();
         for (Field f : elements.get(0).getClass().getDeclaredFields()) {
             if (f.isAnnotationPresent(TableField.class)) {
                 tableFields.add(f);
             }
         }
-        for (Field f : tableFields) {
+        return tableFields;
+    }
+
+    public static <E> void toJavaFXTableView(List<E> elements, TableView<E> tableView) {
+        List<TableColumn<E, String>> columns = new ArrayList<>();
+
+        for (Field f : getTableFields(elements)) {
             TableColumn<E, String> column = new TableColumn<>(firstLetterUppercase(f.getName()));
             column.setCellValueFactory(new PropertyValueFactory<>(f.getName()));
             columns.add(column);
