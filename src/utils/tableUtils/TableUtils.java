@@ -28,45 +28,59 @@ public class TableUtils {
 
         public Table(List<V> values) {
             table = new LinkedHashMap<>();
-            for (Field f : getTableFields(values)) {
+            Field[] fields;
+            if (hasTableFieldAnnotation(values)) {
+                fields = (Field[]) getTableFields(values).toArray();
+            } else {
+                fields = values.get(0).getClass().getDeclaredFields();
+            }
+            for (Field f : fields) {
                 addColumn(firstLetterUppercase(f.getName()), getProperty(f, values));
             }
+        }
+
+        private String getProperty(Field field, V value) {
+            String v = "";
+            try {
+                v = field.get(value).toString();
+            } catch (IllegalAccessException ex) {
+                Method getterMethod = Arrays.stream(
+                        value.getClass().getMethods())
+                        .filter(
+                                m -> m.getName().toLowerCase().equals(String.format("get%s", field.getName()))
+                        ).findFirst().orElse(null);
+                if (getterMethod == null) {
+                    getterMethod = Arrays.stream(
+                            value.getClass().getMethods())
+                            .filter(
+                                    m -> m.getName().toLowerCase().equals(String.format("is%s", field.getName()))
+                            ).findFirst().orElse(null);
+                }
+                if (getterMethod != null) {
+                    try {
+                        v = getterMethod.invoke(value).toString();
+                    } catch (IllegalAccessException | InvocationTargetException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+            return v;
         }
 
         private List<String> getProperty(Field field, List<V> values) {
             List<String> result = new ArrayList<>();
             for (V value : values) {
-                String v = "";
-                try {
-                    v = field.get(value).toString();
-                } catch (IllegalAccessException ex) {
-                    Method getterMethod = Arrays.stream(
-                            value.getClass().getMethods())
-                            .filter(
-                                    m -> m.getName().toLowerCase().equals(String.format("get%s", field.getName()))
-                            ).findFirst().orElse(null);
-                    if (getterMethod == null) {
-                        getterMethod = Arrays.stream(
-                                value.getClass().getMethods())
-                                .filter(
-                                        m -> m.getName().toLowerCase().equals(String.format("is%s", field.getName()))
-                                ).findFirst().orElse(null);
-                    }
-                    if (getterMethod != null) {
-                        try {
-                            v = getterMethod.invoke(value).toString();
-                        } catch (IllegalAccessException | InvocationTargetException e) {
-                            e.printStackTrace();
-                        }
-                    }
-                }
-                result.add(v);
+                result.add(getProperty(field, value));
             }
             return result;
         }
 
         public Table() {
             this.table = new LinkedHashMap<>();
+        }
+
+        public void removeColumn(String name) {
+            table.remove(name);
         }
 
         public void addColumn(String name, List data) {
@@ -198,6 +212,15 @@ public class TableUtils {
             }
             return row;
         }
+    }
+
+    private static <E> boolean hasTableFieldAnnotation(List<E> elements) {
+        for (Field f : elements.get(0).getClass().getDeclaredFields()) {
+            if (f.isAnnotationPresent(TableField.class)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     private static <E> List<Field> getTableFields(List<E> elements) {
