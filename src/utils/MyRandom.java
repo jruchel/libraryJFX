@@ -9,16 +9,6 @@ import java.util.regex.Pattern;
 
 public class MyRandom {
 
-    public static void main(String[] args) {
-        for (int i = 0; i < 1; i++) {
-            try {
-                System.out.println(getRandomStringMatching("[1-9][a-m][b-z][.:,\"/?!%$^&*()!@#\\{\\}]+", 4, 4));
-            } catch (RuntimeErrorException ex) {
-                System.out.println(ex.getMessage());
-            }
-        }
-    }
-
     public static int getRandom(int a, int b) {
         return (Math.abs(new Random().nextInt())) % (b - a + 1) + a;
     }
@@ -52,7 +42,7 @@ public class MyRandom {
             long checkpoint = System.nanoTime();
             long time = checkpoint - start;
             if (time > maxTimeNanos) {
-                String msg = String.format("Method took too long to complete(%.2fs)", (double) time / (Math.pow(10, 9)));
+                String msg = String.format("Method took too long to complete(%.6fs)", (double) time / (Math.pow(10, 9)));
                 throw new RuntimeErrorException(new Error(msg), msg);
             }
         } while (!matcher.matches());

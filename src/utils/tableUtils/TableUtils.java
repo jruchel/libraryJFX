@@ -16,6 +16,7 @@ import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class TableUtils {
     public static class Table<V> {
@@ -28,11 +29,11 @@ public class TableUtils {
 
         public Table(List<V> values) {
             table = new LinkedHashMap<>();
-            Field[] fields;
+            List<Field> fields;
             if (hasTableFieldAnnotation(values)) {
-                fields = (Field[]) getTableFields(values).toArray();
+                fields =  getTableFields(values);
             } else {
-                fields = values.get(0).getClass().getDeclaredFields();
+                fields = Arrays.stream(values.get(0).getClass().getDeclaredFields()).collect(Collectors.toList());
             }
             for (Field f : fields) {
                 addColumn(firstLetterUppercase(f.getName()), getProperty(f, values));
