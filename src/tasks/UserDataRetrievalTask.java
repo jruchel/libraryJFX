@@ -150,7 +150,7 @@ public class UserDataRetrievalTask implements Runnable {
         return transactions;
     }
 
-    private List<Refund> getRefunds(String data) {
+    private List<Refund> getRefunds(String data, String description, double amount, String currency) {
         String refundsJSON = JsonReader.readFromJson("refunds", data);
         String[] refunds = JsonReader.readFromArray(refundsJSON);
 
@@ -161,7 +161,7 @@ public class UserDataRetrievalTask implements Runnable {
             String status = JsonReader.readFromJson("status", s);
             String message = JsonReader.readFromJson("message", s);
             String reason = JsonReader.readFromJson("reason", s);
-            refundList.add(new Refund(id, status, message, reason));
+            refundList.add(new Refund(id, description, amount, currency, status, message, reason));
         }
         return refundList;
     }
@@ -174,7 +174,7 @@ public class UserDataRetrievalTask implements Runnable {
         int time = Integer.parseInt(JsonReader.readFromJson("time", data));
         boolean refunded = Boolean.parseBoolean(JsonReader.readFromJson("refunded", data));
         String description = JsonReader.readFromJson("description", data);
-        List<Refund> refundList = getRefunds(data);
+        List<Refund> refundList = getRefunds(data, description, amount, currency);
         return new Transaction(id, amount, currency, chargeID, time, refunded, description, refundList);
     }
 

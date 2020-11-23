@@ -19,7 +19,7 @@ import java.util.List;
 import java.util.Map;
 
 public class TableUtils {
-    public class Table {
+    public static class Table {
 
         private LinkedHashMap<String, List> table;
 
@@ -180,8 +180,6 @@ public class TableUtils {
             }
             return row;
         }
-
-
     }
 
     public static <E> void toJavaFXTableView(List<E> elements, TableView<E> tableView) {

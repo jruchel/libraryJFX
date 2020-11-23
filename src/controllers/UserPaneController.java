@@ -94,9 +94,9 @@ public class UserPaneController extends Controller {
     private AnchorPane refundsPane;
 
     @FXML
-    private TableView<RefundTableRepresentation> refundsTableView;
+    private TableView<Refund> refundsTableView;
 
-    private List<RefundTableRepresentation> refunds;
+    private List<Refund> refunds;
 
 
     private List<Book> reservedBookList;
@@ -291,9 +291,7 @@ public class UserPaneController extends Controller {
         refunds = new ArrayList<>();
 
         for (Transaction t : transactions) {
-            for (Refund r : t.getRefundList()) {
-                refunds.add(new RefundTableRepresentation(t.getDescription(), t.getAmount(), t.getCurrency(), r.getStatus(), r.getMessage(), r.getReason()));
-            }
+            refunds.addAll(t.getRefundList());
         }
     }
 
