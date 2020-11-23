@@ -1,6 +1,6 @@
 package models;
 
-import utils.TableField;
+import utils.tableUtils.TableField;
 
 public class Refund {
 

@@ -1,4 +1,4 @@
-package utils;
+package utils.tableUtils;
 
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;

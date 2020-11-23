@@ -1,4 +1,4 @@
-package utils;
+package utils.fxUtils;
 
 import controllers.Controller;
 import javafx.fxml.FXMLLoader;

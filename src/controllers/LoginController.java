@@ -8,7 +8,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.ProgressIndicator;
 import javafx.scene.control.TextField;
 import tasks.UserDataRetrievalTask;
-import utils.SceneController;
+import utils.fxUtils.SceneController;
 import utils.TaskRunner;
 
 import java.io.IOException;

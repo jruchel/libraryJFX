@@ -1,6 +1,6 @@
 package models;
 
-import utils.TableField;
+import utils.tableUtils.TableField;
 
 import java.util.ArrayList;
 import java.util.List;
