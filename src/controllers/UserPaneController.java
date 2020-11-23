@@ -1,12 +1,12 @@
 package controllers;
 
-import javafx.scene.control.cell.PropertyValueFactory;
 import models.Book;
 import connection.Requests;
 import models.Refund;
 import models.RefundTableRepresentation;
 import tasks.UserDataRetrievalTask;
 import utils.SceneController;
+import utils.TableUtils;
 import utils.TaskRunner;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
@@ -126,54 +126,21 @@ public class UserPaneController extends Controller {
 
     private void initializeRefunds() {
         updateRefunds();
-
-        TableColumn<RefundTableRepresentation, String> column1 = new TableColumn<>("Transaction description");
-        column1.setCellValueFactory(new PropertyValueFactory<>("description"));
-
-        TableColumn<RefundTableRepresentation, Double> column2 = new TableColumn<>("Amount");
-        column2.setCellValueFactory(new PropertyValueFactory<>("amount"));
-
-        TableColumn<RefundTableRepresentation, Currency> column3 = new TableColumn<>("Currency");
-        column3.setCellValueFactory(new PropertyValueFactory<>("currency"));
-
-        TableColumn<RefundTableRepresentation, String> column4 = new TableColumn<>("Status");
-        column4.setCellValueFactory(new PropertyValueFactory<>("status"));
-
-        TableColumn<RefundTableRepresentation, String> column5 = new TableColumn<>("Message");
-        column5.setCellValueFactory(new PropertyValueFactory<>("status"));
-
-        TableColumn<RefundTableRepresentation, String> column6 = new TableColumn<>("Reason");
-        column6.setCellValueFactory(new PropertyValueFactory<>("reason"));
-
-        refundsTableView.getColumns().clear();
-        refundsTableView.getColumns().addAll(Arrays.asList(column1, column2, column3, column4, column5, column6));
+        TableUtils.toJavaFXTableView(refunds, refundsTableView);
         refundsTableView.getColumns().forEach(c -> c.setResizable(false));
-        refundsTableView.getItems().addAll(refunds);
     }
 
     private void initializeTransactions() {
         transactions = (List<Transaction>) parameters.get("transactions");
-        TableColumn<Transaction, String> column1 = new TableColumn<>("Description");
-        column1.setCellValueFactory(new PropertyValueFactory<>("description"));
-        TableColumn<Transaction, Double> column2 = new TableColumn<>("Amount");
-        column2.setCellValueFactory(new PropertyValueFactory<>("amount"));
-        TableColumn<Transaction, Currency> column3 = new TableColumn<>("Currency");
-        column3.setCellValueFactory(new PropertyValueFactory<>("currency"));
-        TableColumn<Transaction, Boolean> column4 = new TableColumn<>("Refunded");
-        column4.setCellValueFactory(new PropertyValueFactory<>("refunded"));
-        transactionsTableView.getColumns().clear();
-        transactionsTableView.getColumns().addAll(Arrays.asList(column1, column2, column3, column4));
+        TableUtils.toJavaFXTableView(transactions, transactionsTableView);
+
         double width = 400;
-        column1.setMinWidth(width / 3);
-        column1.setMaxWidth(width / 3);
-        column2.setMinWidth(width / 3);
-        column2.setMaxWidth(width / 3);
-        column3.setMaxWidth(width / 6);
-        column3.setMinWidth(width / 6);
-        column4.setMaxWidth(width / 6);
-        column4.setMinWidth(width / 6);
+        transactionsTableView.getColumns().get(0).setMinWidth(width / 3);
+        transactionsTableView.getColumns().get(1).setMinWidth(width / 3);
+        transactionsTableView.getColumns().get(2).setMaxWidth(width / 3);
+        transactionsTableView.getColumns().get(3).setMaxWidth(width / 6);
+
         transactionsTableView.getColumns().forEach(c -> c.setResizable(false));
-        transactionsTableView.getItems().addAll(transactions);
     }
 
     public void showUsernameChange() {

@@ -1,11 +1,19 @@
 package models;
 
+import utils.TableField;
+
 public class RefundTableRepresentation {
+    @TableField
     private String description;
+    @TableField
     private double amount;
+    @TableField
     private String currency;
+    @TableField
     private String status;
+    @TableField
     private String message;
+    @TableField
     private String reason;
 
     public RefundTableRepresentation(String description, double amount, String currency, String status, String message, String reason) {

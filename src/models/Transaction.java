@@ -1,17 +1,23 @@
 package models;
 
+import utils.TableField;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class Transaction {
 
     private int id;
+    @TableField
+    private String description;
+    @TableField
     private double amount;
+    @TableField
     private String currency;
     private String chargeID;
     private int time;
+    @TableField
     private boolean refunded;
-    private String description;
     private List<Refund> refundList;
 
     public Transaction(int id, double amount, String currency, String chargeID, int time, boolean refunded, String description, List<Refund> refunds) {

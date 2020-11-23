@@ -1,8 +1,6 @@
 package controllers;
 
 import connection.Requests;
-import utils.SceneController;
-import utils.TaskRunner;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -10,6 +8,8 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.ProgressIndicator;
 import javafx.scene.control.TextField;
 import tasks.UserDataRetrievalTask;
+import utils.SceneController;
+import utils.TaskRunner;
 
 import java.io.IOException;
 import java.util.*;
