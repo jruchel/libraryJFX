@@ -77,7 +77,7 @@ public class LoginController {
         //Logowanie uzytkownika z podanymi w aplikacji danymi
         Runnable loginRequest = () -> {
             try {
-                getUserData.setSuccess(loggedIn[0] = (requests.sendPostRequest(String.format("%s/temp/login", appUrl), properties).equals("true")));
+                getUserData.setSuccess(loggedIn[0] = (requests.sendRequest(String.format("%s/temp/login", appUrl), properties, "POST").equals("true")));
             } catch (IOException ignored) {
             }
         };

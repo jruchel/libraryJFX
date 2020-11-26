@@ -177,7 +177,7 @@ public class UserPaneController extends Controller {
         boolean[] success = {true};
         new TaskRunner(() -> {
             try {
-                success[0] = requests.sendPostRequest(String.format("%s/payments/user/refund", appUrl), params).equals("success");
+                success[0] = requests.sendRequest(String.format("%s/payments/user/refund", appUrl), params, "POST").equals("success");
             } catch (IOException e) {
                 success[0] = false;
             }
@@ -195,9 +195,9 @@ public class UserPaneController extends Controller {
         final int[] id = {reservedListView.getSelectionModel().getSelectedItem().getId()};
         Runnable cancelReservationTask = () -> {
             try {
-                requests.sendDeleteRequest(String.format("%s/rental/reserve/%d", appUrl, id[0]));
+                requests.sendRequest(String.format("%s/rental/reserve/%d", appUrl, id[0]), "POST");
             } catch (IOException e) {
-                e.printStackTrace();
+                System.out.println("Canceling reservation failed, please try again later");
             }
         };
         Runnable onTaskComplete = () -> {
@@ -251,7 +251,7 @@ public class UserPaneController extends Controller {
     public void logout() {
         Runnable logoutRequest = () -> {
             try {
-                requests.sendPostRequest(String.format("%s/logout", appUrl));
+                requests.sendRequest(String.format("%s/logout", appUrl), "POST");
             } catch (IOException ignored) {
             }
         };

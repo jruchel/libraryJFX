@@ -5,7 +5,6 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
 import java.nio.charset.StandardCharsets;
@@ -35,8 +34,7 @@ public class Requests {
         connection.setRequestMethod("GET");
         addCookies(connection);
         saveCookies(connection);
-        BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
-        return reader.lines().collect(Collectors.joining());
+        return readOutput(connection);
     }
 
     private void saveCookies(HttpURLConnection connection) {
@@ -52,15 +50,15 @@ public class Requests {
         }
     }
 
-    public String sendPostRequest(String url) throws IOException {
-        return sendPostRequest(url, new HashMap<>());
+    public String sendRequest(String url, String type) throws IOException {
+        return sendRequest(url, new HashMap<>(), type);
     }
 
-    public int sendPostRequest(String url, String data) throws IOException {
+    public String sendRequest(String url, String data, String type) throws IOException {
         URL url1 = new URL(url);
         URLConnection con = url1.openConnection();
         HttpURLConnection http = (HttpURLConnection) con;
-        http.setRequestMethod("POST");
+        http.setRequestMethod(type.toUpperCase());
         http.setDoOutput(true);
         http.setRequestProperty("Content-Type", "application/json; utf-8");
         http.setRequestProperty("Accept", "application/json");
@@ -72,37 +70,20 @@ public class Requests {
 
         http.connect();
         saveCookies(http);
-        return http.getResponseCode();
+        return readOutput(http);
     }
 
-    public int sendDeleteRequest(String url) throws IOException {
-        return sendDeleteRequest(url, "");
+
+    private String readOutput(HttpURLConnection connection) throws IOException {
+        BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+        return reader.lines().collect(Collectors.joining());
     }
 
-    public int sendDeleteRequest(String url, String data) throws IOException {
+    public String sendRequest(String url, Map<String, String> body, String type) throws IOException {
         URL url1 = new URL(url);
         URLConnection con = url1.openConnection();
         HttpURLConnection http = (HttpURLConnection) con;
-        http.setRequestMethod("DELETE");
-        http.setDoOutput(true);
-        http.setRequestProperty("Content-Type", "application/json; utf-8");
-        http.setRequestProperty("Accept", "application/json");
-        addCookies(http);
-        try (OutputStream os = http.getOutputStream()) {
-            byte[] input = data.getBytes(StandardCharsets.UTF_8);
-            os.write(input, 0, input.length);
-        }
-
-        http.connect();
-        saveCookies(http);
-        return http.getResponseCode();
-    }
-
-    public String sendPostRequest(String url, Map<String, String> body) throws IOException {
-        URL url1 = new URL(url);
-        URLConnection con = url1.openConnection();
-        HttpURLConnection http = (HttpURLConnection) con;
-        http.setRequestMethod("POST");
+        http.setRequestMethod(type.toUpperCase());
         http.setDoOutput(true);
         http.setRequestProperty("Content-Type", "application/json; utf-8");
         http.setRequestProperty("Accept", "application/json");
@@ -127,8 +108,7 @@ public class Requests {
         http.connect();
         saveCookies(http);
 
-        BufferedReader reader = new BufferedReader(new InputStreamReader(http.getInputStream()));
-        return reader.lines().collect(Collectors.joining());
+        return readOutput(http);
     }
 
 }
