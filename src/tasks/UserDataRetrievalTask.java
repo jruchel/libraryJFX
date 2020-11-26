@@ -6,6 +6,7 @@ import javafx.util.Pair;
 import models.Refund;
 import models.Transaction;
 import utils.JsonReader;
+import utils.Properties;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -16,6 +17,7 @@ import java.util.regex.Pattern;
 
 public class UserDataRetrievalTask implements Runnable {
 
+    private String siteUrl;
     private boolean success;
     private Map<String, Object> parameters;
     private Requests requests;
@@ -24,6 +26,10 @@ public class UserDataRetrievalTask implements Runnable {
         this.success = false;
         this.parameters = parameters;
         this.requests = Requests.getInstance();
+        try {
+            this.siteUrl = Properties.getProperty("site.url");
+        } catch (IOException ignored) {
+        }
     }
 
     public Map<String, Object> getParameters() {
@@ -42,8 +48,8 @@ public class UserDataRetrievalTask implements Runnable {
         List<Pair<Integer, String>> books = getBooksIdsAndTitles(getRentedBooksString(data));
         List<Book> bookList = new ArrayList<>();
         for (Pair<Integer, String> p : books) {
-            int authorID = Integer.parseInt(requests.getResponseBody(String.format("http://localhost:8080/books/author/%d", p.getKey())));
-            String authorName = requests.getResponseBody(String.format("http://localhost:8080/authors/%d", authorID));
+            int authorID = Integer.parseInt(requests.getResponseBody(String.format("%s/books/author/%d", siteUrl, p.getKey())));
+            String authorName = requests.getResponseBody(String.format("%s/authors/%d", siteUrl, authorID));
             bookList.add(new Book(p.getValue(), getAuthorName(authorName), p.getKey()));
         }
         return bookList;
@@ -53,8 +59,8 @@ public class UserDataRetrievalTask implements Runnable {
         List<Pair<Integer, String>> books = getBooksIdsAndTitles(getReservedBooksString(data));
         List<Book> bookList = new ArrayList<>();
         for (Pair<Integer, String> p : books) {
-            int authorID = Integer.parseInt(requests.getResponseBody(String.format("http://localhost:8080/books/author/%d", p.getKey())));
-            String authorName = requests.getResponseBody(String.format("http://localhost:8080/authors/%d", authorID));
+            int authorID = Integer.parseInt(requests.getResponseBody(String.format("%s/books/author/%d", siteUrl, p.getKey())));
+            String authorName = requests.getResponseBody(String.format("%s/authors/%d", siteUrl, authorID));
             bookList.add(new Book(p.getValue(), getAuthorName(authorName), p.getKey()));
         }
         return bookList;
@@ -182,7 +188,7 @@ public class UserDataRetrievalTask implements Runnable {
     public void run() {
         if (success) {
             try {
-                String data = requests.getResponseBody("http://localhost:8080/user");
+                String data = requests.getResponseBody(String.format("%s/user", siteUrl));
                 parameters.put("username", getUsername(data));
                 parameters.put("reservedBooks", getReservedBooksList(data));
                 parameters.put("rentedBooks", getRentedBooksList(data));

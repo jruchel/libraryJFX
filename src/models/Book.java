@@ -11,10 +11,6 @@ public class Book {
         this.title = title;
     }
 
-    public Book(String title, String author) {
-        this(title, author, 0);
-    }
-
     public String getAuthor() {
         return author;
     }

@@ -52,7 +52,7 @@ public class Requests {
         }
     }
 
-    public int sendPostRequest(String url) throws IOException {
+    public String sendPostRequest(String url) throws IOException {
         return sendPostRequest(url, new HashMap<>());
     }
 
@@ -98,7 +98,7 @@ public class Requests {
         return http.getResponseCode();
     }
 
-    public int sendPostRequest(String url, Map<String, String> body) throws IOException {
+    public String sendPostRequest(String url, Map<String, String> body) throws IOException {
         URL url1 = new URL(url);
         URLConnection con = url1.openConnection();
         HttpURLConnection http = (HttpURLConnection) con;
@@ -126,7 +126,9 @@ public class Requests {
         }
         http.connect();
         saveCookies(http);
-        return http.getResponseCode();
+
+        BufferedReader reader = new BufferedReader(new InputStreamReader(http.getInputStream()));
+        return reader.lines().collect(Collectors.joining());
     }
 
 }

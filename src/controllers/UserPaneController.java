@@ -4,8 +4,9 @@ import models.Book;
 import connection.Requests;
 import models.Refund;
 import tasks.UserDataRetrievalTask;
+import utils.Properties;
 import utils.fxUtils.SceneController;
-import utils.tableUtils.TableUtils;
+import utils.tableUtils.JavaFXTableUtils;
 import utils.TaskRunner;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
@@ -20,7 +21,7 @@ import java.util.stream.Collectors;
 
 public class UserPaneController extends Controller {
 
-    private String appAdress = "http://localhost:8080";
+    private String appUrl;
 
     private AnchorPane currentPane = null;
 
@@ -105,6 +106,12 @@ public class UserPaneController extends Controller {
     private Requests requests;
 
     public void initialize() {
+        try {
+            appUrl = Properties.getProperty("site.url");
+        } catch (IOException e) {
+            System.out.println("Could not find site address");
+            System.exit(0);
+        }
         requests = Requests.getInstance();
     }
 
@@ -125,13 +132,13 @@ public class UserPaneController extends Controller {
 
     private void initializeRefunds() {
         updateRefunds();
-        TableUtils.toJavaFXTableView(refunds, refundsTableView);
+        JavaFXTableUtils.toJavaFXTableView(refunds, refundsTableView);
         refundsTableView.getColumns().forEach(c -> c.setResizable(false));
     }
 
     private void initializeTransactions() {
         transactions = (List<Transaction>) parameters.get("transactions");
-        TableUtils.toJavaFXTableView(transactions, transactionsTableView);
+        JavaFXTableUtils.toJavaFXTableView(transactions, transactionsTableView);
 
         double width = 400;
         transactionsTableView.getColumns().get(0).setMinWidth(width / 3);
@@ -170,7 +177,7 @@ public class UserPaneController extends Controller {
         boolean[] success = {true};
         new TaskRunner(() -> {
             try {
-                success[0] = requests.sendPostRequest(String.format("%s/payments/user/refund", appAdress), params) == 200;
+                success[0] = requests.sendPostRequest(String.format("%s/payments/user/refund", appUrl), params).equals("success");
             } catch (IOException e) {
                 success[0] = false;
             }
@@ -188,7 +195,7 @@ public class UserPaneController extends Controller {
         final int[] id = {reservedListView.getSelectionModel().getSelectedItem().getId()};
         Runnable cancelReservationTask = () -> {
             try {
-                requests.sendDeleteRequest(String.format("%s/rental/reserve/%d", appAdress, id[0]));
+                requests.sendDeleteRequest(String.format("%s/rental/reserve/%d", appUrl, id[0]));
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -244,7 +251,7 @@ public class UserPaneController extends Controller {
     public void logout() {
         Runnable logoutRequest = () -> {
             try {
-                requests.sendPostRequest(String.format("%s/logout", appAdress));
+                requests.sendPostRequest(String.format("%s/logout", appUrl));
             } catch (IOException ignored) {
             }
         };

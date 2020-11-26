@@ -3,11 +3,11 @@ package controllers;
 import connection.Requests;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.ProgressIndicator;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+
 import tasks.UserDataRetrievalTask;
+
+import utils.Properties;
 import utils.fxUtils.SceneController;
 import utils.TaskRunner;
 
@@ -16,6 +16,9 @@ import java.util.*;
 
 public class LoginController {
 
+    private String appUrl;
+    @FXML
+    private CheckBox rememberCheckBox;
     @FXML
     private TextField usernameField;
 
@@ -34,9 +37,19 @@ public class LoginController {
     private Requests requests;
 
     public void initialize() {
+        try {
+            appUrl = Properties.getProperty("site.url");
+            String username = Properties.getProperty("username");
+            if (!username.isEmpty()) {
+                usernameField.setText(username);
+                String password = Properties.getProperty("password");
+                if (!password.isEmpty()) passwordField.setText(password);
+            }
+        } catch (IOException e) {
+            System.out.println("Could not find site address");
+            System.exit(0);
+        }
         this.requests = Requests.getInstance();
-        usernameField.setText("user");
-        passwordField.setText("admin1");
     }
 
     public void register() {
@@ -64,7 +77,7 @@ public class LoginController {
         //Logowanie uzytkownika z podanymi w aplikacji danymi
         Runnable loginRequest = () -> {
             try {
-                getUserData.setSuccess(loggedIn[0] = (requests.sendPostRequest("http://localhost:8080/temp/login", properties) == 200));
+                getUserData.setSuccess(loggedIn[0] = (requests.sendPostRequest(String.format("%s/temp/login", appUrl), properties).equals("true")));
             } catch (IOException ignored) {
             }
         };
@@ -73,6 +86,14 @@ public class LoginController {
         //To jest wywolywane po zakonczeniu poprzednich zadan
         Runnable onTaskComplete = () -> {
             if (loggedIn[0]) {
+                if (rememberCheckBox.isSelected()) {
+                    try {
+                        Properties.editProperty("username", properties.get("username"));
+                        Properties.editProperty("password", properties.get("password"));
+                    } catch (IOException e) {
+                        System.out.println("Failed to save username");
+                    }
+                }
                 Platform.runLater(() -> {
                     try {
                         //Jesli zalogowano pomyslnie, wyswietlanie sceny z panelem uzytkownika
