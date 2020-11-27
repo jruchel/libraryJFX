@@ -61,7 +61,7 @@
             </TableView>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="refundsPane" layoutX="110.0" layoutY="110.0" prefHeight="200.0" prefWidth="399.0" visible="false" AnchorPane.bottomAnchor="100.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="100.0">
+      <AnchorPane fx:id="refundsPane" layoutX="110.0" layoutY="110.0" prefHeight="200.0" prefWidth="399.0" visible="false" AnchorPane.bottomAnchor="150.0" AnchorPane.leftAnchor="110.0" AnchorPane.rightAnchor="91.0" AnchorPane.topAnchor="110.0">
          <children>
             <TableView fx:id="refundsTableView" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <columns>

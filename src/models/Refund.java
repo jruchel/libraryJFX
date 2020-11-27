@@ -4,6 +4,7 @@ import utils.tableUtils.TableField;
 
 public class Refund {
 
+    private int transactionID;
     @TableField
     private String description;
     @TableField
@@ -19,7 +20,8 @@ public class Refund {
     private String reason;
 
 
-    public Refund(int id, String description, double amount, String currency, String status, String message, String reason) {
+    public Refund(int id, int transactionID, String description, double amount, String currency, String status, String message, String reason) {
+        this.transactionID = transactionID;
         this.description = description;
         this.amount = amount;
         this.currency = currency;
@@ -32,6 +34,14 @@ public class Refund {
 
     public Refund() {
 
+    }
+
+    public void setTransactionID(int transactionID) {
+        this.transactionID = transactionID;
+    }
+
+    public int getTransactionID() {
+        return transactionID;
     }
 
     public double getAmount() {

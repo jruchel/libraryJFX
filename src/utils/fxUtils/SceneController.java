@@ -15,6 +15,24 @@ import java.util.Map;
 public class SceneController {
 
     private static Stage primaryStage;
+    private static int width, height;
+
+    static {
+        width = 600;
+        height = 600;
+    }
+
+    public static Stage getPrimaryStage() {
+        return primaryStage;
+    }
+
+    public static void setHeight(int height) {
+        SceneController.height = height;
+    }
+
+    public static void setWidth(int width) {
+        SceneController.width = width;
+    }
 
     public static void setPrimaryStage(Stage stage) {
         primaryStage = stage;
@@ -29,7 +47,7 @@ public class SceneController {
     private static Scene getScene(String name) throws IOException {
         URL url = constructURL(name);
         Parent root = FXMLLoader.load(url);
-        return new Scene(root, 600, 400);
+        return new Scene(root, width, height);
     }
 
     private static FXMLLoader getLoader(String file) throws MalformedURLException {
@@ -49,7 +67,7 @@ public class SceneController {
         Controller controller = loader.getController();
         controller.setParameters(parameters);
         controller.initializeManually();
-        Scene scene = new Scene(root, 600, 400);
+        Scene scene = new Scene(root, width, height);
         startScene(scene);
     }
 

@@ -48,8 +48,8 @@ public class UserDataRetrievalTask implements Runnable {
         List<Pair<Integer, String>> books = getBooksIdsAndTitles(getRentedBooksString(data));
         List<Book> bookList = new ArrayList<>();
         for (Pair<Integer, String> p : books) {
-            int authorID = Integer.parseInt(requests.getResponseBody(String.format("%s/books/author/%d", siteUrl, p.getKey())));
-            String authorName = requests.getResponseBody(String.format("%s/authors/%d", siteUrl, authorID));
+            int authorID = Integer.parseInt(requests.sendRequest(String.format("%s/books/author/%d", siteUrl, p.getKey()), "GET"));
+            String authorName = requests.sendRequest(String.format("%s/authors/%d", siteUrl, authorID), "GET");
             bookList.add(new Book(p.getValue(), getAuthorName(authorName), p.getKey()));
         }
         return bookList;
@@ -59,8 +59,8 @@ public class UserDataRetrievalTask implements Runnable {
         List<Pair<Integer, String>> books = getBooksIdsAndTitles(getReservedBooksString(data));
         List<Book> bookList = new ArrayList<>();
         for (Pair<Integer, String> p : books) {
-            int authorID = Integer.parseInt(requests.getResponseBody(String.format("%s/books/author/%d", siteUrl, p.getKey())));
-            String authorName = requests.getResponseBody(String.format("%s/authors/%d", siteUrl, authorID));
+            int authorID = Integer.parseInt(requests.sendRequest(String.format("%s/books/author/%d", siteUrl, p.getKey()), "GET"));
+            String authorName = requests.sendRequest(String.format("%s/authors/%d", siteUrl, authorID), "GET");
             bookList.add(new Book(p.getValue(), getAuthorName(authorName), p.getKey()));
         }
         return bookList;
@@ -156,7 +156,7 @@ public class UserDataRetrievalTask implements Runnable {
         return transactions;
     }
 
-    private List<Refund> getRefunds(String data, String description, double amount, String currency) {
+    private List<Refund> getRefunds(String data, int transactionID, String description, double amount, String currency) {
         String refundsJSON = JsonReader.readFromJson("refunds", data);
         String[] refunds = JsonReader.readFromArray(refundsJSON);
 
@@ -167,7 +167,7 @@ public class UserDataRetrievalTask implements Runnable {
             String status = JsonReader.readFromJson("status", s);
             String message = JsonReader.readFromJson("message", s);
             String reason = JsonReader.readFromJson("reason", s);
-            refundList.add(new Refund(id, description, amount, currency, status, message, reason));
+            refundList.add(new Refund(id, transactionID, description, amount, currency, status, message, reason));
         }
         return refundList;
     }
@@ -180,7 +180,7 @@ public class UserDataRetrievalTask implements Runnable {
         int time = Integer.parseInt(JsonReader.readFromJson("time", data));
         boolean refunded = Boolean.parseBoolean(JsonReader.readFromJson("refunded", data));
         String description = JsonReader.readFromJson("description", data);
-        List<Refund> refundList = getRefunds(data, description, amount, currency);
+        List<Refund> refundList = getRefunds(data, id, description, amount, currency);
         return new Transaction(id, amount, currency, chargeID, time, refunded, description, refundList);
     }
 
@@ -188,7 +188,7 @@ public class UserDataRetrievalTask implements Runnable {
     public void run() {
         if (success) {
             try {
-                String data = requests.getResponseBody(String.format("%s/user", siteUrl));
+                String data = requests.sendRequest(String.format("%s/user", siteUrl), "GET");
                 parameters.put("username", getUsername(data));
                 parameters.put("reservedBooks", getReservedBooksList(data));
                 parameters.put("rentedBooks", getRentedBooksList(data));

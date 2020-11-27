@@ -1,5 +1,6 @@
 package controllers;
 
+import javafx.scene.Parent;
 import models.Book;
 import connection.Requests;
 import models.Refund;
@@ -123,16 +124,35 @@ public class UserPaneController extends Controller {
             reservedListView.getItems().addAll(reservedBookList);
             rentedListView.getItems().addAll(rentedBookList);
             initializeTransactions();
-            initializeRefunds();
+            initializeRefundsTable();
         } catch (Exception ignored) {
             System.out.println();
         }
-        startAutoUpdateTask(30000);
+        startAutoUpdateTask(3000);
     }
 
-    private void initializeRefunds() {
+    private static <E> void setTableMeasurements(TableView<E> tableView, double[] widthRatios) {
+        double stageWidth = SceneController.getPrimaryStage().getWidth();
+        Parent parent = tableView.getParent();
+        AnchorPane.setLeftAnchor(parent, stageWidth / 10);
+        AnchorPane.setRightAnchor(parent, stageWidth / 10);
+        AnchorPane.setTopAnchor(parent, stageWidth / 10);
+        AnchorPane.setBottomAnchor(parent, stageWidth / 10);
+        double width = stageWidth - (AnchorPane.getLeftAnchor(parent) + AnchorPane.getRightAnchor(parent));
+
+        for (int i = 0; i < tableView.getColumns().size(); i++) {
+            tableView.getColumns().get(i).setMaxWidth(widthRatios[i] * width);
+            tableView.getColumns().get(i).setMinWidth(widthRatios[i] * width);
+        }
+    }
+
+    private void initializeRefundsTable() {
         updateRefunds();
         JavaFXTableUtils.toJavaFXTableView(refunds, refundsTableView);
+
+        double[] widths = {0.246154, 0.109402, 0.064957, 0.091453, 0.176923, 0.311111};
+        setTableMeasurements(refundsTableView, widths);
+
         refundsTableView.getColumns().forEach(c -> c.setResizable(false));
     }
 
@@ -140,11 +160,8 @@ public class UserPaneController extends Controller {
         transactions = (List<Transaction>) parameters.get("transactions");
         JavaFXTableUtils.toJavaFXTableView(transactions, transactionsTableView);
 
-        double width = 400;
-        transactionsTableView.getColumns().get(0).setMinWidth(width / 3);
-        transactionsTableView.getColumns().get(1).setMinWidth(width / 3);
-        transactionsTableView.getColumns().get(2).setMaxWidth(width / 3);
-        transactionsTableView.getColumns().get(3).setMaxWidth(width / 6);
+        double[] widths = {0.333333333333, 0.333333333333, 0.1666666666666, 0.1666666666666};
+        setTableMeasurements(transactionsTableView, widths);
 
         transactionsTableView.getColumns().forEach(c -> c.setResizable(false));
     }
@@ -170,7 +187,10 @@ public class UserPaneController extends Controller {
 
     public void requestRefund() {
         Transaction toRefund = transactionsTableView.getSelectionModel().getSelectedItem();
-        if (toRefund.isRefunded()) return;
+        if (toRefund.isRefunded() || refunds.stream().anyMatch(r -> r.getTransactionID() == toRefund.getId())) {
+            System.out.println("Refund has already been submitted or transaction has already been refunded");
+            return;
+        }
         Map<String, String> params = new TreeMap<>();
         params.put("chargeid", toRefund.getChargeID());
         params.put("message", "Refund request");
