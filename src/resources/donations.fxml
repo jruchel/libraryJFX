@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane layoutX="110.0" layoutY="110.0" prefHeight="200.0" prefWidth="399.0" visible="false" AnchorPane.bottomAnchor="100.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="100.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.DonationsController">
+    <children>
+        <Label layoutX="233.0" layoutY="23.0" text="Amount" AnchorPane.leftAnchor="225.0" />
+        <TextField fx:id="otherAmountTextField" disable="true" layoutX="233.0" layoutY="68.0" AnchorPane.leftAnchor="225.0" AnchorPane.rightAnchor="225.0" />
+        <TextArea fx:id="descriptionTextArea" layoutX="123.0" layoutY="159.0" prefHeight="134.0" prefWidth="371.0" AnchorPane.leftAnchor="114.0" AnchorPane.rightAnchor="114.0" />
+        <Button fx:id="sendDonationButton" layoutX="494.0" layoutY="322.0" mnemonicParsing="false" onAction="#sendDonation" text="Send" AnchorPane.rightAnchor="50.0" />
+        <Label layoutX="234.0" layoutY="102.0" text="Currency" AnchorPane.leftAnchor="225.0" />
+        <ChoiceBox fx:id="amountChoiceBox" layoutX="233.0" layoutY="40.0" prefWidth="150.0" AnchorPane.leftAnchor="225.0" AnchorPane.rightAnchor="225.0" />
+        <ChoiceBox fx:id="currencyChoiceBox" layoutX="234.0" layoutY="119.0" prefWidth="150.0" AnchorPane.leftAnchor="225.0" AnchorPane.rightAnchor="225.0" />
+        <Label layoutX="123.0" layoutY="136.0" text="Description" AnchorPane.leftAnchor="114.0" />
+        <CheckBox fx:id="otherCheckBox" layoutX="382.0" layoutY="40.0" mnemonicParsing="false" onAction="#otherPicked" text="Other" AnchorPane.rightAnchor="170.0" />
+    </children>
+</AnchorPane>

@@ -1,13 +1,14 @@
 package tasks;
 
 import models.*;
-import connection.Requests;
+import web.Requests;
 import javafx.util.Pair;
-import utils.JsonReader;
+import utils.parsing.JsonReader;
 import utils.Properties;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.regex.Matcher;
@@ -16,12 +17,10 @@ import java.util.regex.Pattern;
 public class UserDataRetrievalTask implements Runnable {
 
     private String siteUrl;
-    private boolean success;
     private Map<String, Object> parameters;
     private Requests requests;
 
     public UserDataRetrievalTask(Map<String, Object> parameters) {
-        this.success = false;
         this.parameters = parameters;
         this.requests = Requests.getInstance();
         try {
@@ -30,16 +29,12 @@ public class UserDataRetrievalTask implements Runnable {
         }
     }
 
+    public UserDataRetrievalTask() {
+        this(new HashMap<>());
+    }
+
     public Map<String, Object> getParameters() {
         return parameters;
-    }
-
-    public boolean isSuccess() {
-        return success;
-    }
-
-    public void setSuccess(boolean success) {
-        this.success = success;
     }
 
     private List<Book> getRentedBooksList(String data) throws IOException {
@@ -186,14 +181,12 @@ public class UserDataRetrievalTask implements Runnable {
 
     @Override
     public void run() {
-        if (success) {
-            try {
-                String data = requests.sendRequest(String.format("%s/user", siteUrl), "GET");
-                User user = new User(getID(data), getUsername(data), getTransactionsList(data), getRentedBooksList(data), getReservedBooksList(data));
-                UserModel.getInstance().setCurrentUser(user);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+        try {
+            String data = requests.sendRequest(String.format("%s/user", siteUrl), "GET");
+            User user = new User(getID(data), getUsername(data), getTransactionsList(data), getRentedBooksList(data), getReservedBooksList(data));
+            UserModel.getInstance().setCurrentUser(user);
+        } catch (Exception ignored) {
         }
     }
+
 }

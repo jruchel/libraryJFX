@@ -1,13 +1,13 @@
 package controllers;
 
-import connection.Requests;
+import web.Requests;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.ListView;
 import models.Book;
 import models.UserModel;
 import utils.Properties;
-import utils.TaskRunner;
+import web.TaskRunner;
 import utils.fxUtils.AlertUtils;
 
 import java.io.IOException;
@@ -40,6 +40,7 @@ public class BooksController {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        ControllerAccess.getInstance().put(this.getClass().getName(), this);
     }
 
     public void reserve() {

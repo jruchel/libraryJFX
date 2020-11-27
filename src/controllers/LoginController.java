@@ -1,6 +1,6 @@
 package controllers;
 
-import connection.Requests;
+import web.Requests;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -10,7 +10,7 @@ import tasks.UserDataRetrievalTask;
 import utils.Properties;
 import utils.fxUtils.AlertUtils;
 import utils.fxUtils.SceneController;
-import utils.TaskRunner;
+import web.TaskRunner;
 
 import java.io.IOException;
 import java.util.*;
@@ -51,6 +51,7 @@ public class LoginController {
             System.exit(0);
         }
         this.requests = Requests.getInstance();
+        ControllerAccess.getInstance().put(this.getClass().getName(), this);
     }
 
     public void register() {
@@ -78,7 +79,7 @@ public class LoginController {
         //Logowanie uzytkownika z podanymi w aplikacji danymi
         Runnable loginRequest = () -> {
             try {
-                getUserData.setSuccess(loggedIn[0] = (requests.sendRequest(String.format("%s/temp/login", appUrl), properties, "POST").equals("true")));
+              loggedIn[0] = (requests.sendRequest(String.format("%s/temp/login", appUrl), properties, "POST").equals("true"));
             } catch (IOException ignored) {
             }
         };

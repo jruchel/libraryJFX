@@ -1,13 +1,11 @@
 package controllers;
 
-import models.Book;
-import connection.Requests;
+import web.Requests;
 import models.UserModel;
-import tasks.UserDataRetrievalTask;
 import utils.Properties;
 import utils.fxUtils.AlertUtils;
 import utils.fxUtils.SceneController;
-import utils.TaskRunner;
+import web.TaskRunner;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.layout.AnchorPane;
@@ -20,19 +18,14 @@ public class UserPaneController {
 
 
     private AnchorPane currentPane = null;
-
-
-    @FXML
-    private AnchorPane usernameChangePane;
-
-    @FXML
-    private AnchorPane passwordChangePane;
-
     @FXML
     private AnchorPane booksPane;
 
     @FXML
     private AnchorPane transactionsPane;
+
+    @FXML
+    private AnchorPane donationPane;
 
     @FXML
     private AnchorPane refundsPane;
@@ -49,12 +42,9 @@ public class UserPaneController {
             System.exit(0);
         }
         requests = Requests.getInstance();
+        ControllerAccess.getInstance().put(this.getClass().getName(), this);
     }
 
-
-    public void showUsernameChange() {
-        showPane(usernameChangePane);
-    }
 
     private void showPane(Pane pane) {
         if (currentPane != null) {
@@ -67,13 +57,12 @@ public class UserPaneController {
         }
     }
 
+    public void showDonationPane() {
+        showPane(donationPane);
+    }
 
     private void hideCurrentPane() {
         currentPane.setVisible(false);
-    }
-
-    public void showPasswordChange() {
-        showPane(passwordChangePane);
     }
 
     public void showRefunds() {

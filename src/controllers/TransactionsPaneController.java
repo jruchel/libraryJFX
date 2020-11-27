@@ -1,13 +1,15 @@
 package controllers;
 
-import connection.Requests;
+import web.Requests;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableView;
 import models.Refund;
 import models.Transaction;
 import models.UserModel;
+import updating.OnUpdate;
 import utils.Properties;
-import utils.TaskRunner;
+import web.TaskRunner;
 import utils.fxUtils.AlertUtils;
 import utils.tableUtils.JavaFXTableUtils;
 
@@ -36,9 +38,18 @@ public class TransactionsPaneController {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        ControllerAccess.getInstance().put(this.getClass().getName(), this);
     }
 
-    private void initializeTransactions() {
+    @OnUpdate
+    public void updateTableElements() {
+        transactions = userModel.getCurrentUser().getTransactionList();
+        transactionsTableView.getItems().clear();
+        transactionsTableView.getItems().addAll(transactions);
+        transactionsTableView.refresh();
+    }
+
+    public void initializeTransactions() {
         transactions = userModel.getCurrentUser().getTransactionList();
         if (transactions.size() == 0) {
             JavaFXTableUtils.toJavaFXTableView(
@@ -73,11 +84,15 @@ public class TransactionsPaneController {
                     success[0] = false;
                 }
             }, () -> {
-                if (success[0]) {
-                    AlertUtils.showAlert("Refund request sent, view your pending refunds under Refunds button in the user pane");
-                } else {
-                    AlertUtils.showAlert("Refund request was not submitted due to a server error");
-                }
+                Platform.runLater(() -> {
+                    if (success[0]) {
+                        AlertUtils.showAlert("Refund request sent, view your pending refunds under Refunds button in the user pane");
+                        userModel.updateUser();
+                    } else {
+                        AlertUtils.showAlert("Refund request was not submitted due to a server error");
+                    }
+                });
+
             }).run();
         } catch (Exception ex) {
             AlertUtils.showAlert("Refund failed to process, please try again");

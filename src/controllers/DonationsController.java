@@ -1,0 +1,100 @@
+package controllers;
+
+import javafx.application.Platform;
+import javafx.fxml.FXML;
+import javafx.scene.control.CheckBox;
+import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
+import models.CreditCard;
+import models.UserModel;
+import utils.fxUtils.AlertUtils;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+public class DonationsController {
+    @FXML
+    private ChoiceBox<Double> amountChoiceBox;
+    @FXML
+    private CheckBox otherCheckBox;
+    @FXML
+    private TextField otherAmountTextField;
+    @FXML
+    private ChoiceBox<String> currencyChoiceBox;
+    @FXML
+    private TextArea descriptionTextArea;
+
+    private List<Double> amounts;
+    private List<String> currencies;
+
+    public void initialize() {
+        amounts = new ArrayList<>();
+        currencies = new ArrayList<>();
+        amounts.addAll(Arrays.asList(5.0, 10.0, 15.0, 20.0, 50.0, 100.0, 200.0, 500.0, 1000.0));
+        currencies.addAll(Arrays.asList("USD", "PLN", "EUR", "GBP"));
+        amountChoiceBox.getItems().clear();
+        amountChoiceBox.getItems().addAll(amounts);
+        currencyChoiceBox.getItems().clear();
+        currencyChoiceBox.getItems().addAll(currencies);
+        ControllerAccess.getInstance().put(this.getClass().getName(), this);
+    }
+
+    public void otherPicked() {
+        boolean isSelected = otherCheckBox.isSelected();
+        otherAmountTextField.setDisable(!isSelected);
+        amountChoiceBox.setDisable(isSelected);
+    }
+
+    public void reset() {
+        amountChoiceBox.setValue(null);
+        amountChoiceBox.setDisable(false);
+        currencyChoiceBox.setValue(null);
+        otherAmountTextField.setDisable(true);
+        otherCheckBox.setSelected(false);
+        descriptionTextArea.setText("");
+    }
+
+    public void sendDonation() {
+        StringBuilder error = new StringBuilder();
+
+        double amount = 0;
+        String currency, description;
+        //Amount validation
+        try {
+            if (amountChoiceBox.isDisabled()) {
+                amount = Double.parseDouble(otherAmountTextField.getText());
+            } else {
+                amount = amountChoiceBox.getValue();
+            }
+            if (amount <= 0) error.append(String.format("Amount cannot be %f\n", amount));
+        } catch (Exception ex) {
+            error.append("Amount must be a number\n");
+        }
+        currency = currencyChoiceBox.getValue();
+        if (currency == null) error.append("Currency must be picked");
+        description = descriptionTextArea.getText();
+        if (description.isEmpty()) description = "Donation";
+        if (error.length() > 0) AlertUtils.showAlert(error.toString());
+        else {
+            try {
+                PaymentService.makePayment(getDefaultCreditCard(), amount, currency, description, () -> {
+                    Platform.runLater(() -> {
+                        AlertUtils.showAlert("Transaction complete");
+                        reset();
+                    });
+
+                    UserModel.getInstance().updateUser();
+                });
+            } catch (IOException e) {
+                AlertUtils.showAlert("Transaction failure");
+            }
+        }
+    }
+
+    private CreditCard getDefaultCreditCard() {
+        return new CreditCard(4242424242424242L, 5, 2022, 333);
+    }
+}

@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.TableView;
 import models.Refund;
 import models.UserModel;
+import updating.OnUpdate;
 import utils.tableUtils.JavaFXTableUtils;
 
 import java.util.Arrays;
@@ -21,9 +22,18 @@ public class RefundsController {
         userModel = UserModel.getInstance();
         refunds = userModel.getCurrentUser().getRefunds();
         initializeRefundsTable();
+        ControllerAccess.getInstance().put(this.getClass().getName(), this);
     }
 
-    private void initializeRefundsTable() {
+    @OnUpdate
+    public void updateTableElements() {
+        refunds = userModel.getCurrentUser().getRefunds();
+        refundsTableView.getItems().clear();
+        refundsTableView.getItems().addAll(refunds);
+        refundsTableView.refresh();
+    }
+
+    public void initializeRefundsTable() {
         updateRefunds();
         if (refunds.size() == 0) {
             JavaFXTableUtils.toJavaFXTableView(
