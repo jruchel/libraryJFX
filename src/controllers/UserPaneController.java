@@ -2,6 +2,7 @@ package controllers;
 
 import models.Book;
 import connection.Requests;
+import models.UserModel;
 import tasks.UserDataRetrievalTask;
 import utils.Properties;
 import utils.fxUtils.AlertUtils;
@@ -9,30 +10,24 @@ import utils.fxUtils.SceneController;
 import utils.TaskRunner;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
-import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 
 import java.io.IOException;
-import java.util.*;
-import java.util.stream.Collectors;
+
 
 public class UserPaneController {
 
 
     private AnchorPane currentPane = null;
 
-    private boolean autoUpdate = false;
 
-    //Change username subwindow
     @FXML
     private AnchorPane usernameChangePane;
 
-    //Change password subwindow
     @FXML
     private AnchorPane passwordChangePane;
 
-    //Books pane
     @FXML
     private AnchorPane booksPane;
 
@@ -81,14 +76,6 @@ public class UserPaneController {
         showPane(passwordChangePane);
     }
 
-    public void changeUsername() {
-
-    }
-
-    public void changePassword() {
-
-    }
-
     public void showRefunds() {
         showPane(refundsPane);
     }
@@ -112,6 +99,7 @@ public class UserPaneController {
         Runnable onTaskComplete = () -> {
             Platform.runLater(() -> {
                 try {
+                    UserModel.getInstance().setCurrentUser(null);
                     SceneController.startScene("login");
                 } catch (IOException e) {
                     AlertUtils.showAlert("Failed to log out");

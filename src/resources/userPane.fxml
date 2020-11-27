@@ -27,35 +27,8 @@
         <Button fx:id="showBooksButton" layoutX="13.0" layoutY="96.0" mnemonicParsing="false" onAction="#showBooks"
                 text="Books" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="95.0"/>
         <Label fx:id="motdLabel" layoutX="440.0" layoutY="19.0" text="motd"/>
-        <AnchorPane fx:id="usernameChangePane" layoutX="104.0" layoutY="100.0" prefHeight="200.0" prefWidth="399.0"
-                    visible="false" AnchorPane.bottomAnchor="100.0" AnchorPane.leftAnchor="100.0"
-                    AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="100.0">
-            <children>
-                <TextField fx:id="currentUsernameField" layoutX="125.0" layoutY="27.0" promptText="New username"
-                           AnchorPane.leftAnchor="125.0" AnchorPane.rightAnchor="126.0" AnchorPane.topAnchor="27.0"/>
-                <Button fx:id="accepButton" layoutX="333.0" layoutY="148.0" mnemonicParsing="false"
-                        onAction="#changeUsername" text="Accept" AnchorPane.bottomAnchor="27.0"
-                        AnchorPane.rightAnchor="14.0"/>
-            </children>
-        </AnchorPane>
-        <AnchorPane fx:id="passwordChangePane" layoutX="114.0" layoutY="110.0" prefHeight="200.0" prefWidth="399.0"
-                    visible="false" AnchorPane.bottomAnchor="100.0" AnchorPane.leftAnchor="100.0"
-                    AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="100.0">
-            <children>
-                <Button fx:id="acceptPasswordButton" layoutX="333.0" layoutY="148.0" mnemonicParsing="false"
-                        onAction="#changePassword" text="Accept" AnchorPane.bottomAnchor="87.0"
-                        AnchorPane.rightAnchor="15.0"/>
-                <PasswordField fx:id="currentPasswordField" layoutX="125.0" layoutY="33.0" promptText="Current password"
-                               AnchorPane.leftAnchor="125.0" AnchorPane.rightAnchor="125.0"
-                               AnchorPane.topAnchor="33.0"/>
-                <PasswordField fx:id="newPasswordField" layoutX="125.0" layoutY="65.0" promptText="New password"
-                               AnchorPane.bottomAnchor="175.0" AnchorPane.leftAnchor="125.0"
-                               AnchorPane.rightAnchor="125.0" AnchorPane.topAnchor="60.0"/>
-                <PasswordField fx:id="confirmPasswordField" layoutX="125.0" layoutY="100.0"
-                               promptText="Confirm password" AnchorPane.leftAnchor="125.0"
-                               AnchorPane.rightAnchor="125.0" AnchorPane.topAnchor="90.0"/>
-            </children>
-        </AnchorPane>
+        <fx:include fx:id="usernameChangePane" source="usernameChangePane.fxml"/>
+        <fx:include fx:id="passwordChangePane" source="passwordChangePane.fxml"/>
         <fx:include fx:id="booksPane" source="booksPane.fxml"/>
         <Label fx:id="usernameLabel" layoutX="10.0" layoutY="11.0" text="Username" AnchorPane.leftAnchor="10.0"
                AnchorPane.topAnchor="10.0"/>

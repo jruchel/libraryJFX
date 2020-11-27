@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Button?>
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="controllers.UsernameChangePaneController"
+            fx:id="usernameChangePane" layoutX="104.0" layoutY="100.0" prefHeight="200.0" prefWidth="399.0"
+            visible="false" AnchorPane.bottomAnchor="100.0" AnchorPane.leftAnchor="100.0"
+            AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="100.0">
+    <children>
+        <TextField fx:id="currentUsernameField" layoutX="125.0" layoutY="27.0" promptText="New username"
+                   AnchorPane.leftAnchor="125.0" AnchorPane.rightAnchor="126.0" AnchorPane.topAnchor="27.0"/>
+        <Button fx:id="accepButton" layoutX="333.0" layoutY="148.0" mnemonicParsing="false"
+                onAction="#changeUsername" text="Accept" AnchorPane.bottomAnchor="27.0"
+                AnchorPane.rightAnchor="14.0"/>
+    </children>
+</AnchorPane>
