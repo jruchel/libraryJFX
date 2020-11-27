@@ -61,16 +61,6 @@ public class SceneController {
         return scene;
     }
 
-    public static void startScene(String file, Map<String, Object> parameters) throws IOException {
-        FXMLLoader loader = getLoader(file);
-        Parent root = loader.load();
-        Controller controller = loader.getController();
-        controller.setParameters(parameters);
-        controller.initializeManually();
-        Scene scene = new Scene(root, width, height);
-        startScene(scene);
-    }
-
     public static void startScene(Scene scene) {
         primaryStage.setResizable(false);
         primaryStage.setScene(scene);

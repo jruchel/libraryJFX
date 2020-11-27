@@ -1,10 +1,8 @@
 package tasks;
 
-import models.Book;
+import models.*;
 import connection.Requests;
 import javafx.util.Pair;
-import models.Refund;
-import models.Transaction;
 import utils.JsonReader;
 import utils.Properties;
 
@@ -115,16 +113,13 @@ public class UserDataRetrievalTask implements Runnable {
     }
 
     private String getUsername(String data) {
-        String regex = "\\\"username\\\"\\:\\\"(\\w+)\\\"";
-        Pattern pattern = Pattern.compile(regex);
-        Matcher matcher;
-        for (String s : data.split(",")) {
-            matcher = pattern.matcher(s);
-            if (matcher.matches()) {
-                return matcher.group(1);
-            }
-        }
-        return "";
+        return JsonReader.readFromJson("username", data);
+    }
+
+    private int getID(String data) {
+        data = data.replaceAll("\\\"roles\\\".*", "");
+        String result = JsonReader.readFromJson("id", data);
+        return Integer.parseInt(result);
     }
 
     private String getTransactionString(String data) {
@@ -194,10 +189,8 @@ public class UserDataRetrievalTask implements Runnable {
         if (success) {
             try {
                 String data = requests.sendRequest(String.format("%s/user", siteUrl), "GET");
-                parameters.put("username", getUsername(data));
-                parameters.put("reservedBooks", getReservedBooksList(data));
-                parameters.put("rentedBooks", getRentedBooksList(data));
-                parameters.put("transactions", getTransactionsList(data));
+                User user = new User(getID(data), getUsername(data), getTransactionsList(data), getRentedBooksList(data), getReservedBooksList(data));
+                UserModel.getInstance().setCurrentUser(user);
             } catch (IOException e) {
                 e.printStackTrace();
             }

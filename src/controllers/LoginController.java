@@ -98,7 +98,7 @@ public class LoginController {
                 Platform.runLater(() -> {
                     try {
                         //Jesli zalogowano pomyslnie, wyswietlanie sceny z panelem uzytkownika
-                        SceneController.startScene("userPane", parameters);
+                        SceneController.startScene("userPane");
                         int endTime = (int) System.nanoTime();
                         System.out.printf("Time to load: %.2fs\n", (endTime - startTime) / Math.pow(10, 9));
                     } catch (IOException e) {
