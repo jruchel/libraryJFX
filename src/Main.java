@@ -8,8 +8,8 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         SceneController.setPrimaryStage(primaryStage);
-        SceneController.setWidth(1422);
-        SceneController.setHeight(800);
+        SceneController.setWidth(1200);
+        SceneController.setHeight(675);
         SceneController.startScene("login");
     }
 

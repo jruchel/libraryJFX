@@ -8,6 +8,7 @@ import javafx.scene.control.*;
 import tasks.UserDataRetrievalTask;
 
 import utils.Properties;
+import utils.fxUtils.AlertUtils;
 import utils.fxUtils.SceneController;
 import utils.TaskRunner;
 
@@ -46,7 +47,7 @@ public class LoginController {
                 if (!password.isEmpty()) passwordField.setText(password);
             }
         } catch (IOException e) {
-            System.out.println("Could not find site address");
+            AlertUtils.showAlert("Could not find site address");
             System.exit(0);
         }
         this.requests = Requests.getInstance();
@@ -91,7 +92,7 @@ public class LoginController {
                         Properties.editProperty("username", properties.get("username"));
                         Properties.editProperty("password", properties.get("password"));
                     } catch (IOException e) {
-                        System.out.println("Failed to save username");
+                        AlertUtils.showAlert("Failed to save username");
                     }
                 }
                 Platform.runLater(() -> {
@@ -105,7 +106,8 @@ public class LoginController {
                     }
                 });
             } else {
-                System.out.println("Failed to log in");
+                Platform.runLater(() -> AlertUtils.showAlert("Failed to log in"));
+
             }
             progressIndicator.setVisible(false);
         };

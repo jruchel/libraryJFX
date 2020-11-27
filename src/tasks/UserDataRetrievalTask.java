@@ -150,6 +150,7 @@ public class UserDataRetrievalTask implements Runnable {
     private List<Transaction> getTransactionsList(String data) {
         List<Transaction> transactions = new ArrayList<>();
         String[] transactionsStrings = getTransactions(getTransactionString(data));
+        if (transactionsStrings[0].isEmpty()) return transactions;
         for (String s : transactionsStrings) {
             transactions.add(getTransaction(s));
         }
@@ -173,15 +174,19 @@ public class UserDataRetrievalTask implements Runnable {
     }
 
     private Transaction getTransaction(String data) {
-        int id = Integer.parseInt(JsonReader.readFromJson("id", data));
-        double amount = Double.parseDouble(JsonReader.readFromJson("amount", data));
-        String currency = JsonReader.readFromJson("currency", data);
-        String chargeID = JsonReader.readFromJson("chargeID", data);
-        int time = Integer.parseInt(JsonReader.readFromJson("time", data));
-        boolean refunded = Boolean.parseBoolean(JsonReader.readFromJson("refunded", data));
-        String description = JsonReader.readFromJson("description", data);
-        List<Refund> refundList = getRefunds(data, id, description, amount, currency);
-        return new Transaction(id, amount, currency, chargeID, time, refunded, description, refundList);
+        try {
+            int id = Integer.parseInt(JsonReader.readFromJson("id", data));
+            double amount = Double.parseDouble(JsonReader.readFromJson("amount", data));
+            String currency = JsonReader.readFromJson("currency", data);
+            String chargeID = JsonReader.readFromJson("chargeID", data);
+            int time = Integer.parseInt(JsonReader.readFromJson("time", data));
+            boolean refunded = Boolean.parseBoolean(JsonReader.readFromJson("refunded", data));
+            String description = JsonReader.readFromJson("description", data);
+            List<Refund> refundList = getRefunds(data, id, description, amount, currency);
+            return new Transaction(id, amount, currency, chargeID, time, refunded, description, refundList);
+        } catch (Exception ex) {
+            return null;
+        }
     }
 
     @Override
