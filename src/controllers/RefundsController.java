@@ -28,9 +28,8 @@ public class RefundsController {
     @OnUpdate
     public void updateTableElements() {
         refunds = userModel.getCurrentUser().getRefunds();
-        refundsTableView.getItems().clear();
+        refundsTableView.getItems().removeAll(refundsTableView.getItems());
         refundsTableView.getItems().addAll(refunds);
-        refundsTableView.refresh();
     }
 
     public void initializeRefundsTable() {

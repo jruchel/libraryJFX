@@ -8,7 +8,10 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import models.CreditCard;
 import models.UserModel;
+import utils.Properties;
 import utils.fxUtils.AlertUtils;
+import web.Requests;
+import web.TaskRunner;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -29,12 +32,36 @@ public class DonationsController {
 
     private List<Double> amounts;
     private List<String> currencies;
+    private String appUrl;
+
+    private void getAvailableCurrencies() {
+        String[] response = {""};
+        TaskRunner taskRunner = new TaskRunner(() -> {
+            try {
+                response[0] = Requests.getInstance().sendRequest(String.format("%s/payments/currencies", appUrl), "GET");
+            } catch (IOException ignored) {
+            }
+        }, () -> {
+            currencies = parseCurrencies(response[0]);
+            currencyChoiceBox.getItems().addAll(currencies);
+        });
+        taskRunner.run();
+    }
+
+    private List<String> parseCurrencies(String response) {
+        response = response.replaceAll("[\\[\\]\"]", "");
+        return Arrays.asList(response.split(","));
+    }
 
     public void initialize() {
+        try {
+            appUrl = Properties.getProperty("site.url");
+        } catch (IOException ignored) {
+        }
+        getAvailableCurrencies();
         amounts = new ArrayList<>();
         currencies = new ArrayList<>();
-        amounts.addAll(Arrays.asList(5.0, 10.0, 15.0, 20.0, 50.0, 100.0, 200.0, 500.0, 1000.0));
-        currencies.addAll(Arrays.asList("USD", "PLN", "EUR", "GBP"));
+        amounts.addAll(Arrays.asList(5.0, 10.0, 15.0, 20.0, 50.0));
         amountChoiceBox.getItems().clear();
         amountChoiceBox.getItems().addAll(amounts);
         currencyChoiceBox.getItems().clear();

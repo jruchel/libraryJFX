@@ -2,30 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f9d0ae25-61cc-4b23-be1a-a68af21f1dbf" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/controllers/ControllerAccess.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/controllers/DonationsController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/controllers/PaymentService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/models/CreditCard.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/resources/donations.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/utils/OnUpdate.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/utils/Updater.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/LibraryJFX/connection/Requests.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/LibraryJFX/controllers/LoginController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/LibraryJFX/controllers/LoginController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/LibraryJFX/controllers/UserPaneController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/LibraryJFX/controllers/UserPaneController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/LibraryJFX/resources/userPane.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/LibraryJFX/resources/userPane.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controllers/BooksController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/BooksController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controllers/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/LoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controllers/PasswordChangePaneController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controllers/DonationsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/DonationsController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controllers/RefundsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/RefundsController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controllers/TransactionsPaneController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/TransactionsPaneController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controllers/UserPaneController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/UserPaneController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controllers/UsernameChangePaneController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/models/UserModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/UserModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/passwordChangePane.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/userPane.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/userPane.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/usernameChangePane.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tasks/UserDataRetrievalTask.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tasks/UserDataRetrievalTask.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -40,28 +23,64 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/controllers/UserPaneController.java">
+        <entry file="file://$PROJECT_DIR$/src/updating/Updater.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="321">
-              <caret line="57" column="5" selection-start-line="57" selection-start-column="5" selection-end-line="57" selection-end-column="5" />
+            <state relative-caret-position="235">
+              <caret line="60" selection-start-line="60" selection-end-line="60" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#1456#1457#0" expanded="true" />
-                <element signature="e#1539#1540#0" expanded="true" />
-                <element signature="e#1609#1610#0" expanded="true" />
-                <element signature="e#1689#1690#0" expanded="true" />
-                <element signature="e#1755#1756#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/controllers/TransactionsPaneController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="324">
+              <caret line="47" column="62" selection-start-line="47" selection-start-column="62" selection-end-line="47" selection-end-column="62" />
+              <folding>
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/resources/userPane.fxml">
-          <provider editor-type-id="JavaFX-Scene-Builder" />
+        <entry file="file://$PROJECT_DIR$/src/controllers/RefundsController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="17" column="137" lean-forward="true" selection-start-line="17" selection-start-column="137" selection-end-line="17" selection-end-column="137" />
+            <state relative-caret-position="287">
+              <caret line="30" column="75" selection-start-line="30" selection-start-column="75" selection-end-line="30" selection-end-column="75" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/controllers/ControllerAccess.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="391">
+              <caret line="29" selection-start-line="29" selection-end-line="29" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#478#479#0" expanded="true" />
+                <element signature="e#534#535#0" expanded="true" />
+                <element signature="e#724#725#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/tasks/UserDataRetrievalTask.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="337">
+              <caret line="189" selection-start-line="189" selection-end-line="189" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -150,14 +169,14 @@
         <option value="$PROJECT_DIR$/src/controllers/BooksController.java" />
         <option value="$PROJECT_DIR$/src/controllers/LoginController.java" />
         <option value="$PROJECT_DIR$/src/models/UserModel.java" />
-        <option value="$PROJECT_DIR$/src/controllers/TransactionsPaneController.java" />
         <option value="$PROJECT_DIR$/src/utils/Updater.java" />
-        <option value="$PROJECT_DIR$/src/controllers/RefundsController.java" />
-        <option value="$PROJECT_DIR$/src/controllers/DonationsController.java" />
         <option value="$PROJECT_DIR$/src/utils/fxUtils/AlertUtils.java" />
         <option value="$PROJECT_DIR$/src/tasks/UserDataRetrievalTask.java" />
         <option value="$PROJECT_DIR$/src/controllers/UserPaneController.java" />
         <option value="$PROJECT_DIR$/src/resources/userPane.fxml" />
+        <option value="$PROJECT_DIR$/src/controllers/DonationsController.java" />
+        <option value="$PROJECT_DIR$/src/controllers/TransactionsPaneController.java" />
+        <option value="$PROJECT_DIR$/src/controllers/RefundsController.java" />
       </list>
     </option>
   </component>
@@ -203,27 +222,7 @@
               <item name="LibraryJFX" type="b2602c69:ProjectViewProjectNode" />
               <item name="LibraryJFX" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="LibraryJFX" type="b2602c69:ProjectViewProjectNode" />
-              <item name="LibraryJFX" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="utils" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="LibraryJFX" type="b2602c69:ProjectViewProjectNode" />
-              <item name="LibraryJFX" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="utils" type="462c0819:PsiDirectoryNode" />
-              <item name="fxUtils" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="LibraryJFX" type="b2602c69:ProjectViewProjectNode" />
-              <item name="LibraryJFX" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="utils" type="462c0819:PsiDirectoryNode" />
-              <item name="tableUtils" type="462c0819:PsiDirectoryNode" />
+              <item name="tasks" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -331,8 +330,8 @@
       <window_info id="Favorites" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32936078" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32394367" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4171181" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32394367" />
+      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.4171181" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -393,10 +392,22 @@
           <option name="timeStamp" value="25" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/controllers/TransactionsPaneController.java</url>
-          <line>30</line>
+          <url>file://$PROJECT_DIR$/src/updating/Updater.java</url>
+          <line>60</line>
           <properties />
-          <option name="timeStamp" value="54" />
+          <option name="timeStamp" value="58" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/tasks/UserDataRetrievalTask.java</url>
+          <line>184</line>
+          <properties />
+          <option name="timeStamp" value="59" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/controllers/TransactionsPaneController.java</url>
+          <line>45</line>
+          <properties />
+          <option name="timeStamp" value="60" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -418,6 +429,21 @@
       </expression>
     </expressions>
     <expressions id="evaluateExpression">
+      <expression>
+        <expression-string>ControllerAccess.getInstance().get(c.getName())</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>parseCurrencies(response[0])</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>Requests.getInstance().sendRequest(String.format(&quot;%s/payments/currencies&quot;, appUrl), &quot;GET&quot;)</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
       <expression>
         <expression-string>user</expression-string>
         <language-id>JAVA</language-id>
@@ -447,26 +473,6 @@
       </expression>
       <expression>
         <expression-string>getControllerOfClass(c)</expression-string>
-        <language-id>JAVA</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>loader.getController()</expression-string>
-        <language-id>JAVA</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>new FXMLLoader(new File(&quot;src/resources/&quot; + &quot;donations.fxml&quot;).toURI().toURL())</expression-string>
-        <language-id>JAVA</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>new FXMLLoader(new File(&quot;src/resources/&quot; + &quot;donations.fxml&quot;).toURI().toURL());</expression-string>
-        <language-id>JAVA</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>new File(&quot;src/resources/&quot; + file).toURI().toURL()</expression-string>
         <language-id>JAVA</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
@@ -579,16 +585,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/utils/JsonReader.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/models/User.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
@@ -634,16 +630,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="232">
           <caret line="34" column="36" lean-forward="true" selection-start-line="34" selection-start-column="36" selection-end-line="34" selection-end-column="36" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/connection/Requests.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-193">
-          <caret line="30" column="25" selection-start-line="30" selection-start-column="25" selection-end-line="30" selection-end-column="25" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -699,13 +685,6 @@
             <element signature="e#1002#1003#0" expanded="true" />
             <element signature="e#1032#1033#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/utils/OnUpdate.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" selection-start-line="4" selection-end-line="4" />
         </state>
       </provider>
     </entry>
@@ -797,103 +776,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/utils/Updater.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="304">
-          <caret line="52" column="23" lean-forward="true" selection-start-line="52" selection-start-column="23" selection-end-line="52" selection-end-column="23" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/controllers/RefundsController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="406">
-          <caret line="40" column="74" lean-forward="true" selection-start-line="40" selection-start-column="74" selection-end-line="40" selection-end-column="74" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/controllers/DonationsController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="304">
-          <caret line="84" column="41" selection-start-line="84" selection-start-column="41" selection-end-line="84" selection-end-column="41" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#3384#3385#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/utils/fxUtils/AlertUtils.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
           <caret line="6" column="76" lean-forward="true" selection-start-line="6" selection-start-column="76" selection-end-line="6" selection-end-column="76" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/controllers/ControllerAccess.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="21" column="8" selection-start-line="21" selection-start-column="8" selection-end-line="21" selection-end-column="8" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#316#317#0" expanded="true" />
-            <element signature="e#335#336#0" expanded="true" />
-            <element signature="e#478#479#0" expanded="true" />
-            <element signature="e#534#535#0" expanded="true" />
-            <element signature="e#584#585#0" expanded="true" />
-            <element signature="e#636#637#0" expanded="true" />
-            <element signature="e#567#568#0" expanded="true" />
-            <element signature="e#606#607#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/utils/TaskRunner.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="192">
-          <caret line="63" column="18" selection-start-line="63" selection-start-column="18" selection-end-line="63" selection-end-column="18" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1044#1045#0" expanded="true" />
-            <element signature="e#1083#1084#0" expanded="true" />
-            <element signature="e#1463#1464#0" expanded="true" />
-            <element signature="e#1512#1513#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/models/UserModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="276">
-          <caret line="30" column="27" lean-forward="true" selection-start-line="30" selection-start-column="27" selection-end-line="30" selection-end-column="27" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/controllers/TransactionsPaneController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="314">
-          <caret line="49" column="40" selection-start-line="49" selection-start-column="40" selection-end-line="49" selection-end-column="40" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/tasks/UserDataRetrievalTask.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="158">
-          <caret line="170" column="72" lean-forward="true" selection-start-line="170" selection-start-column="72" selection-end-line="170" selection-end-column="72" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -916,7 +802,119 @@
       <provider editor-type-id="JavaFX-Scene-Builder" />
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="289">
-          <caret line="17" column="137" lean-forward="true" selection-start-line="17" selection-start-column="137" selection-end-line="17" selection-end-column="137" />
+          <caret line="17" column="137" selection-start-line="17" selection-start-column="137" selection-end-line="17" selection-end-column="137" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/updating/OnUpdate.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="18" selection-start-line="10" selection-start-column="18" selection-end-line="10" selection-end-column="18" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/web/TaskRunner.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/utils/parsing/JsonReader.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="16" column="5" lean-forward="true" selection-start-line="16" selection-start-column="5" selection-end-line="16" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/web/Requests.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="41" selection-start-line="9" selection-start-column="41" selection-end-line="9" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controllers/DonationsController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="311">
+          <caret line="53" column="5" lean-forward="true" selection-start-line="53" selection-start-column="5" selection-end-line="53" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#3314#3315#0" expanded="true" />
+            <element signature="e#3384#3385#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/models/UserModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="276">
+          <caret line="30" column="27" lean-forward="true" selection-start-line="30" selection-start-column="27" selection-end-line="30" selection-end-column="27" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/tasks/UserDataRetrievalTask.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="337">
+          <caret line="189" selection-start-line="189" selection-end-line="189" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controllers/ControllerAccess.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="29" selection-start-line="29" selection-end-line="29" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#478#479#0" expanded="true" />
+            <element signature="e#534#535#0" expanded="true" />
+            <element signature="e#724#725#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/updating/Updater.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="235">
+          <caret line="60" selection-start-line="60" selection-end-line="60" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controllers/TransactionsPaneController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="324">
+          <caret line="47" column="62" selection-start-line="47" selection-start-column="62" selection-end-line="47" selection-end-column="62" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controllers/RefundsController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="287">
+          <caret line="30" column="75" selection-start-line="30" selection-start-column="75" selection-end-line="30" selection-end-column="75" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

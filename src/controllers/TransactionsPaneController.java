@@ -44,9 +44,8 @@ public class TransactionsPaneController {
     @OnUpdate
     public void updateTableElements() {
         transactions = userModel.getCurrentUser().getTransactionList();
-        transactionsTableView.getItems().clear();
+        transactionsTableView.getItems().removeAll(transactionsTableView.getItems());
         transactionsTableView.getItems().addAll(transactions);
-        transactionsTableView.refresh();
     }
 
     public void initializeTransactions() {
