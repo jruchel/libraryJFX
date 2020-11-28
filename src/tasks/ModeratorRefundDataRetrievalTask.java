@@ -7,7 +7,6 @@ import utils.Properties;
 import utils.parsing.JsonReader;
 import web.Requests;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -41,10 +40,11 @@ public class ModeratorRefundDataRetrievalTask implements Runnable {
 
     @Override
     public void run() {
+        List<ModeratorRefundTableRepresentation> resultData = new ArrayList<>();
         try {
             requests = Requests.getInstance();
             String refundsData;
-            List<ModeratorRefundTableRepresentation> resultData = new ArrayList<>();
+
             refundsData = requests.sendRequest(String.format("%s/payments/moderator/refunds", Properties.getSiteURL()), "GET");
             List<Integer> refundIDs = getRefundIDs(refundsData);
 
@@ -54,9 +54,9 @@ public class ModeratorRefundDataRetrievalTask implements Runnable {
                 resultData.add(new ModeratorRefundTableRepresentation(i, getUsername(usernameData), t.getId(), t.getAmount(), t.getCurrency(), t.getTime(), t.getDescription()));
             }
 
-            ModeratorDataModel.getInstance().setRefunds(resultData);
         } catch (Exception ignored) {
 
         }
+        ModeratorDataModel.getInstance().setRefunds(resultData);
     }
 }

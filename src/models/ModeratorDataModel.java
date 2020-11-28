@@ -2,7 +2,6 @@ package models;
 
 import models.tableRepresentations.ModeratorRefundTableRepresentation;
 import tasks.ModeratorRefundDataRetrievalTask;
-import tasks.UserDataRetrievalTask;
 import updating.Updater;
 import web.TaskRunner;
 

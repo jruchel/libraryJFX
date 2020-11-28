@@ -8,6 +8,7 @@ import models.tableRepresentations.ModeratorRefundTableRepresentation;
 import updating.OnUpdate;
 import utils.tableUtils.JavaFXTableUtils;
 import web.Requests;
+import web.TaskRunner;
 
 import java.io.IOException;
 import java.util.Arrays;
@@ -35,7 +36,7 @@ public class ModeratorRefundController extends Controller {
 
     @OnUpdate
     public void updateTableElements() {
-        refunds = ModeratorDataModel.getInstance().getRefunds();
+        updateRefunds();
         moderatorRefundTable.getItems().removeAll(moderatorRefundTable.getItems());
         moderatorRefundTable.getItems().addAll(refunds);
     }
@@ -66,24 +67,31 @@ public class ModeratorRefundController extends Controller {
         data.put("rid", String.valueOf(rid));
         data.put("reason", reason);
         data.put("decision", String.valueOf(decision));
-        try {
-            requests.sendRequest(String.format("%s/payments/moderator/refund", appURL), data, "POST");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        Runnable sendDecision = () -> {
+            try {
+                requests.sendRequest(String.format("%s/payments/moderator/refund", appURL), data, "POST");
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        };
+        Runnable update = () -> {
+            ModeratorDataModel.getInstance().updateData();
+        };
+        TaskRunner taskRunner = new TaskRunner(sendDecision, update);
+        taskRunner.run();
     }
 
     public void onAccept() {
         int id = moderatorRefundTable.getSelectionModel().getSelectedItem().getId();
         String reason = inputDialog.showAndWait().orElse("Accepted");
-        ModeratorDataModel.getInstance().updateData();
+        if (reason.isEmpty()) reason = "Accepted";
         sendDecision(id, reason, true);
     }
 
     public void onReject() {
         int id = moderatorRefundTable.getSelectionModel().getSelectedItem().getId();
         String reason = inputDialog.showAndWait().orElse("Rejected");
-        ModeratorDataModel.getInstance().updateData();
+        if (reason.isEmpty()) reason = "Rejected";
         sendDecision(id, reason, false);
     }
 
