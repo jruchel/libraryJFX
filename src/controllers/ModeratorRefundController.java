@@ -23,16 +23,19 @@ public class ModeratorRefundController extends Controller {
     private TableView<ModeratorRefundTableRepresentation> moderatorRefundTable;
     private List<ModeratorRefundTableRepresentation> refunds;
     private Requests requests;
-    private TextInputDialog inputDialog;
 
     public void initialize() {
-        inputDialog = new TextInputDialog();
-        inputDialog.setTitle("Confirmation");
-        inputDialog.setHeaderText("Write your reason");
-        inputDialog.setContentText("Reason: ");
         requests = Requests.getInstance();
         initializeRefundsTable();
         initializeManually();
+    }
+
+    private TextInputDialog getInputDialog() {
+        TextInputDialog inputDialog = new TextInputDialog();
+        inputDialog.setTitle("Confirmation");
+        inputDialog.setHeaderText("Write your reason");
+        inputDialog.setContentText("Reason: ");
+        return inputDialog;
     }
 
     @OnUpdate
@@ -85,15 +88,17 @@ public class ModeratorRefundController extends Controller {
 
     public void onAccept() {
         int id = moderatorRefundTable.getSelectionModel().getSelectedItem().getId();
-        String reason = inputDialog.showAndWait().orElse("Accepted");
-        if (reason.isEmpty()) reason = "Accepted";
+        String reason = getInputDialog().showAndWait().orElse("Canceled");
+        if (reason.equals("Canceled")) return;
+        if(reason.isEmpty()) reason = "Granted";
         sendDecision(id, reason, true);
     }
 
     public void onReject() {
         int id = moderatorRefundTable.getSelectionModel().getSelectedItem().getId();
-        String reason = inputDialog.showAndWait().orElse("Rejected");
-        if (reason.isEmpty()) reason = "Rejected";
+        String reason = getInputDialog().showAndWait().orElse("Canceled");
+        if (reason.equals("Canceled")) return;
+        if(reason.isEmpty()) reason = "Rejected";
         sendDecision(id, reason, false);
     }
 

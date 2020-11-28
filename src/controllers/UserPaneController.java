@@ -1,6 +1,7 @@
 package controllers;
 
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import tasks.ModeratorRefundDataRetrievalTask;
 import web.Requests;
 import models.UserModel;
@@ -20,6 +21,8 @@ public class UserPaneController extends Controller {
 
 
     private AnchorPane currentPane = null;
+    @FXML
+    private Label usernameLabel;
     @FXML
     private AnchorPane booksPane;
 
@@ -41,6 +44,9 @@ public class UserPaneController extends Controller {
         if (UserModel.getInstance().getCurrentUser().hasRole("moderator")) moderatorPaneButton.setVisible(true);
         requests = Requests.getInstance();
         initializeManually();
+        String username = UserModel.getInstance().getCurrentUser().getUsername();
+        if (!username.isEmpty())
+            usernameLabel.setText(String.format("Welcome %s!", username));
     }
 
 

@@ -9,11 +9,11 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.LoginController">
    <children>
-      <Button fx:id="loginButton" layoutX="456.0" layoutY="280.0" mnemonicParsing="false" onAction="#login" text="Login" AnchorPane.rightAnchor="200.0" AnchorPane.topAnchor="90.0" />
-      <TextField fx:id="usernameField" layoutX="226.0" layoutY="101.0" maxWidth="200.0" promptText="Username" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="200.0" AnchorPane.topAnchor="10.0" />
-      <PasswordField fx:id="passwordField" layoutX="226.0" layoutY="137.0" maxWidth="200.0" promptText="Password" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="200.0" AnchorPane.topAnchor="50.0" />
-      <Button fx:id="registerButton" layoutX="484.0" layoutY="90.0" mnemonicParsing="false" onAction="#register" text="Register" AnchorPane.rightAnchor="260.0" AnchorPane.topAnchor="90.0" />
-      <ProgressIndicator fx:id="progressIndicator" layoutX="286.0" layoutY="83.0" visible="false" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="140.0" />
-      <CheckBox fx:id="rememberCheckBox" layoutX="321.0" layoutY="132.0" mnemonicParsing="false" text="Remember" AnchorPane.rightAnchor="200.0" AnchorPane.topAnchor="132.0" />
+      <Button fx:id="loginButton" layoutX="456.0" layoutY="280.0" mnemonicParsing="false" onAction="#login" text="Login" AnchorPane.rightAnchor="500.0" AnchorPane.topAnchor="305.0" />
+      <TextField fx:id="usernameField" layoutX="226.0" layoutY="101.0" maxWidth="100.0" promptText="Username" AnchorPane.leftAnchor="500.0" AnchorPane.rightAnchor="500.0" AnchorPane.topAnchor="240.0" />
+      <PasswordField fx:id="passwordField" layoutX="226.0" layoutY="137.0" maxWidth="100.0" promptText="Password" AnchorPane.leftAnchor="500.0" AnchorPane.rightAnchor="500.0" AnchorPane.topAnchor="270.0" />
+      <Button fx:id="registerButton" layoutX="484.0" layoutY="90.0" mnemonicParsing="false" onAction="#register" text="Register" AnchorPane.rightAnchor="555.0" AnchorPane.topAnchor="305.0" />
+      <ProgressIndicator fx:id="progressIndicator" layoutX="286.0" layoutY="83.0" visible="false" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="335.0" />
+      <CheckBox fx:id="rememberCheckBox" layoutX="321.0" layoutY="132.0" mnemonicParsing="false" text="Remember" AnchorPane.rightAnchor="500.0" AnchorPane.topAnchor="340.0" />
    </children>
 </AnchorPane>

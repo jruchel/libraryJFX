@@ -9,9 +9,8 @@
         <Button fx:id="logoutButton" layoutX="12.0" layoutY="255.0" mnemonicParsing="false" onAction="#logout" text="Logout" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="215.0" />
         <Button fx:id="showTransactionButton" layoutX="10.0" layoutY="126.0" mnemonicParsing="false" onAction="#showTransactions" text="Transactions" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="125.0" />
         <Button fx:id="showBooksButton" layoutX="13.0" layoutY="96.0" mnemonicParsing="false" onAction="#showBooks" text="Books" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="95.0" />
-        <Label fx:id="motdLabel" layoutX="440.0" layoutY="19.0" text="motd" />
         <fx:include fx:id="booksPane" source="booksPane.fxml" />
-        <Label fx:id="usernameLabel" layoutX="10.0" layoutY="11.0" text="Username" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="10.0" />
+        <Label fx:id="usernameLabel" layoutX="10.0" layoutY="11.0" text="Welcome!" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="10.0" />
         <fx:include fx:id="transactionsPane" source="transactionPane.fxml" />
         <fx:include fx:id="refundsPane" source="refundsPane.fxml" />
         <Button fx:id="showRefundsButton" layoutX="11.0" layoutY="157.0" mnemonicParsing="false" onAction="#showRefunds" text="Refunds" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="155.0" />

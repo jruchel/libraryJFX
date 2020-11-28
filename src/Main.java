@@ -18,3 +18,5 @@ public class Main extends Application {
     }
 
 }
+
+//TODO allow for refunds to be requested even if there previously was a refund request but it was rejected, ix a bug causing crashes when if was done
