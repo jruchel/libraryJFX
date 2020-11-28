@@ -1,16 +1,14 @@
 package tasks;
 
 import models.*;
+import models.entities.*;
 import web.Requests;
 import javafx.util.Pair;
 import utils.parsing.JsonReader;
 import utils.Properties;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -179,11 +177,25 @@ public class UserDataRetrievalTask implements Runnable {
         }
     }
 
+    private Set<Role> getRoles(String data) {
+        Set<Role> roles = new HashSet<>();
+        String[] rolesAsArray = JsonReader.readFromArray(data);
+
+        for (String s : rolesAsArray) {
+            int id = Integer.parseInt(JsonReader.readFromJson("id", s));
+            String name = JsonReader.readFromJson("name", s);
+            roles.add(new Role(id, name));
+        }
+        return roles;
+    }
+
     @Override
     public void run() {
         try {
+            String rolesData = requests.sendRequest(String.format("%s/user/roles", siteUrl), "GET");
+            Set<Role> roles = getRoles(rolesData);
             String data = requests.sendRequest(String.format("%s/user", siteUrl), "GET");
-            User user = new User(getID(data), getUsername(data), getTransactionsList(data), getRentedBooksList(data), getReservedBooksList(data));
+            User user = new User(getID(data), getUsername(data), getTransactionsList(data), getRentedBooksList(data), getReservedBooksList(data), roles);
             UserModel.getInstance().setCurrentUser(user);
         } catch (Exception ignored) {
         }

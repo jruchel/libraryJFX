@@ -4,9 +4,8 @@ import web.Requests;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.ListView;
-import models.Book;
+import models.entities.Book;
 import models.UserModel;
-import utils.Properties;
 import web.TaskRunner;
 import utils.fxUtils.AlertUtils;
 
@@ -14,7 +13,7 @@ import java.io.IOException;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class BooksController {
+public class BooksController extends Controller {
 
     @FXML
     private ListView<Book> rentedListView;
@@ -26,7 +25,6 @@ public class BooksController {
 
     private UserModel userModel;
     private Requests requests;
-    private String appUrl;
 
     public void initialize() {
         userModel = UserModel.getInstance();
@@ -35,12 +33,7 @@ public class BooksController {
         requests = Requests.getInstance();
         rentedListView.getItems().addAll(rentedBookList);
         reservedListView.getItems().addAll(reservedBookList);
-        try {
-            appUrl = Properties.getProperty("site.url");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        ControllerAccess.getInstance().put(this.getClass().getName(), this);
+        initializeManually();
     }
 
     public void reserve() {
@@ -51,7 +44,7 @@ public class BooksController {
         Runnable cancelReservationTask = () -> {
             Platform.runLater(() -> {
                 try {
-                    requests.sendRequest(String.format("%s/rental/reserve/%d", appUrl, id[0]), "POST");
+                    requests.sendRequest(String.format("%s/rental/reserve/%d", appURL, id[0]), "POST");
                 } catch (IOException e) {
                     AlertUtils.showAlert("Canceling reservation failed, please try again later");
                 }
@@ -70,5 +63,10 @@ public class BooksController {
         };
         TaskRunner taskRunner = new TaskRunner(cancelReservationTask, onTaskComplete);
         taskRunner.run();
+    }
+
+    @Override
+    public void onInit() {
+
     }
 }

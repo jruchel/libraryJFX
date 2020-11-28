@@ -16,17 +16,20 @@ public class ControllerAccess {
         this.controllers = new HashMap<>();
     }
 
-    public Map<String, Object> controllers;
+    public Map<String, Controller> controllers;
 
-    public void put(String key, Object controller) {
+    public void put(String key, Controller controller) {
         controllers.putIfAbsent(key, controller);
     }
 
-    public void replace(String key, Object controller) {
-        controllers.replace(key, controller);
+    public void replace(String key, Controller controller) {
+        if (controllers.keySet().contains(key))
+            controllers.replace(key, controller);
+        else
+            put(key, controller);
     }
 
-    public Object get(String key) {
+    public Controller get(String key) {
         return controllers.get(key);
     }
 

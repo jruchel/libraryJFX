@@ -1,5 +1,7 @@
 package controllers;
 
+import javafx.scene.control.Button;
+import tasks.ModeratorRefundDataRetrievalTask;
 import web.Requests;
 import models.UserModel;
 import utils.Properties;
@@ -14,7 +16,7 @@ import javafx.scene.layout.Pane;
 import java.io.IOException;
 
 
-public class UserPaneController {
+public class UserPaneController extends Controller {
 
 
     private AnchorPane currentPane = null;
@@ -30,19 +32,15 @@ public class UserPaneController {
     @FXML
     private AnchorPane refundsPane;
 
-    private String appUrl;
+    @FXML
+    private Button moderatorPaneButton;
 
     private Requests requests;
 
     public void initialize() {
-        try {
-            appUrl = Properties.getProperty("site.url");
-        } catch (IOException e) {
-            AlertUtils.showAlert("Could not find site address");
-            System.exit(0);
-        }
+        if (UserModel.getInstance().getCurrentUser().hasRole("moderator")) moderatorPaneButton.setVisible(true);
         requests = Requests.getInstance();
-        ControllerAccess.getInstance().put(this.getClass().getName(), this);
+        initializeManually();
     }
 
 
@@ -55,6 +53,20 @@ public class UserPaneController {
             currentPane = (AnchorPane) pane;
             currentPane.setVisible(true);
         }
+    }
+
+    public void showModeratorPane() {
+        TaskRunner taskRunner = new TaskRunner(new ModeratorRefundDataRetrievalTask(), () -> {
+            Platform.runLater(() -> {
+                try {
+                    SceneController.startScene("moderatorPane");
+                } catch (IOException e) {
+                    AlertUtils.showAlert("Error while showing moderator pane");
+                }
+            });
+
+        });
+        taskRunner.run();
     }
 
     public void showDonationPane() {
@@ -80,7 +92,7 @@ public class UserPaneController {
     public void logout() {
         Runnable logoutRequest = () -> {
             try {
-                requests.sendRequest(String.format("%s/logout", appUrl), "POST");
+                requests.sendRequest(String.format("%s/logout", appURL), "POST");
             } catch (IOException ignored) {
             }
         };
@@ -99,5 +111,10 @@ public class UserPaneController {
         };
         TaskRunner taskRunner = new TaskRunner(logoutRequest, onTaskComplete);
         taskRunner.run();
+    }
+
+    @Override
+    protected void onInit() {
+
     }
 }

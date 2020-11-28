@@ -6,9 +6,9 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import models.CreditCard;
+import models.entities.CreditCard;
 import models.UserModel;
-import utils.Properties;
+import services.PaymentService;
 import utils.fxUtils.AlertUtils;
 import web.Requests;
 import web.TaskRunner;
@@ -18,7 +18,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class DonationsController {
+public class DonationsController extends Controller {
     @FXML
     private ChoiceBox<Double> amountChoiceBox;
     @FXML
@@ -32,13 +32,12 @@ public class DonationsController {
 
     private List<Double> amounts;
     private List<String> currencies;
-    private String appUrl;
 
     private void getAvailableCurrencies() {
         String[] response = {""};
         TaskRunner taskRunner = new TaskRunner(() -> {
             try {
-                response[0] = Requests.getInstance().sendRequest(String.format("%s/payments/currencies", appUrl), "GET");
+                response[0] = Requests.getInstance().sendRequest(String.format("%s/payments/currencies", appURL), "GET");
             } catch (IOException ignored) {
             }
         }, () -> {
@@ -54,10 +53,7 @@ public class DonationsController {
     }
 
     public void initialize() {
-        try {
-            appUrl = Properties.getProperty("site.url");
-        } catch (IOException ignored) {
-        }
+
         getAvailableCurrencies();
         amounts = new ArrayList<>();
         currencies = new ArrayList<>();
@@ -66,7 +62,8 @@ public class DonationsController {
         amountChoiceBox.getItems().addAll(amounts);
         currencyChoiceBox.getItems().clear();
         currencyChoiceBox.getItems().addAll(currencies);
-        ControllerAccess.getInstance().put(this.getClass().getName(), this);
+        initializeManually();
+
     }
 
     public void otherPicked() {
@@ -123,5 +120,10 @@ public class DonationsController {
 
     private CreditCard getDefaultCreditCard() {
         return new CreditCard(4242424242424242L, 5, 2022, 333);
+    }
+
+    @Override
+    protected void onInit() {
+
     }
 }

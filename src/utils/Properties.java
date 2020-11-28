@@ -8,6 +8,18 @@ import java.util.regex.Pattern;
 
 public class Properties {
     private static String propertiesFile = "src/resources/application.properties";
+    private static String siteURL = "";
+
+    static {
+        try {
+            siteURL = getProperty("site.url");
+        } catch (IOException ignored) {
+        }
+    }
+
+    public static String getSiteURL() {
+        return siteURL;
+    }
 
     public static String getProperty(String property) throws IOException {
         BufferedReader reader = new BufferedReader(new FileReader(propertiesFile));

@@ -2,7 +2,7 @@ package controllers;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.TableView;
-import models.Refund;
+import models.entities.Refund;
 import models.UserModel;
 import updating.OnUpdate;
 import utils.tableUtils.JavaFXTableUtils;
@@ -10,9 +10,8 @@ import utils.tableUtils.JavaFXTableUtils;
 import java.util.Arrays;
 import java.util.List;
 
-import static controllers.Controller.setTableMeasurements;
 
-public class RefundsController {
+public class RefundsController extends Controller {
     @FXML
     private TableView<Refund> refundsTableView;
     private List<Refund> refunds;
@@ -22,7 +21,7 @@ public class RefundsController {
         userModel = UserModel.getInstance();
         refunds = userModel.getCurrentUser().getRefunds();
         initializeRefundsTable();
-        ControllerAccess.getInstance().put(this.getClass().getName(), this);
+        initializeManually();
     }
 
     @OnUpdate
@@ -53,4 +52,8 @@ public class RefundsController {
         refunds = userModel.getCurrentUser().getRefunds();
     }
 
+    @Override
+    protected void onInit() {
+
+    }
 }

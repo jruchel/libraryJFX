@@ -1,6 +1,7 @@
 package models;
 
 
+import models.entities.User;
 import tasks.UserDataRetrievalTask;
 import web.TaskRunner;
 import updating.Updater;

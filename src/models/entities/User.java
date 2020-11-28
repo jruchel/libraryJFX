@@ -1,7 +1,8 @@
-package models;
+package models.entities;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 public class User {
     private int id;
@@ -9,19 +10,36 @@ public class User {
     private List<Transaction> transactionList;
     private List<Book> rentedBooks;
     private List<Book> reservedBooks;
+    private Set<Role> roles;
 
-    public User(int id, String username, List<Transaction> transactionList, List<Book> rentedBooks, List<Book> reservedBooks) {
+    public User(int id, String username, List<Transaction> transactionList, List<Book> rentedBooks, List<Book> reservedBooks, Set<Role> roles) {
         this.id = id;
         this.username = username;
         this.transactionList = transactionList;
         this.rentedBooks = rentedBooks;
         this.reservedBooks = reservedBooks;
+        this.roles = roles;
     }
 
     public List<Refund> getRefunds() {
         List<Refund> refunds = new ArrayList<>();
-        transactionList.stream().forEach(t -> refunds.addAll(t.getRefundList()));
+        transactionList.forEach(t -> refunds.addAll(t.getRefundList()));
         return refunds;
+    }
+
+    public boolean hasRole(String role) {
+        for (Role r : roles) {
+            if (r.getName().toLowerCase().contains(role.toLowerCase())) return true;
+        }
+        return false;
+    }
+
+    public Set<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
     }
 
     public int getId() {

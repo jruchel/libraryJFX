@@ -4,11 +4,10 @@ import web.Requests;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableView;
-import models.Refund;
-import models.Transaction;
+import models.entities.Refund;
+import models.entities.Transaction;
 import models.UserModel;
 import updating.OnUpdate;
-import utils.Properties;
 import web.TaskRunner;
 import utils.fxUtils.AlertUtils;
 import utils.tableUtils.JavaFXTableUtils;
@@ -16,11 +15,10 @@ import utils.tableUtils.JavaFXTableUtils;
 import java.io.IOException;
 import java.util.*;
 
-public class TransactionsPaneController {
+public class TransactionsPaneController extends Controller {
 
     @FXML
     private TableView<Transaction> transactionsTableView;
-    private String appUrl;
     private List<Transaction> transactions;
     private List<Refund> refunds;
     private Requests requests;
@@ -33,12 +31,7 @@ public class TransactionsPaneController {
         userModel.getCurrentUser().getTransactionList().forEach(t -> refunds.addAll(t.getRefundList()));
         requests = Requests.getInstance();
         initializeTransactions();
-        try {
-            appUrl = Properties.getProperty("site.url");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        ControllerAccess.getInstance().put(this.getClass().getName(), this);
+        initializeManually();
     }
 
     @OnUpdate
@@ -78,7 +71,7 @@ public class TransactionsPaneController {
             boolean[] success = {true};
             new TaskRunner(() -> {
                 try {
-                    success[0] = requests.sendRequest(String.format("%s/payments/user/refund", appUrl), params, "POST").equals("success");
+                    success[0] = requests.sendRequest(String.format("%s/payments/user/refund", appURL), params, "POST").equals("success");
                 } catch (IOException e) {
                     success[0] = false;
                 }
@@ -98,4 +91,8 @@ public class TransactionsPaneController {
         }
     }
 
+    @Override
+    protected void onInit() {
+
+    }
 }

@@ -3,23 +3,38 @@ package controllers;
 import javafx.scene.Parent;
 import javafx.scene.control.TableView;
 import javafx.scene.layout.AnchorPane;
+import utils.Properties;
 import utils.fxUtils.SceneController;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.io.IOException;
+
 
 public abstract class Controller {
-    protected Map<String, Object> parameters = new HashMap<>();
+    protected String appURL;
 
-    public Map<String, Object> getParameters() {
-        return parameters;
+    public void initializeManually() {
+        onInit();
+        try {
+            appURL = Properties.getProperty("site.url");
+        } catch (IOException ignored) {
+        }
+        ControllerAccess.getInstance().replace(this.getClass().getName(), this);
     }
 
-    public void setParameters(Map<String, Object> parameters) {
-        this.parameters = parameters;
+    protected abstract void onInit();
+
+    public static <E> void setTableMeasurements(TableView<E> tableView) {
+        double ratio = 1 / (double) tableView.getColumns().size();
+        setTableMeasurements(tableView, ratio);
     }
 
-    public abstract void initializeManually();
+    public static <E> void setTableMeasurements(TableView<E> tableView, double ratio) {
+        double[] widthRatios = new double[tableView.getColumns().size()];
+        for (int i = 0; i < widthRatios.length; i++) {
+            widthRatios[i] = ratio;
+        }
+        setTableMeasurements(tableView, widthRatios);
+    }
 
     public static <E> void setTableMeasurements(TableView<E> tableView, double[] widthRatios) {
         double stageWidth = SceneController.getPrimaryStage().getWidth();

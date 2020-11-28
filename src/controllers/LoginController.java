@@ -15,9 +15,8 @@ import web.TaskRunner;
 import java.io.IOException;
 import java.util.*;
 
-public class LoginController {
+public class LoginController extends Controller {
 
-    private String appUrl;
     @FXML
     private CheckBox rememberCheckBox;
     @FXML
@@ -39,7 +38,6 @@ public class LoginController {
 
     public void initialize() {
         try {
-            appUrl = Properties.getProperty("site.url");
             String username = Properties.getProperty("username");
             if (!username.isEmpty()) {
                 usernameField.setText(username);
@@ -51,7 +49,7 @@ public class LoginController {
             System.exit(0);
         }
         this.requests = Requests.getInstance();
-        ControllerAccess.getInstance().put(this.getClass().getName(), this);
+        initializeManually();
     }
 
     public void register() {
@@ -79,7 +77,7 @@ public class LoginController {
         //Logowanie uzytkownika z podanymi w aplikacji danymi
         Runnable loginRequest = () -> {
             try {
-              loggedIn[0] = (requests.sendRequest(String.format("%s/temp/login", appUrl), properties, "POST").equals("true"));
+                loggedIn[0] = (requests.sendRequest(String.format("%s/temp/login", appURL), properties, "POST").equals("true"));
             } catch (IOException ignored) {
             }
         };
@@ -117,4 +115,8 @@ public class LoginController {
         taskRunner.run();
     }
 
+    @Override
+    protected void onInit() {
+
+    }
 }
