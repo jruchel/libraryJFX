@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextInputDialog;
 import models.ModeratorDataModel;
+import models.UserModel;
 import models.tableRepresentations.ModeratorRefundTableRepresentation;
 import updating.OnUpdate;
 import utils.tableUtils.JavaFXTableUtils;
@@ -76,6 +77,7 @@ public class ModeratorRefundController extends Controller {
         };
         Runnable update = () -> {
             ModeratorDataModel.getInstance().updateData();
+            UserModel.getInstance().updateUser();
         };
         TaskRunner taskRunner = new TaskRunner(sendDecision, update);
         taskRunner.run();

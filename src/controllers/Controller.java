@@ -18,7 +18,7 @@ public abstract class Controller {
             appURL = Properties.getProperty("site.url");
         } catch (IOException ignored) {
         }
-        ControllerAccess.getInstance().replace(this.getClass().getName(), this);
+        ControllerAccess.getInstance().add(this.getClass().getName(), this);
     }
 
     protected abstract void onInit();

@@ -57,10 +57,13 @@ public class Updater {
             methods.addAll(Arrays.stream(c.getDeclaredMethods()).filter(m -> m.isAnnotationPresent(OnUpdate.class)).collect(Collectors.toList()));
             methods.forEach(m -> {
                 Platform.runLater(() -> {
-                    try {
-                        m.invoke(ControllerAccess.getInstance().get(c.getName()));
-                    } catch (IllegalAccessException | InvocationTargetException | NullPointerException ignored) {
-                    }
+                    ControllerAccess.getInstance().forEach(c.getName(), (controller) -> {
+                        try {
+                            m.invoke(controller);
+                        } catch (IllegalAccessException | InvocationTargetException e) {
+                            e.printStackTrace();
+                        }
+                    });
                 });
 
             });

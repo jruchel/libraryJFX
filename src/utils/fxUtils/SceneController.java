@@ -10,14 +10,17 @@ import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.HashMap;
 import java.util.Map;
 
 public class SceneController {
 
     private static Stage primaryStage;
     private static int width, height;
+    private static Map<String, Scene> scenes;
 
     static {
+        scenes = new HashMap<>();
         width = 600;
         height = 600;
     }
