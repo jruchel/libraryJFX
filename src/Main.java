@@ -10,13 +10,11 @@ public class Main extends Application {
         SceneController.setPrimaryStage(primaryStage);
         SceneController.setWidth(1200);
         SceneController.setHeight(675);
+        SceneController.setTitle("Lrnfy.io");
         SceneController.startScene("login");
     }
 
     public static void main(String... args) {
         launch(args);
     }
-
 }
-
-//TODO allow for refunds to be requested even if there previously was a refund request but it was rejected, ix a bug causing crashes when if was done

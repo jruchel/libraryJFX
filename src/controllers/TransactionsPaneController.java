@@ -61,7 +61,7 @@ public class TransactionsPaneController extends Controller {
     public void requestRefund() {
         try {
             Transaction toRefund = transactionsTableView.getSelectionModel().getSelectedItem();
-            if (toRefund.isRefunded() || refunds.stream().anyMatch(r -> r.getTransactionID() == toRefund.getId())) {
+            if (toRefund.isRefunded() || refunds.stream().anyMatch(r -> r.getTransactionID() == toRefund.getId()/* && r.getStatus().equals("Pending")*/)) {
                 AlertUtils.showAlert("Refund has already been submitted or transaction has already been refunded");
                 return;
             }

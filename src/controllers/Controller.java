@@ -5,12 +5,14 @@ import javafx.scene.control.TableView;
 import javafx.scene.layout.AnchorPane;
 import utils.Properties;
 import utils.fxUtils.SceneController;
+import web.Requests;
 
 import java.io.IOException;
 
 
 public abstract class Controller {
     protected String appURL;
+    protected Requests requests;
 
     public void initializeManually() {
         onInit();
@@ -18,10 +20,19 @@ public abstract class Controller {
             appURL = Properties.getProperty("site.url");
         } catch (IOException ignored) {
         }
+        requests = Requests.getInstance();
         ControllerAccess.getInstance().add(this.getClass().getName(), this);
     }
 
     protected abstract void onInit();
+
+    public Requests getRequests() {
+        return requests;
+    }
+
+    public String getAppURL() {
+        return appURL;
+    }
 
     public static <E> void setTableMeasurements(TableView<E> tableView) {
         double ratio = 1 / (double) tableView.getColumns().size();

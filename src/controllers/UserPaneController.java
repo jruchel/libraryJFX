@@ -49,7 +49,6 @@ public class UserPaneController extends Controller {
             usernameLabel.setText(String.format("Welcome %s!", username));
     }
 
-
     private void showPane(Pane pane) {
         if (currentPane != null) {
             currentPane.setVisible(false);
@@ -73,6 +72,16 @@ public class UserPaneController extends Controller {
 
         });
         taskRunner.run();
+    }
+
+    public void showBookBrowser() {
+        Platform.runLater(() -> {
+            try {
+                SceneController.startScene("bookBrowser");
+            } catch (IOException e) {
+                AlertUtils.showAlert("Error while showing moderator pane");
+            }
+        });
     }
 
     public void showDonationPane() {

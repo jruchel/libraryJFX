@@ -1,6 +1,4 @@
 package utils.fxUtils;
-
-import controllers.Controller;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -23,6 +21,10 @@ public class SceneController {
         scenes = new HashMap<>();
         width = 600;
         height = 600;
+    }
+
+    public static void setTitle(String title) {
+        primaryStage.setTitle(title);
     }
 
     public static Stage getPrimaryStage() {
