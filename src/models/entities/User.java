@@ -8,15 +8,13 @@ public class User {
     private int id;
     private String username;
     private List<Transaction> transactionList;
-    private List<Book> rentedBooks;
     private List<Book> reservedBooks;
     private Set<Role> roles;
 
-    public User(int id, String username, List<Transaction> transactionList, List<Book> rentedBooks, List<Book> reservedBooks, Set<Role> roles) {
+    public User(int id, String username, List<Transaction> transactionList, List<Book> reservedBooks, Set<Role> roles) {
         this.id = id;
         this.username = username;
         this.transactionList = transactionList;
-        this.rentedBooks = rentedBooks;
         this.reservedBooks = reservedBooks;
         this.roles = roles;
     }
@@ -64,14 +62,6 @@ public class User {
 
     public void setTransactionList(List<Transaction> transactionList) {
         this.transactionList = transactionList;
-    }
-
-    public List<Book> getRentedBooks() {
-        return rentedBooks;
-    }
-
-    public void setRentedBooks(List<Book> rentedBooks) {
-        this.rentedBooks = rentedBooks;
     }
 
     public List<Book> getReservedBooks() {

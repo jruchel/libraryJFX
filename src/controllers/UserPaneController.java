@@ -2,6 +2,7 @@ package controllers;
 
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.layout.BorderPane;
 import tasks.ModeratorRefundDataRetrievalTask;
 import web.Requests;
 import models.UserModel;

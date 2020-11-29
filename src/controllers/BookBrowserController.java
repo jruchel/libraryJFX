@@ -13,11 +13,13 @@ import models.BookModel;
 import models.UserModel;
 import models.entities.Book;
 import tasks.BookDataRetrievalTask;
+import updating.Updater;
 import utils.fxUtils.AlertUtils;
 import utils.fxUtils.SceneController;
 import web.TaskRunner;
 
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.util.ArrayList;
 
 
@@ -53,7 +55,7 @@ public class BookBrowserController extends Controller {
     public void onReserve() {
         userModel.updateUser(() -> {
             Book selectedBook = getSelectedBook();
-            if (userModel.getCurrentUser().getRentedBooks().contains(selectedBook))
+            if (userModel.getCurrentUser().getReservedBooks().contains(selectedBook))
                 Platform.runLater(() -> AlertUtils.showAlert("You already own this book"));
             else {
                 Runnable reserveBook = () -> {
@@ -63,8 +65,13 @@ public class BookBrowserController extends Controller {
                     } catch (IOException e) {
                         Platform.runLater(() -> AlertUtils.showAlert("Error occurred while reserving book"));
                     }
+                    if (response.equals("false"))
+                        Platform.runLater(() -> AlertUtils.showAlert("Book reservation failed"));
                 };
-                TaskRunner taskRunner = new TaskRunner(reserveBook, () -> Platform.runLater(() -> AlertUtils.showAlert("Book reserved successfully")));
+                TaskRunner taskRunner = new TaskRunner(reserveBook, () -> {
+                    Platform.runLater(() -> AlertUtils.showAlert("Book reserved successfully"));
+                    userModel.updateUser();
+                });
                 taskRunner.run();
             }
         });

@@ -1,5 +1,7 @@
 package controllers;
 
+import javafx.scene.layout.AnchorPane;
+import updating.OnUpdate;
 import web.Requests;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
@@ -16,49 +18,44 @@ import java.util.stream.Collectors;
 public class BooksController extends Controller {
 
     @FXML
-    private ListView<Book> rentedListView;
-    @FXML
-    private ListView<Book> reservedListView;
+    private ListView<Book> booksListView;
 
-    private List<Book> reservedBookList;
-    private List<Book> rentedBookList;
-
+    private List<Book> userBooks;
     private UserModel userModel;
-    private Requests requests;
 
     public void initialize() {
         userModel = UserModel.getInstance();
-        reservedBookList = userModel.getCurrentUser().getReservedBooks();
-        rentedBookList = userModel.getCurrentUser().getRentedBooks();
+        userBooks = userModel.getCurrentUser().getReservedBooks();
         requests = Requests.getInstance();
-        rentedListView.getItems().addAll(rentedBookList);
-        reservedListView.getItems().addAll(reservedBookList);
+        booksListView.getItems().addAll(userBooks);
         initializeManually();
     }
 
-    public void reserve() {
+    @OnUpdate
+    public void onUpdate() {
+        userBooks = userModel.getCurrentUser().getReservedBooks();
+        booksListView.getItems().removeAll(booksListView.getItems());
+        booksListView.getItems().addAll(userBooks);
     }
 
-    public void cancelReserved() {
-        final int[] id = {reservedListView.getSelectionModel().getSelectedItem().getId()};
+    public int getSelectedBookID() {
+        return booksListView.getSelectionModel().getSelectedItem().getId();
+    }
+
+    public void onBookReturn() {
+        if (userBooks.size() == 0) return;
         Runnable cancelReservationTask = () -> {
             Platform.runLater(() -> {
                 try {
-                    requests.sendRequest(String.format("%s/rental/reserve/%d", appURL, id[0]), "POST");
+                    requests.sendRequest(String.format("%s/rental/reserve/%d", appURL, getSelectedBookID()), "DELETE");
                 } catch (IOException e) {
                     AlertUtils.showAlert("Canceling reservation failed, please try again later");
                 }
             });
 
-
         };
         Runnable onTaskComplete = () -> {
-            reservedBookList = reservedBookList.stream().filter(b -> b.getId() != id[0]).collect(Collectors.toList());
-            Platform.runLater(() -> {
-                reservedListView.getItems().clear();
-                reservedListView.getItems().addAll(reservedBookList);
-                reservedListView.getSelectionModel().clearSelection();
-            });
+            userModel.updateUser();
 
         };
         TaskRunner taskRunner = new TaskRunner(cancelReservationTask, onTaskComplete);

@@ -35,19 +35,8 @@ public class UserDataRetrievalTask implements Runnable {
         return parameters;
     }
 
-    private List<Book> getRentedBooksList(String data) throws IOException {
-        List<Pair<Integer, String>> books = getBooksIdsAndTitles(getRentedBooksString(data));
-        List<Book> bookList = new ArrayList<>();
-        for (Pair<Integer, String> p : books) {
-            int authorID = Integer.parseInt(requests.sendRequest(String.format("%s/books/author/%d", siteUrl, p.getKey()), "GET"));
-            String authorName = requests.sendRequest(String.format("%s/authors/%d", siteUrl, authorID), "GET");
-            bookList.add(new Book(p.getValue(), getAuthorName(authorName), p.getKey()));
-        }
-        return bookList;
-    }
-
-    private List<Book> getReservedBooksList(String data) throws IOException {
-        List<Pair<Integer, String>> books = getBooksIdsAndTitles(getReservedBooksString(data));
+    private List<Book> getBooks(String data) throws IOException {
+        List<Pair<Integer, String>> books = getBooksIdsAndTitles(getBooksString(data));
         List<Book> bookList = new ArrayList<>();
         for (Pair<Integer, String> p : books) {
             int authorID = Integer.parseInt(requests.sendRequest(String.format("%s/books/author/%d", siteUrl, p.getKey()), "GET"));
@@ -69,7 +58,7 @@ public class UserDataRetrievalTask implements Runnable {
         return "";
     }
 
-    private String getReservedBooksString(String data) {
+    private String getBooksString(String data) {
         data = data.replaceAll("\\{\\\"id.+\\\"refunds\\\"", "");
         data = data.replaceAll("\\\"roles\\\".+\\}\\]\\}", "");
         String regex = ".+\\\"reservedBooks\\\"\\:\\[\\{(.+)\\}\\]\\,\\\"rentedBooks\\\".+";
@@ -203,7 +192,7 @@ public class UserDataRetrievalTask implements Runnable {
             String rolesData = requests.sendRequest(String.format("%s/user/roles", siteUrl), "GET");
             Set<Role> roles = getRoles(rolesData);
             String data = requests.sendRequest(String.format("%s/user", siteUrl), "GET");
-            User user = new User(getID(data), getUsername(data), getTransactionsList(data), getRentedBooksList(data), getReservedBooksList(data), roles);
+            User user = new User(getID(data), getUsername(data), getTransactionsList(data), getBooks(data), roles);
             UserModel.getInstance().setCurrentUser(user);
         } catch (Exception ignored) {
         }
