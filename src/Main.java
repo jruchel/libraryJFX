@@ -18,3 +18,5 @@ public class Main extends Application {
         launch(args);
     }
 }
+//TODO Ujednolicenie uaktualniania danych, przeniesienie czesci logiki do modelu
+//TODO ujednolicenie rozmiarow okienek w menu

@@ -104,7 +104,7 @@ public class TaskRunner implements Runnable {
      */
     @Override
     public void run() {
-        if (inOrder) {
+        if (inOrder || tasks.size() == 1) {
             executeInOrder();
         } else {
             executeOutOfOrder();

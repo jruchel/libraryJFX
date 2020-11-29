@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane fx:id="cardDetailsPane" layoutX="110.0" layoutY="110.0" prefHeight="200.0" prefWidth="399.0" visible="false" AnchorPane.bottomAnchor="100.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="100.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.SubscriptionPaneController">
+    <children>
+        <TextField fx:id="cardNumberTextField" layoutX="181.0" layoutY="41.0" onAction="#onCreditCardInput" onKeyTyped="#onCreditCardInput" prefHeight="25.0" prefWidth="221.0" AnchorPane.leftAnchor="300.0" AnchorPane.rightAnchor="300.0" />
+        <TextField fx:id="monthTextField" layoutX="181.0" layoutY="87.0" onAction="#onMonthInput" onKeyTyped="#onMonthInput" prefHeight="25.0" prefWidth="40.0" promptText="MM" AnchorPane.leftAnchor="300.0" />
+        <TextField fx:id="yearTextField" layoutX="213.0" layoutY="87.0" onAction="#onYearInput" onKeyTyped="#onYearInput" prefHeight="25.0" prefWidth="40.0" promptText="YY" AnchorPane.leftAnchor="340.0" />
+        <PasswordField fx:id="cvcTextField" layoutX="331.0" layoutY="87.0" onAction="#onCVCInput" onInputMethodTextChanged="#onCVCInput" onKeyPressed="#onCVCInput" onKeyReleased="#onCVCInput" onKeyTyped="#onCVCInput" prefHeight="25.0" prefWidth="70.0" promptText="CVC code" AnchorPane.rightAnchor="300.0" />
+        <Button layoutX="324.0" layoutY="153.0" mnemonicParsing="false" onAction="#onAccept" text="Accept" AnchorPane.rightAnchor="300.0" />
+        <Label layoutX="178.0" layoutY="14.0" text="Card number" AnchorPane.leftAnchor="300.0" />
+    </children>
+</AnchorPane>

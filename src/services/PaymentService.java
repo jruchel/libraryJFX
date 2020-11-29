@@ -12,6 +12,18 @@ public class PaymentService {
     private static String siteURL;
 
     public static void makePayment(CreditCard creditCard, double amount, String currency, String description, Runnable onComplete) throws IOException {
+        makePayment(creditCard, amount, currency, description, onComplete, "/payments/user/card", new String[0]);
+    }
+
+    public static void makeSubscriptionPayment(CreditCard creditCard, double amount, String currency, String description, Runnable onComplete) throws IOException {
+        makePayment(creditCard, amount, currency, description, onComplete, "/payments/user/subscribe", new String[0]);
+    }
+
+    public static void makeSubscriptionPayment(CreditCard creditCard, double amount, String currency, String description, Runnable onComplete, String[] responseCallback) throws IOException {
+        makePayment(creditCard, amount, currency, description, onComplete, "/payments/user/subscribe", responseCallback);
+    }
+
+    private static void makePayment(CreditCard creditCard, double amount, String currency, String description, Runnable onComplete, String url, String[] responseCallback) throws IOException {
         if (siteURL == null || siteURL.isEmpty()) {
             siteURL = Properties.getProperty("site.url");
         }
@@ -28,10 +40,11 @@ public class PaymentService {
         String[] response = {""};
         TaskRunner taskRunner = new TaskRunner(() -> {
             try {
-                response[0] = Requests.getInstance().sendRequest(String.format("%s/payments/user/card", siteURL), sb.toString(), "POST");
+                response[0] = Requests.getInstance().sendRequest(String.format("%s%s", siteURL, url), sb.toString(), "POST");
             } catch (IOException e) {
                 response[0] = "failure";
             }
+            responseCallback[0] = response[0];
         }, onComplete);
         taskRunner.run();
     }

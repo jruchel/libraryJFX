@@ -35,6 +35,8 @@ public class UserPaneController extends Controller {
 
     @FXML
     private AnchorPane refundsPane;
+    @FXML
+    private AnchorPane cardDetailsPane;
 
     @FXML
     private Button moderatorPaneButton;
@@ -73,6 +75,11 @@ public class UserPaneController extends Controller {
 
         });
         taskRunner.run();
+    }
+
+
+    public void showSubscribePane() {
+        showPane(cardDetailsPane);
     }
 
     public void showBookBrowser() {

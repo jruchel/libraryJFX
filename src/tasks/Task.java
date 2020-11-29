@@ -11,4 +11,5 @@ public abstract class Task implements Runnable {
         this.appURL = Properties.getSiteURL();
         this.requests = Requests.getInstance();
     }
+
 }

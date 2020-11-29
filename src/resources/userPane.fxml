@@ -6,17 +6,19 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.UserPaneController">
     <children>
-        <Button fx:id="logoutButton" layoutX="12.0" layoutY="255.0" mnemonicParsing="false" onAction="#logout" text="Logout" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="245.0" />
-        <Button fx:id="showTransactionButton" layoutX="10.0" layoutY="126.0" mnemonicParsing="false" onAction="#showTransactions" text="Transactions" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="125.0" />
-        <Button fx:id="showBooksButton" layoutX="13.0" layoutY="96.0" mnemonicParsing="false" onAction="#showBooks" text="Books" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="95.0" />
+        <Button fx:id="logoutButton" layoutX="11.0" layoutY="311.0" mnemonicParsing="false" onAction="#logout" text="Logout" AnchorPane.leftAnchor="11.0" AnchorPane.topAnchor="311.0" />
+        <Button fx:id="showTransactionButton" layoutX="10.0" layoutY="206.0" mnemonicParsing="false" onAction="#showTransactions" text="Transactions" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="206.0" />
+        <Button fx:id="showBooksButton" layoutX="13.0" layoutY="106.0" mnemonicParsing="false" onAction="#showBooks" text="Books" AnchorPane.leftAnchor="13.0" AnchorPane.topAnchor="106.0" />
         <fx:include fx:id="booksPane" source="booksPane.fxml" />
         <Label fx:id="usernameLabel" layoutX="10.0" layoutY="11.0" text="Welcome!" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="10.0" />
         <fx:include fx:id="transactionsPane" source="transactionPane.fxml" />
         <fx:include fx:id="refundsPane" source="refundsPane.fxml" />
-        <Button fx:id="showRefundsButton" layoutX="11.0" layoutY="157.0" mnemonicParsing="false" onAction="#showRefunds" text="Refunds" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="155.0" />
-        <Button fx:id="donateButton" layoutX="11.0" layoutY="188.0" mnemonicParsing="false" onAction="#showDonationPane" text="Donate" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="185.0" />
+        <Button fx:id="showRefundsButton" layoutX="9.0" layoutY="231.0" mnemonicParsing="false" onAction="#showRefunds" text="Refunds" AnchorPane.leftAnchor="9.0" AnchorPane.topAnchor="231.0" />
+        <Button fx:id="donateButton" layoutX="10.0" layoutY="264.0" mnemonicParsing="false" onAction="#showDonationPane" text="Donate" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="264.0" />
+        <fx:include fx:id="cardDetailsPane" source="cardDetails.fxml" />
         <fx:include fx:id="donationPane" source="donations.fxml" />
-      <Button fx:id="moderatorPaneButton" layoutX="14.0" layoutY="220.0" mnemonicParsing="false" onAction="#showModeratorPane" text="Admin Pane" visible="false" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="65.0" />
-      <Button fx:id="browseBooksButton" layoutX="11.0" layoutY="220.0" mnemonicParsing="false" onAction="#showBookBrowser" text="Browse books" AnchorPane.topAnchor="215.0" />
+        <Button fx:id="moderatorPaneButton" layoutX="14.0" layoutY="220.0" mnemonicParsing="false" onAction="#showModeratorPane" text="Admin Pane" visible="false" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="65.0" />
+        <Button fx:id="browseBooksButton" layoutX="6.0" layoutY="139.0" mnemonicParsing="false" onAction="#showBookBrowser" text="Browse books" AnchorPane.topAnchor="139.0" />
+        <Button layoutX="12.0" layoutY="174.0" mnemonicParsing="false" onAction="#showSubscribePane" text="Subscribe" />
     </children>
 </AnchorPane>
