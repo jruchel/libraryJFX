@@ -60,8 +60,7 @@ public class Updater {
                     ControllerAccess.getInstance().forEach(c.getName(), (controller) -> {
                         try {
                             m.invoke(controller);
-                        } catch (IllegalAccessException | InvocationTargetException e) {
-                            e.printStackTrace();
+                        } catch (IllegalAccessException | InvocationTargetException ignored) {
                         }
                     });
                 });

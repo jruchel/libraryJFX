@@ -70,7 +70,7 @@ public class UserDataRetrievalTask implements Runnable {
 
     private String getAuthorName(String data) {
         data = data.replaceAll("\\\"bibliography\\\".+", "");
-        String regex = "\\{\\\"id\\\"\\:\\d+\\,\\\"name\\\"\\:\\\"(.+)\\,";
+        String regex = "\\{\\\"id\\\"\\:\\d+\\,\\\"name\\\"\\:\\\"(.+)\\\"\\,";
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(data);
         if (matcher.matches()) return matcher.group(1);
