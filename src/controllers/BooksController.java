@@ -1,6 +1,5 @@
 package controllers;
 
-import javafx.scene.layout.AnchorPane;
 import updating.OnUpdate;
 import web.Requests;
 import javafx.application.Platform;
@@ -13,7 +12,6 @@ import utils.fxUtils.AlertUtils;
 
 import java.io.IOException;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class BooksController extends Controller {
 
@@ -44,18 +42,20 @@ public class BooksController extends Controller {
 
     public void onBookReturn() {
         if (userBooks.size() == 0) return;
+        String[] error = {""};
         Runnable cancelReservationTask = () -> {
-            Platform.runLater(() -> {
-                try {
-                    requests.sendRequest(String.format("%s/rental/reserve/%d", appURL, getSelectedBookID()), "DELETE");
-                } catch (IOException e) {
-                    AlertUtils.showAlert("Canceling reservation failed, please try again later");
-                }
-            });
-
+            try {
+                requests.sendRequest(String.format("%s/rental/reserve/%d", appURL, getSelectedBookID()), "DELETE");
+            } catch (IOException e) {
+                error[0] = e.getMessage();
+            }
         };
         Runnable onTaskComplete = () -> {
             userModel.updateUser();
+            Platform.runLater(() -> {
+                if (!error[0].isEmpty())
+                    AlertUtils.showAlert(error[0]);
+            });
 
         };
         TaskRunner taskRunner = new TaskRunner(cancelReservationTask, onTaskComplete);
