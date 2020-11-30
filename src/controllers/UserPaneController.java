@@ -3,6 +3,7 @@ package controllers;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import tasks.ModeratorRefundDataRetrievalTask;
+import updating.OnUpdate;
 import web.Requests;
 import models.UserModel;
 import utils.fxUtils.AlertUtils;
@@ -39,6 +40,9 @@ public class UserPaneController extends Controller {
     @FXML
     private Button moderatorPaneButton;
 
+    @FXML
+    private Label statusLabel;
+
     private Requests requests;
 
     public void initialize() {
@@ -46,8 +50,17 @@ public class UserPaneController extends Controller {
         requests = Requests.getInstance();
         initializeManually();
         String username = UserModel.getInstance().getCurrentUser().getUsername();
+        setStatusLabel();
         if (!username.isEmpty())
             usernameLabel.setText(String.format("Welcome %s!", username));
+    }
+
+    @OnUpdate
+    public void setStatusLabel() {
+        String status = "Not subscribed";
+        if (UserModel.getInstance().getCurrentUser().hasRole("ROLE_SUBSCRIBER"))
+            status = "Subscribed";
+        statusLabel.setText(String.format("Status: %s", status));
     }
 
     private void showPane(Pane pane) {
@@ -60,6 +73,7 @@ public class UserPaneController extends Controller {
             currentPane.setVisible(true);
         }
     }
+
     public void showModeratorPane() {
         TaskRunner taskRunner = new TaskRunner(new ModeratorRefundDataRetrievalTask(), () -> {
             Platform.runLater(() -> {

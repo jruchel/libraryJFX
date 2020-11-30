@@ -12,11 +12,11 @@ public class PaymentService {
     private static String siteURL;
 
     public static void makePayment(CreditCard creditCard, double amount, String currency, String description, Runnable onComplete) throws IOException {
-        makePayment(creditCard, amount, currency, description, onComplete, "/payments/user/card", new String[0]);
+        makePayment(creditCard, amount, currency, description, onComplete, "/payments/user/card", new String[1]);
     }
 
     public static void makeSubscriptionPayment(CreditCard creditCard, double amount, String currency, String description, Runnable onComplete) throws IOException {
-        makePayment(creditCard, amount, currency, description, onComplete, "/payments/user/subscribe", new String[0]);
+        makePayment(creditCard, amount, currency, description, onComplete, "/payments/user/subscribe", new String[1]);
     }
 
     public static void makeSubscriptionPayment(CreditCard creditCard, double amount, String currency, String description, Runnable onComplete, String[] responseCallback) throws IOException {

@@ -35,15 +35,18 @@ public class DonationsController extends Controller {
 
     private void getAvailableCurrencies() {
         String[] response = {""};
+        Runnable onTaskComplete = () -> {
+            currencies = parseCurrencies(response[0]);
+            currencyChoiceBox.getItems().removeAll(currencyChoiceBox.getItems());
+            currencyChoiceBox.getItems().addAll(currencies);
+        };
         TaskRunner taskRunner = new TaskRunner(() -> {
             try {
                 response[0] = Requests.getInstance().sendRequest(String.format("%s/payments/currencies", appURL), "GET");
             } catch (IOException ignored) {
             }
-        }, () -> {
-            currencies = parseCurrencies(response[0]);
-            currencyChoiceBox.getItems().addAll(currencies);
-        });
+        }, onTaskComplete
+        );
         taskRunner.run();
     }
 
