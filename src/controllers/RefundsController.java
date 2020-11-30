@@ -52,8 +52,4 @@ public class RefundsController extends Controller {
         refunds = userModel.getCurrentUser().getRefunds();
     }
 
-    @Override
-    protected void onInit() {
-
-    }
 }

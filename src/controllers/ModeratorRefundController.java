@@ -102,8 +102,4 @@ public class ModeratorRefundController extends Controller {
         sendDecision(id, reason, false);
     }
 
-    @Override
-    protected void onInit() {
-
-    }
 }

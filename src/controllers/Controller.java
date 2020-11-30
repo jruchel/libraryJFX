@@ -15,7 +15,6 @@ public abstract class Controller {
     protected Requests requests;
 
     public void initializeManually() {
-        onInit();
         try {
             appURL = Properties.getProperty("site.url");
         } catch (IOException ignored) {
@@ -24,7 +23,6 @@ public abstract class Controller {
         ControllerAccess.getInstance().add(this.getClass().getName(), this);
     }
 
-    protected abstract void onInit();
 
     public Requests getRequests() {
         return requests;

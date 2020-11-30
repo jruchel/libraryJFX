@@ -115,8 +115,4 @@ public class LoginController extends Controller {
         taskRunner.run();
     }
 
-    @Override
-    protected void onInit() {
-
-    }
 }

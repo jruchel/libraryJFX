@@ -91,8 +91,4 @@ public class TransactionsPaneController extends Controller {
         }
     }
 
-    @Override
-    protected void onInit() {
-
-    }
 }

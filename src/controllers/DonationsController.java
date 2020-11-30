@@ -125,8 +125,4 @@ public class DonationsController extends Controller {
         return new CreditCard(4242424242424242L, 5, 2022, 333);
     }
 
-    @Override
-    protected void onInit() {
-
-    }
 }

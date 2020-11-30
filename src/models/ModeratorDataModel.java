@@ -2,11 +2,8 @@ package models;
 
 import models.tableRepresentations.ModeratorRefundTableRepresentation;
 import tasks.ModeratorRefundDataRetrievalTask;
-import updating.Updater;
 import web.TaskRunner;
 
-import java.io.IOException;
-import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,16 +26,7 @@ public class ModeratorDataModel {
     }
 
     public void updateData(Runnable onTaskComplete) {
-        TaskRunner taskRunner1 = new TaskRunner(() -> {
-            try {
-                Updater.update();
-            } catch (ClassNotFoundException | IOException | URISyntaxException e) {
-                e.printStackTrace();
-            }
-        }, onTaskComplete);
-
-        TaskRunner taskRunner = new TaskRunner(new ModeratorRefundDataRetrievalTask(), taskRunner1);
-
+        TaskRunner taskRunner = new TaskRunner(new ModeratorRefundDataRetrievalTask(), onTaskComplete);
         taskRunner.run();
     }
 

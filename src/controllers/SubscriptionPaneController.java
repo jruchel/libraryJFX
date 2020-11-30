@@ -128,10 +128,6 @@ public class SubscriptionPaneController extends Controller {
     }
 
 
-    @Override
-    protected void onInit() {
-
-    }
 
 
 }

@@ -61,9 +61,4 @@ public class BooksController extends Controller {
         TaskRunner taskRunner = new TaskRunner(cancelReservationTask, onTaskComplete);
         taskRunner.run();
     }
-
-    @Override
-    public void onInit() {
-
-    }
 }

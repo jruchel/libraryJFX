@@ -125,9 +125,4 @@ public class BookBrowserController extends Controller {
             AlertUtils.showAlert("Failure showing user pane");
         }
     }
-
-    @Override
-    protected void onInit() {
-
-    }
 }

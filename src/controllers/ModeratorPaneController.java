@@ -17,9 +17,4 @@ public class ModeratorPaneController extends Controller {
             AlertUtils.showAlert("Failure showing user pane");
         }
     }
-
-    @Override
-    protected void onInit() {
-
-    }
 }

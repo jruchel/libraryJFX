@@ -146,9 +146,4 @@ public class UserPaneController extends Controller {
         TaskRunner taskRunner = new TaskRunner(logoutRequest, onTaskComplete);
         taskRunner.run();
     }
-
-    @Override
-    protected void onInit() {
-
-    }
 }
