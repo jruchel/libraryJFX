@@ -2,8 +2,11 @@ package models;
 
 import models.tableRepresentations.ModeratorRefundTableRepresentation;
 import tasks.ModeratorRefundDataRetrievalTask;
+import updating.Updater;
 import web.TaskRunner;
 
+import java.io.IOException;
+import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,6 +22,7 @@ public class ModeratorDataModel {
 
     private ModeratorDataModel(List<ModeratorRefundTableRepresentation> refunds) {
         this.refunds = refunds;
+
     }
 
     private ModeratorDataModel() {
@@ -40,5 +44,9 @@ public class ModeratorDataModel {
 
     public void setRefunds(List<ModeratorRefundTableRepresentation> refunds) {
         this.refunds = refunds;
+        try {
+            Updater.update(this.getClass());
+        } catch (ClassNotFoundException | IOException | URISyntaxException ignored) {
+        }
     }
 }
