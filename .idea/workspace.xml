@@ -2,19 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f9d0ae25-61cc-4b23-be1a-a68af21f1dbf" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/LibraryJFX/controllers/UserPaneController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/LibraryJFX/controllers/UserPaneController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controllers/BooksController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/BooksController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controllers/ModeratorRefundController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/ModeratorRefundController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controllers/RefundsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/RefundsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controllers/SubscriptionPaneController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/SubscriptionPaneController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controllers/TransactionsPaneController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/TransactionsPaneController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controllers/UserPaneController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/UserPaneController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/models/BookModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/BookModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/models/UserModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/UserModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/updating/OnUpdate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/updating/OnUpdate.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/updating/Updater.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/updating/Updater.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/tableUtils/Table.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/tableUtils/Table.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -28,11 +16,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/updating/Updater.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="385">
-              <caret line="56" column="194" selection-start-line="56" selection-start-column="194" selection-end-line="56" selection-end-column="194" />
+            <state relative-caret-position="347">
+              <caret line="58" column="41" selection-start-line="58" selection-start-column="41" selection-end-line="58" selection-end-column="41" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -52,10 +40,10 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/models/UserModel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="198">
+            <state relative-caret-position="340">
               <caret line="22" column="42" selection-start-line="22" selection-start-column="42" selection-end-line="22" selection-end-column="42" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -68,7 +56,7 @@
         <entry file="file://$PROJECT_DIR$/src/controllers/UserPaneController.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="347">
-              <caret line="57" column="41" selection-start-line="57" selection-start-column="41" selection-end-line="57" selection-end-column="41" />
+              <caret line="57" column="41" lean-forward="true" selection-start-line="57" selection-start-column="41" selection-end-line="57" selection-end-column="41" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#2520#2521#0" expanded="true" />
@@ -261,9 +249,9 @@
         <option value="$PROJECT_DIR$/src/controllers/ModeratorRefundController.java" />
         <option value="$PROJECT_DIR$/src/controllers/RefundsController.java" />
         <option value="$PROJECT_DIR$/src/controllers/UserPaneController.java" />
-        <option value="$PROJECT_DIR$/src/updating/Updater.java" />
         <option value="$PROJECT_DIR$/src/models/BookModel.java" />
         <option value="$PROJECT_DIR$/src/models/UserModel.java" />
+        <option value="$PROJECT_DIR$/src/updating/Updater.java" />
       </list>
     </option>
   </component>
@@ -430,7 +418,7 @@
       <window_info id="Favorites" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32936078" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.20368364" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.20368364" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.2936078" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -438,7 +426,7 @@
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="9" />
-      <window_info active="true" anchor="bottom" id="Messages" order="10" visible="true" weight="0.32936078" />
+      <window_info anchor="bottom" id="Messages" order="10" weight="0.32936078" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -964,10 +952,30 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/models/BookModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="248">
+          <caret line="60" column="41" selection-start-line="60" selection-start-column="41" selection-end-line="60" selection-end-column="41" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/models/UserModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="22" column="42" selection-start-line="22" selection-start-column="42" selection-end-line="22" selection-end-column="42" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/controllers/UserPaneController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="347">
-          <caret line="57" column="41" selection-start-line="57" selection-start-column="41" selection-end-line="57" selection-end-column="41" />
+          <caret line="57" column="41" lean-forward="true" selection-start-line="57" selection-start-column="41" selection-end-line="57" selection-end-column="41" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#2520#2521#0" expanded="true" />
@@ -988,28 +996,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/updating/Updater.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="385">
-          <caret line="56" column="194" selection-start-line="56" selection-start-column="194" selection-end-line="56" selection-end-column="194" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/models/BookModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="248">
-          <caret line="60" column="41" selection-start-line="60" selection-start-column="41" selection-end-line="60" selection-end-column="41" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/models/UserModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="22" column="42" selection-start-line="22" selection-start-column="42" selection-end-line="22" selection-end-column="42" />
+        <state relative-caret-position="347">
+          <caret line="58" column="41" selection-start-line="58" selection-start-column="41" selection-end-line="58" selection-end-column="41" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

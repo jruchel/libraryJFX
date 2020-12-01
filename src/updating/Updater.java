@@ -52,9 +52,9 @@ public class Updater {
     }
 
     public static void update(Class updateRequester) throws ClassNotFoundException, IOException, URISyntaxException {
+        List<Method> methods;
         for (Class c : getClasses("controllers")) {
-            List<Method> methods = new ArrayList<>();
-            methods.addAll(Arrays.stream(c.getDeclaredMethods()).filter(m -> m.isAnnotationPresent(OnUpdate.class) && arrayContains(m.getAnnotation(OnUpdate.class).updatedBy(), updateRequester)).collect(Collectors.toList()));
+            methods = (Arrays.stream(c.getDeclaredMethods()).filter(m -> m.isAnnotationPresent(OnUpdate.class) && arrayContains(m.getAnnotation(OnUpdate.class).updatedBy(), updateRequester)).collect(Collectors.toList()));
             methods.forEach(m -> {
                 Platform.runLater(() -> {
                     ControllerAccess.getInstance().forEach(c.getName(), (controller) -> {
