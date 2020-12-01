@@ -13,6 +13,6 @@
         <TextField fx:id="yearTextField" layoutX="213.0" layoutY="87.0" onAction="#onYearInput" onKeyTyped="#onYearInput" prefHeight="25.0" prefWidth="40.0" promptText="YY" AnchorPane.leftAnchor="340.0" />
         <PasswordField fx:id="cvcTextField" layoutX="331.0" layoutY="87.0" onAction="#onCVCInput" onInputMethodTextChanged="#onCVCInput" onKeyPressed="#onCVCInput" onKeyReleased="#onCVCInput" onKeyTyped="#onCVCInput" prefHeight="25.0" prefWidth="70.0" promptText="CVC code" AnchorPane.rightAnchor="300.0" />
         <Button layoutX="324.0" layoutY="153.0" mnemonicParsing="false" onAction="#onAccept" text="Accept" AnchorPane.rightAnchor="300.0" />
-        <Label layoutX="178.0" layoutY="14.0" text="Card number" AnchorPane.leftAnchor="300.0" />
+        <Label fx:id="cardNumberLabel" layoutX="178.0" layoutY="14.0" text="Card number" textFill="WHITE" AnchorPane.leftAnchor="300.0" />
     </children>
 </AnchorPane>

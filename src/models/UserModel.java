@@ -19,17 +19,22 @@ public class UserModel {
     }
 
     public void setCurrentUser(User currentUser) {
+        this.currentUser = currentUser;
         try {
             Updater.update(this.getClass());
         } catch (ClassNotFoundException | IOException | URISyntaxException ignored) {
         }
-        this.currentUser = currentUser;
     }
 
     public void updateUser(Runnable onTaskComplete) {
         TaskRunner taskRunner = new TaskRunner(new UserDataRetrievalTask(), onTaskComplete);
-
-        taskRunner.run();
+        TaskRunner taskRunner2 = new TaskRunner(taskRunner, () -> {
+            try {
+                Updater.update(this.getClass());
+            } catch (ClassNotFoundException | IOException | URISyntaxException ignored) {
+            }
+        });
+        taskRunner2.run();
     }
 
     public void updateUser() {

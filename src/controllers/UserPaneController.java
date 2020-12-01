@@ -2,6 +2,8 @@ package controllers;
 
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.paint.Color;
 import tasks.ModeratorRefundDataRetrievalTask;
 import updating.OnUpdate;
 import web.Requests;
@@ -43,17 +45,22 @@ public class UserPaneController extends Controller {
     @FXML
     private Label statusLabel;
 
+    @FXML
+    private BorderPane userPane;
+
     private Requests requests;
 
     public void initialize() {
         if (UserModel.getInstance().getCurrentUser().hasRole("moderator")) moderatorPaneButton.setVisible(true);
         requests = Requests.getInstance();
+        setBackground("file:src/resources/images/mainBg2.jpg", userPane, 1200, 685);
         initializeManually();
         String username = UserModel.getInstance().getCurrentUser().getUsername();
         setStatusLabel();
         if (!username.isEmpty())
             usernameLabel.setText(String.format("Welcome %s!", username));
     }
+
 
     @OnUpdate(updatedBy = UserModel.class)
     public void setStatusLabel() {

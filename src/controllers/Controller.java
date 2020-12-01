@@ -1,8 +1,11 @@
 package controllers;
 
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.TableView;
-import javafx.scene.layout.AnchorPane;
+import javafx.scene.image.Image;
+import javafx.scene.layout.*;
+import updating.ControllerAccess;
 import utils.Properties;
 import utils.fxUtils.SceneController;
 import web.Requests;
@@ -23,6 +26,12 @@ public abstract class Controller {
         ControllerAccess.getInstance().add(this.getClass().getName(), this);
     }
 
+    protected void setBackground(String url, Pane pane, int width, int height) {
+        BackgroundImage myBI = new BackgroundImage(new Image(url, width, height, false, true),
+                BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,
+                BackgroundSize.DEFAULT);
+        pane.setBackground(new Background(myBI));
+    }
 
     public Requests getRequests() {
         return requests;

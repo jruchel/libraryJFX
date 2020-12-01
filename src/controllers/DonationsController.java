@@ -2,10 +2,8 @@ package controllers;
 
 import javafx.application.Platform;
 import javafx.fxml.FXML;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.scene.paint.Color;
 import models.entities.CreditCard;
 import models.UserModel;
 import services.PaymentService;
@@ -29,6 +27,12 @@ public class DonationsController extends Controller {
     private ChoiceBox<String> currencyChoiceBox;
     @FXML
     private TextArea descriptionTextArea;
+    @FXML
+    private Label amountLabel;
+    @FXML
+    private Label currencyLabel;
+    @FXML
+    private Label descriptionLabel;
 
     private List<Double> amounts;
     private List<String> currencies;
@@ -56,7 +60,6 @@ public class DonationsController extends Controller {
     }
 
     public void initialize() {
-
         getAvailableCurrencies();
         amounts = new ArrayList<>();
         currencies = new ArrayList<>();
@@ -81,8 +84,8 @@ public class DonationsController extends Controller {
         currencyChoiceBox.setValue(null);
         otherAmountTextField.setDisable(true);
         otherCheckBox.setSelected(false);
-        descriptionTextArea.setText("");
     }
+
 
     public void sendDonation() {
         StringBuilder error = new StringBuilder();

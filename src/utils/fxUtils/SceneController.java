@@ -1,4 +1,5 @@
 package utils.fxUtils;
+
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -16,11 +17,16 @@ public class SceneController {
     private static Stage primaryStage;
     private static int width, height;
     private static Map<String, Scene> scenes;
+    private static String resourceDirectory = "src/resources/";
 
     static {
         scenes = new HashMap<>();
         width = 600;
         height = 600;
+    }
+
+    public static void setResourceDirectory(String resourceDirectory) {
+        SceneController.resourceDirectory = resourceDirectory;
     }
 
     public static void setTitle(String title) {
@@ -45,14 +51,15 @@ public class SceneController {
 
     private static URL constructURL(String file) throws MalformedURLException {
         file += ".fxml";
-        URL url = new File("src/resources/" + file).toURI().toURL();
+        URL url = new File(resourceDirectory + file).toURI().toURL();
         return url;
     }
 
     private static Scene getScene(String name) throws IOException {
         URL url = constructURL(name);
         Parent root = FXMLLoader.load(url);
-        return new Scene(root, width, height);
+        Scene scene = new Scene(root, width, height);
+        return scene;
     }
 
     private static FXMLLoader getLoader(String file) throws MalformedURLException {

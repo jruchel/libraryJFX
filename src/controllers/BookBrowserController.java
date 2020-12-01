@@ -8,6 +8,7 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.ListView;
 import javafx.scene.control.Pagination;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.BorderPane;
 import javafx.util.Callback;
 import models.BookModel;
 import models.UserModel;
@@ -36,11 +37,14 @@ public class BookBrowserController extends Controller {
     @FXML
     private TextField titleTextField;
     private ListView<Book> currentPage;
+    @FXML
+    private BorderPane browserPane;
 
     private BookModel bookModel;
     private UserModel userModel;
 
     public void initialize() {
+       setBackground("file:src/resources/images/mainBg2.jpg", browserPane, 1200, 685);
         booksOrAuthorsPagination.setPageFactory(param -> {
             currentPage = new ListView<>();
             currentPage.getItems().addAll(new ArrayList<>());
@@ -109,8 +113,11 @@ public class BookBrowserController extends Controller {
             Runnable getBooks = new BookDataRetrievalTask(BookBrowserController.this.getInputTitle(), param + 1);
 
             Runnable setBooks = () -> {
-                currentPage.getItems().addAll(bookModel.getLastSearchedBooks());
-                Platform.runLater(() -> booksOrAuthorsPagination.setPageCount(bookModel.getSearchedPages()));
+
+                Platform.runLater(() -> {
+                    currentPage.getItems().addAll(bookModel.getLastSearchedBooks());
+                    booksOrAuthorsPagination.setPageCount(bookModel.getSearchedPages());
+                });
             };
             TaskRunner taskRunner = new TaskRunner(getBooks, setBooks);
             taskRunner.run();

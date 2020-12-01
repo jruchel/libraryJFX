@@ -1,4 +1,6 @@
-package controllers;
+package updating;
+
+import controllers.Controller;
 
 import java.util.ArrayList;
 import java.util.HashMap;

@@ -1,6 +1,5 @@
 package updating;
 
-import controllers.ControllerAccess;
 import javafx.application.Platform;
 
 import java.io.File;

@@ -1,5 +1,8 @@
 package controllers;
 
+import javafx.scene.image.Image;
+import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
 import web.Requests;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
@@ -34,9 +37,14 @@ public class LoginController extends Controller {
     @FXML
     private Button registerButton;
 
+    @FXML
+    private AnchorPane loginPane;
+
     private Requests requests;
 
     public void initialize() {
+        setBackground("file:src/resources/images/loginBackground.jpg", loginPane, 1200, 685);
+        rememberCheckBox.setTextFill(Color.WHITE);
         try {
             String username = Properties.getProperty("username");
             if (!username.isEmpty()) {

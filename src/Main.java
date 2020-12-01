@@ -1,3 +1,4 @@
+import javafx.scene.image.Image;
 import utils.fxUtils.SceneController;
 import javafx.application.Application;
 import javafx.stage.Stage;
@@ -7,10 +8,11 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
+        primaryStage.getIcons().add(new Image("file:src/resources/images/appIcon.png"));
+        primaryStage.setTitle("Library");
         SceneController.setPrimaryStage(primaryStage);
         SceneController.setWidth(1200);
         SceneController.setHeight(675);
-        SceneController.setTitle("Lrnfy.io");
         SceneController.startScene("login");
     }
 
@@ -18,5 +20,3 @@ public class Main extends Application {
         launch(args);
     }
 }
-//TODO Ujednolicenie uaktualniania danych, przeniesienie czesci logiki do modelu
-//TODO ujednolicenie rozmiarow okienek w menu
