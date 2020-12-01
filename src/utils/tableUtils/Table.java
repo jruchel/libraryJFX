@@ -18,29 +18,6 @@ public class Table<V> {
 
     protected LinkedHashMap<String, List> table;
 
-    private String formatVariableName(String name) {
-        Pattern pattern = Pattern.compile("([a-z]+)([A-Z][a-z]+.*)");
-        Matcher matcher = pattern.matcher(name);
-        StringBuilder sb = new StringBuilder();
-        if (matcher.matches()) {
-            String group1 = matcher.group(1);
-            sb.append(capitalizeFirstLetter(group1)).append(" ");
-            return formatVariableName(matcher.group(2), sb);
-        }
-        return name.substring(0, 1).toUpperCase() + name.substring(1);
-    }
-
-    private String formatVariableName(String name, StringBuilder sb) {
-        Pattern pattern = Pattern.compile("([A-Z][a-z]+)([A-Z][a-z]+.*)");
-        Matcher matcher = pattern.matcher(name);
-        if (matcher.matches()) {
-            sb.append(matcher.group(1)).append(" ");
-            return formatVariableName(matcher.group(2), sb);
-        }
-        sb.append(" ").append(name);
-        return sb.toString().replaceAll(" {2}", " ");
-    }
-
     public Table(LinkedHashMap<String, List> table) {
         this.table = table;
     }
@@ -231,6 +208,28 @@ public class Table<V> {
         return tableFields;
     }
 
+    private String formatVariableName(String name) {
+        Pattern pattern = Pattern.compile("([a-z]+)([A-Z][a-z]+.*)");
+        Matcher matcher = pattern.matcher(name);
+        StringBuilder sb = new StringBuilder();
+        if (matcher.matches()) {
+            String group1 = matcher.group(1);
+            sb.append(capitalizeFirstLetter(group1)).append(" ");
+            return formatVariableName(matcher.group(2), sb);
+        }
+        return name.substring(0, 1).toUpperCase() + name.substring(1);
+    }
+
+    private String formatVariableName(String name, StringBuilder sb) {
+        Pattern pattern = Pattern.compile("([A-Z][a-z]+)([A-Z][a-z]+.*)");
+        Matcher matcher = pattern.matcher(name);
+        if (matcher.matches()) {
+            sb.append(matcher.group(1)).append(" ");
+            return formatVariableName(matcher.group(2), sb);
+        }
+        sb.append(" ").append(name);
+        return sb.toString().replaceAll(" {2}", " ");
+    }
 
     protected String capitalizeFirstLetter(String s) {
         return s.substring(0, 1).toUpperCase() + s.substring(1);

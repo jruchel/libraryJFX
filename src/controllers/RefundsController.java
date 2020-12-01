@@ -24,7 +24,7 @@ public class RefundsController extends Controller {
         initializeManually();
     }
 
-    @OnUpdate
+    @OnUpdate(updatedBy = UserModel.class)
     public void updateTableElements() {
         refunds = userModel.getCurrentUser().getRefunds();
         refundsTableView.getItems().removeAll(refundsTableView.getItems());

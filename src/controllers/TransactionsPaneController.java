@@ -34,7 +34,7 @@ public class TransactionsPaneController extends Controller {
         initializeManually();
     }
 
-    @OnUpdate
+    @OnUpdate(updatedBy = {UserModel.class})
     public void updateTableElements() {
         transactions = userModel.getCurrentUser().getTransactionList();
         transactionsTableView.getItems().removeAll(transactionsTableView.getItems());

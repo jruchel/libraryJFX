@@ -29,7 +29,7 @@ public class BooksController extends Controller {
         initializeManually();
     }
 
-    @OnUpdate
+    @OnUpdate(updatedBy = {UserModel.class})
     public void onUpdate() {
         userBooks = userModel.getCurrentUser().getReservedBooks();
         booksListView.getItems().removeAll(booksListView.getItems());

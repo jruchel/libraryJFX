@@ -20,7 +20,7 @@ public class UserModel {
 
     public void setCurrentUser(User currentUser) {
         try {
-            Updater.update();
+            Updater.update(this.getClass());
         } catch (ClassNotFoundException | IOException | URISyntaxException ignored) {
         }
         this.currentUser = currentUser;

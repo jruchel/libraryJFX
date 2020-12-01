@@ -30,7 +30,7 @@ public class BookModel {
     public void setLastSearchedBooks(List<Book> lastSearchedBooks) {
         this.lastSearchedBooks = lastSearchedBooks;
         try {
-            Updater.update();
+            Updater.update(this.getClass());
         } catch (ClassNotFoundException | IOException | URISyntaxException ignored) {
         }
     }
@@ -58,7 +58,7 @@ public class BookModel {
     public void setUserBooks(List<Book> userBooks) {
         this.userBooks = userBooks;
         try {
-            Updater.update();
+            Updater.update(this.getClass());
         } catch (ClassNotFoundException | IOException | URISyntaxException ignored) {
         }
     }

@@ -51,10 +51,10 @@ public class Updater {
         return classes;
     }
 
-    public static void update() throws ClassNotFoundException, IOException, URISyntaxException {
+    public static void update(Class updateRequester) throws ClassNotFoundException, IOException, URISyntaxException {
         for (Class c : getClasses("controllers")) {
             List<Method> methods = new ArrayList<>();
-            methods.addAll(Arrays.stream(c.getDeclaredMethods()).filter(m -> m.isAnnotationPresent(OnUpdate.class)).collect(Collectors.toList()));
+            methods.addAll(Arrays.stream(c.getDeclaredMethods()).filter(m -> m.isAnnotationPresent(OnUpdate.class) && arrayContains(m.getAnnotation(OnUpdate.class).updatedBy(), updateRequester)).collect(Collectors.toList()));
             methods.forEach(m -> {
                 Platform.runLater(() -> {
                     ControllerAccess.getInstance().forEach(c.getName(), (controller) -> {
@@ -67,5 +67,12 @@ public class Updater {
 
             });
         }
+    }
+
+    private static boolean arrayContains(Class[] array, Class c) {
+        for (Class ci : array) {
+            if (ci.equals(c)) return true;
+        }
+        return false;
     }
 }

@@ -38,7 +38,7 @@ public class ModeratorRefundController extends Controller {
         return inputDialog;
     }
 
-    @OnUpdate
+    @OnUpdate(updatedBy = {ModeratorDataModel.class})
     public void updateTableElements() {
         updateRefunds();
         moderatorRefundTable.getItems().removeAll(moderatorRefundTable.getItems());
@@ -90,7 +90,7 @@ public class ModeratorRefundController extends Controller {
         int id = moderatorRefundTable.getSelectionModel().getSelectedItem().getId();
         String reason = getInputDialog().showAndWait().orElse("Canceled");
         if (reason.equals("Canceled")) return;
-        if(reason.isEmpty()) reason = "Granted";
+        if (reason.isEmpty()) reason = "Granted";
         sendDecision(id, reason, true);
     }
 
@@ -98,7 +98,7 @@ public class ModeratorRefundController extends Controller {
         int id = moderatorRefundTable.getSelectionModel().getSelectedItem().getId();
         String reason = getInputDialog().showAndWait().orElse("Canceled");
         if (reason.equals("Canceled")) return;
-        if(reason.isEmpty()) reason = "Rejected";
+        if (reason.isEmpty()) reason = "Rejected";
         sendDecision(id, reason, false);
     }
 

@@ -55,7 +55,7 @@ public class UserPaneController extends Controller {
             usernameLabel.setText(String.format("Welcome %s!", username));
     }
 
-    @OnUpdate
+    @OnUpdate(updatedBy = UserModel.class)
     public void setStatusLabel() {
         String status = "Not subscribed";
         if (UserModel.getInstance().getCurrentUser().hasRole("ROLE_SUBSCRIBER"))
