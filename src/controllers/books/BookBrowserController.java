@@ -1,26 +1,23 @@
-package controllers;
+package controllers.books;
 
+import controllers.Controller;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 
-import javafx.scene.Node;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ListView;
 import javafx.scene.control.Pagination;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
-import javafx.util.Callback;
 import models.BookModel;
 import models.UserModel;
 import models.entities.Book;
 import tasks.BookDataRetrievalTask;
-import updating.Updater;
 import utils.fxUtils.AlertUtils;
 import utils.fxUtils.SceneController;
 import web.TaskRunner;
 
 import java.io.IOException;
-import java.net.URISyntaxException;
 import java.util.ArrayList;
 
 
@@ -44,7 +41,7 @@ public class BookBrowserController extends Controller {
     private UserModel userModel;
 
     public void initialize() {
-       setBackground("file:src/resources/images/mainBg2.jpg", browserPane, 1200, 685);
+        setBackground("file:src/resources/images/mainBg2.jpg", browserPane, 1200, 685);
         booksOrAuthorsPagination.setPageFactory(param -> {
             currentPage = new ListView<>();
             currentPage.getItems().addAll(new ArrayList<>());
@@ -66,20 +63,23 @@ public class BookBrowserController extends Controller {
                     String response = "";
                     try {
                         response = requests.sendRequest(String.format("%s/rental/reserve/%d", appURL, selectedBook.getId()), "POST");
-                    } catch (IOException e) {
+                    } catch (Exception e) {
                         Platform.runLater(() -> AlertUtils.showAlert("Error occurred while reserving book"));
+                        return;
                     }
-                    if (response.equals("false"))
+                    if (response.equals("false")) {
                         Platform.runLater(() -> AlertUtils.showAlert("Book reservation failed"));
+                    } else {
+                        Platform.runLater(() -> AlertUtils.showAlert("Book reserved successfully"));
+                    }
+
                 };
                 TaskRunner taskRunner = new TaskRunner(reserveBook, () -> {
-                    Platform.runLater(() -> AlertUtils.showAlert("Book reserved successfully"));
                     userModel.updateUser();
                 });
                 taskRunner.run();
             }
         });
-        return;
     }
 
     private Book getSelectedBook() {

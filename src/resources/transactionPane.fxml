@@ -9,7 +9,7 @@
 
 <AnchorPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
-            fx:controller="controllers.TransactionsPaneController"
+            fx:controller="controllers.transactions.TransactionsPaneController"
             fx:id="transactionsPane" layoutX="110.0" layoutY="110.0" prefHeight="200.0" prefWidth="399.0"
             visible="false" AnchorPane.bottomAnchor="100.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0"
             AnchorPane.topAnchor="100.0">

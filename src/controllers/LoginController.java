@@ -1,6 +1,5 @@
 package controllers;
 
-import javafx.scene.image.Image;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import web.Requests;
@@ -61,10 +60,10 @@ public class LoginController extends Controller {
     }
 
     public void register() {
-
+        performLogin(true);
     }
 
-    public void login() {
+    private void performLogin(boolean register) {
         String username = usernameField.getText();
         String password = passwordField.getText();
         Map<String, String> properties = new HashMap<>();
@@ -85,7 +84,7 @@ public class LoginController extends Controller {
         //Logowanie uzytkownika z podanymi w aplikacji danymi
         Runnable loginRequest = () -> {
             try {
-                loggedIn[0] = (requests.sendRequest(String.format("%s/temp/login", appURL), properties, "POST").equals("true"));
+                loggedIn[0] = (requests.sendRequest(String.format("%s%s", appURL, register ? "/registration" : "/temp/login"), properties, "POST").equals("true"));
             } catch (IOException ignored) {
             }
         };
@@ -121,6 +120,10 @@ public class LoginController extends Controller {
 
         TaskRunner taskRunner = new TaskRunner(Arrays.asList(loginRequest, getUserData), onTaskComplete, true);
         taskRunner.run();
+    }
+
+    public void login() {
+        performLogin(false);
     }
 
 }

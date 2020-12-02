@@ -1,5 +1,6 @@
-package controllers;
+package controllers.books;
 
+import controllers.Controller;
 import updating.OnUpdate;
 import web.Requests;
 import javafx.application.Platform;
@@ -46,8 +47,11 @@ public class BooksController extends Controller {
         Runnable cancelReservationTask = () -> {
             try {
                 requests.sendRequest(String.format("%s/rental/reserve/%d", appURL, getSelectedBookID()), "DELETE");
-            } catch (IOException e) {
-                error[0] = e.getMessage();
+            } catch (Exception e) {
+                if (e instanceof NullPointerException)
+                    error[0] = "No book selected";
+                else
+                    error[0] = e.getMessage();
             }
         };
         Runnable onTaskComplete = () -> {

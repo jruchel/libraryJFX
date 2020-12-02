@@ -50,15 +50,15 @@ public class Requests {
         }
     }
 
-    public String sendRequest(String url, String type) throws IOException {
-        return sendRequest(url, new HashMap<>(), type);
+    public String sendRequest(String url, String method) throws IOException {
+        return sendRequest(url, new HashMap<>(), method);
     }
 
-    public String sendRequest(String url, String data, String type) throws IOException {
+    public String sendRequest(String url, String data, String method) throws IOException {
         URL url1 = new URL(url);
         URLConnection con = url1.openConnection();
         HttpURLConnection http = (HttpURLConnection) con;
-        http.setRequestMethod(type.toUpperCase());
+        http.setRequestMethod(method.toUpperCase());
         http.setDoOutput(true);
         http.setRequestProperty("Content-Type", "application/json; utf-8");
         http.setRequestProperty("Accept", "application/json");
@@ -79,11 +79,11 @@ public class Requests {
         return reader.lines().collect(Collectors.joining());
     }
 
-    public String sendRequest(String url, Map<String, String> body, String type) throws IOException {
+    public String sendRequest(String url, Map<String, String> body, String method) throws IOException {
         URL url1 = new URL(url);
         URLConnection con = url1.openConnection();
         HttpURLConnection http = (HttpURLConnection) con;
-        http.setRequestMethod(type.toUpperCase());
+        http.setRequestMethod(method.toUpperCase());
         http.setDoOutput(true);
         http.setRequestProperty("Content-Type", "application/json; utf-8");
         http.setRequestProperty("Accept", "application/json");

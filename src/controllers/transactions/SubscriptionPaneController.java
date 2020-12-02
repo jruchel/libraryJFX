@@ -1,5 +1,6 @@
-package controllers;
+package controllers.transactions;
 
+import controllers.Controller;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;

@@ -1,5 +1,6 @@
-package controllers;
+package controllers.moderator;
 
+import controllers.Controller;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextInputDialog;

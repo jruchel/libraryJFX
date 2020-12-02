@@ -1,5 +1,6 @@
-package controllers;
+package controllers.transactions;
 
+import controllers.Controller;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableView;
 import models.entities.Refund;
