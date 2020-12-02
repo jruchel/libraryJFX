@@ -69,6 +69,13 @@ public class SubscriptionPaneController extends Controller {
         final String[] message = {"Payment booked"};
         Runnable onComplete = () -> {
             userModel.updateUser();
+            switch (message[0]) {
+                case "success":
+                    message[0] = "You are now subscribed";
+                    break;
+                case "failure":
+                    message[0] = "Failed to process payment";
+            }
             Platform.runLater(() -> AlertUtils.showAlert(message[0]));
         };
         String error = checkInput();
