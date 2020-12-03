@@ -10,7 +10,6 @@
     <left>
         <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
             <TextField fx:id="titleTextField" layoutX="14.0" layoutY="57.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" />
-            <Button layoutX="14.0" layoutY="208.0" mnemonicParsing="false" onAction="#onReturn" text="Back" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="90.0" />
             <Button layoutX="75.0" layoutY="208.0" mnemonicParsing="false" onAction="#onSearch" text="Search" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="90.0" />
         </AnchorPane>
     </left>

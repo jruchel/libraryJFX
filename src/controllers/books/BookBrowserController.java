@@ -41,7 +41,7 @@ public class BookBrowserController extends Controller {
     private UserModel userModel;
 
     public void initialize() {
-        setBackground("file:src/resources/images/mainBg2.jpg", browserPane, 1200, 685);
+        //setBackground("file:src/resources/images/mainBg2.jpg", browserPane, 1200, 685);
         booksOrAuthorsPagination.setPageFactory(param -> {
             currentPage = new ListView<>();
             currentPage.getItems().addAll(new ArrayList<>());
@@ -125,11 +125,11 @@ public class BookBrowserController extends Controller {
         });
     }
 
-    public void onReturn() {
+   /* public void onReturn() {
         try {
             SceneController.startScene("userPane");
         } catch (IOException e) {
             AlertUtils.showAlert("Failure showing user pane");
         }
-    }
+    }*/
 }

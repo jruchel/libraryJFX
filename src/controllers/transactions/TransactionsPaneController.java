@@ -1,6 +1,7 @@
 package controllers.transactions;
 
 import controllers.Controller;
+import models.ModeratorDataModel;
 import web.Requests;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
@@ -24,10 +25,12 @@ public class TransactionsPaneController extends Controller {
     private List<Refund> refunds;
     private Requests requests;
     private UserModel userModel;
+    private ModeratorDataModel moderatorDataModel;
 
     public void initialize() {
         transactions = new ArrayList<>();
         refunds = new ArrayList<>();
+        moderatorDataModel = ModeratorDataModel.getInstance();
         userModel = UserModel.getInstance();
         userModel.getCurrentUser().getTransactionList().forEach(t -> refunds.addAll(t.getRefundList()));
         requests = Requests.getInstance();
@@ -81,6 +84,7 @@ public class TransactionsPaneController extends Controller {
                     if (success[0]) {
                         AlertUtils.showAlert("Refund request sent, view your pending refunds under Refunds button in the user pane");
                         userModel.updateUser();
+                        moderatorDataModel.updateData();
                     } else {
                         AlertUtils.showAlert("Refund request was not submitted due to a server error");
                     }

@@ -20,10 +20,6 @@ public class ModeratorDataModel {
         return instance;
     }
 
-    private ModeratorDataModel(List<ModeratorRefundTableRepresentation> refunds) {
-        this.refunds = refunds;
-
-    }
 
     private ModeratorDataModel() {
         this.refunds = new ArrayList<>();

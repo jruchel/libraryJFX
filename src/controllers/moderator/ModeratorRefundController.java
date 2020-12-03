@@ -24,11 +24,14 @@ public class ModeratorRefundController extends Controller {
     private TableView<ModeratorRefundTableRepresentation> moderatorRefundTable;
     private List<ModeratorRefundTableRepresentation> refunds;
     private Requests requests;
+    private ModeratorDataModel moderatorDataModel;
 
     public void initialize() {
+        moderatorDataModel = ModeratorDataModel.getInstance();
+        moderatorDataModel.updateData();
+        initializeManually();
         requests = Requests.getInstance();
         initializeRefundsTable();
-        initializeManually();
     }
 
     private TextInputDialog getInputDialog() {
@@ -47,7 +50,7 @@ public class ModeratorRefundController extends Controller {
     }
 
     private void updateRefunds() {
-        refunds = ModeratorDataModel.getInstance().getRefunds();
+        refunds = moderatorDataModel.getRefunds();
     }
 
     public void initializeRefundsTable() {
