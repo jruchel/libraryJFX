@@ -1,5 +1,6 @@
 package updating;
 
+import controllers.Controller;
 import javafx.application.Platform;
 
 import java.io.File;
@@ -56,12 +57,11 @@ public class Updater {
             methods = (Arrays.stream(c.getDeclaredMethods()).filter(m -> m.isAnnotationPresent(OnUpdate.class) && arrayContains(m.getAnnotation(OnUpdate.class).updatedBy(), updateRequester)).collect(Collectors.toList()));
             methods.forEach(m -> {
                 Platform.runLater(() -> {
-                    ControllerAccess.getInstance().forEach(c.getName(), (controller) -> {
-                        try {
-                            m.invoke(controller);
-                        } catch (IllegalAccessException | InvocationTargetException ignored) {
-                        }
-                    });
+                    Controller controller = ControllerAccess.getInstance().get(c.getName());
+                    try {
+                        m.invoke(controller);
+                    } catch (Exception ignored) {
+                    }
                 });
 
             });

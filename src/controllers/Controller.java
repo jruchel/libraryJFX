@@ -23,7 +23,7 @@ public abstract class Controller {
         } catch (IOException ignored) {
         }
         requests = Requests.getInstance();
-        ControllerAccess.getInstance().add(this.getClass().getName(), this);
+        ControllerAccess.getInstance().put(this.getClass().getName(), this);
     }
 
     protected void setBackground(String url, Pane pane, int width, int height) {
