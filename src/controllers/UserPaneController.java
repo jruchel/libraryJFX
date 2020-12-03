@@ -1,12 +1,10 @@
 package controllers;
 
-import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.control.SplitPane;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Paint;
-import tasks.ModeratorRefundDataRetrievalTask;
 import updating.OnUpdate;
 import web.Requests;
 import models.UserModel;
@@ -24,7 +22,7 @@ public class UserPaneController extends Controller {
 
     private static String clickedColor = "#2F4BA1";
     private static String hoverColor = "#59809E";
-    private static String backgroundColor = "#221C35";
+    private static String backgroundColor = "linear-gradient(#782c41, #5a1e41, #221C35)";
 
     private Pane currentPane = null;
 
@@ -184,6 +182,7 @@ public class UserPaneController extends Controller {
         TaskRunner taskRunner = new TaskRunner(logoutRequest, onTaskComplete);
         taskRunner.run();
     }
+
     private void initButtons(Label... labels) {
         for (Label l : labels) {
             l.setBackground(getDefaultBackground());

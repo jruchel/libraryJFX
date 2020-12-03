@@ -43,8 +43,7 @@ public class LoginController extends Controller {
     private Requests requests;
 
     public void initialize() {
-        Background background = getBackground(backgroundColor);
-        loginPane.setBackground(background);
+        setBackground("file:src/resources/images/background.png", loginPane, 1200, 685);
         rememberCheckBox.setTextFill(Color.WHITE);
         try {
             String username = Properties.getProperty("username");

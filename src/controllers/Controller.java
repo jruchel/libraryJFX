@@ -47,6 +47,9 @@ public abstract class Controller {
         return new Background(new BackgroundFill(Paint.valueOf(color), new CornerRadii(5.0), new Insets(-5.0)));
     }
 
+    protected Background getBackground(Paint paint) {
+        return new Background(new BackgroundFill(paint, new CornerRadii(5.0), new Insets(-5.0)));
+    }
 
     public static <E> void setTableMeasurements(TableView<E> tableView) {
         double ratio = 1 / (double) tableView.getColumns().size();
