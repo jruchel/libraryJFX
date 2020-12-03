@@ -27,6 +27,8 @@ public class UserPaneController extends Controller {
     private Pane currentPane = null;
 
     @FXML
+    private Label statusLabel;
+    @FXML
     private AnchorPane booksPane;
     @FXML
     private SplitPane splitPaneGlobal;
@@ -88,11 +90,8 @@ public class UserPaneController extends Controller {
         requests = Requests.getInstance();
         setBackground("file:src/resources/images/mainBg2.jpg", userPane, 1200, 685);
         initializeManually();
-        String username = UserModel.getInstance().getCurrentUser().getUsername();
         setStatusLabel();
         initButtons();
-        // if (!username.isEmpty())
-        // usernameLabel.setText(String.format("Welcome %s!", username));
     }
 
 
@@ -101,7 +100,7 @@ public class UserPaneController extends Controller {
         String status = "Not subscribed";
         if (UserModel.getInstance().getCurrentUser().hasRole("ROLE_SUBSCRIBER"))
             status = "Subscribed";
-        //statusLabel.setText(String.format("Status: %s", status));
+        statusLabel.setText(String.format("Status: %s", status));
     }
 
     private void changeLabelBackground(Label label) {

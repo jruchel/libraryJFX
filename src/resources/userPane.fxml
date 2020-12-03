@@ -14,28 +14,9 @@
             <items>
                 <AnchorPane fx:id="menuPane" prefHeight="598.0" prefWidth="266.0">
                     <children>
+                  <Label fx:id="statusLabel" alignment="CENTER" layoutY="12.0" minHeight="50.0" minWidth="60.0" text="Status: " textFill="WHITE" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                         <VBox layoutY="62.0" prefHeight="536.0" prefWidth="195.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="62.0">
                             <children>
-                        <SplitPane fx:id="moderatorSplitPane" dividerPositions="0.3886" layoutX="10.0" layoutY="10.0" prefHeight="60.0" prefWidth="200.0">
-                           <items>
-                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
-                                 <children>
-                                    <ImageView fitHeight="52.0" fitWidth="51.0" layoutX="21.0" layoutY="3.0" pickOnBounds="true" smooth="false" AnchorPane.leftAnchor="21.0" AnchorPane.topAnchor="3.0">
-                                       <image>
-                                          <Image url="@images/adminPaneIcon.png" />
-                                       </image>
-                                       <viewport>
-                                          <Rectangle2D />
-                                       </viewport></ImageView>
-                                 </children>
-                              </AnchorPane>
-                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
-                                 <children>
-                                    <Label fx:id="adminPaneButton" alignment="CENTER" contentDisplay="CENTER" onMouseClicked="#showModeratorPane" text="Admin panel" textFill="WHITE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-                                 </children>
-                              </AnchorPane>
-                           </items>
-                        </SplitPane>
                                 <SplitPane dividerPositions="0.38860103626943004" prefHeight="60.0" prefWidth="200.0">
                                     <items>
                                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
@@ -155,6 +136,26 @@
                                         </AnchorPane>
                                     </items>
                                 </SplitPane>
+                        <SplitPane fx:id="moderatorSplitPane" dividerPositions="0.3886" layoutX="10.0" layoutY="10.0" prefHeight="60.0" prefWidth="200.0">
+                           <items>
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                                 <children>
+                                    <ImageView fitHeight="52.0" fitWidth="51.0" layoutX="21.0" layoutY="3.0" pickOnBounds="true" smooth="false" AnchorPane.leftAnchor="21.0" AnchorPane.topAnchor="3.0">
+                                       <image>
+                                          <Image url="@images/adminPaneIcon.png" />
+                                       </image>
+                                       <viewport>
+                                          <Rectangle2D />
+                                       </viewport></ImageView>
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                                 <children>
+                                    <Label fx:id="adminPaneButton" alignment="CENTER" contentDisplay="CENTER" onMouseClicked="#showModeratorPane" text="Admin panel" textFill="WHITE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                 </children>
+                              </AnchorPane>
+                           </items>
+                        </SplitPane>
                             </children>
                         </VBox>
                     </children>
