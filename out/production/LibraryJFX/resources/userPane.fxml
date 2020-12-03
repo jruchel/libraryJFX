@@ -31,7 +31,7 @@
                               </AnchorPane>
                               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                                  <children>
-                                    <Label fx:id="adminPaneButton" alignment="CENTER" contentDisplay="CENTER" onMouseClicked="#showModeratorPane" text="Admin pane" textFill="WHITE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                    <Label fx:id="adminPaneButton" alignment="CENTER" contentDisplay="CENTER" onMouseClicked="#showModeratorPane" text="Admin panel" textFill="WHITE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                                  </children>
                               </AnchorPane>
                            </items>
