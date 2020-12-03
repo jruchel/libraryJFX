@@ -19,6 +19,7 @@ import java.util.*;
 
 public class LoginController extends Controller {
 
+    private static String backgroundColor = "#221C35";
     @FXML
     private CheckBox rememberCheckBox;
     @FXML
@@ -42,7 +43,8 @@ public class LoginController extends Controller {
     private Requests requests;
 
     public void initialize() {
-        setBackground("file:src/resources/images/loginBackground.jpg", loginPane, 1200, 685);
+        Background background = getBackground(backgroundColor);
+        loginPane.setBackground(background);
         rememberCheckBox.setTextFill(Color.WHITE);
         try {
             String username = Properties.getProperty("username");

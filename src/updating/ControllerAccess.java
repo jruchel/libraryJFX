@@ -3,7 +3,6 @@ package updating;
 import controllers.Controller;
 
 import java.util.*;
-import java.util.function.Consumer;
 
 public class ControllerAccess {
 
@@ -18,33 +17,17 @@ public class ControllerAccess {
         this.controllers = new HashMap<>();
     }
 
-    public Map<String, List<Controller>> controllers;
+    public Map<String, Controller> controllers;
 
     public void put(String key, Controller controller) {
-        List<Controller> controllersList = new ArrayList<>();
-        controllersList.add(controller);
-        controllers.putIfAbsent(key, controllersList);
+        controllers.put(key, controller);
     }
 
 
-    public void add(String key, Controller controller) {
-        if (!controllers.containsKey(key))
-            controllers.put(key, new ArrayList<>());
-        if (!controllers.get(key).contains(controller))
-            controllers.get(key).add(controller);
-    }
-
-    public List<Controller> get(String key) {
+    public Controller get(String key) {
         return controllers.get(key);
     }
 
-    public void forEach(String key, Consumer<Controller> consumer) {
-        if (controllers.containsKey(key))
-            controllers.get(key).forEach(consumer);
-    }
 
-    public Controller get(String key, int i) {
-        return controllers.get(key).get(i);
-    }
 
 }

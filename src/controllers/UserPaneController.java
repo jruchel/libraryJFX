@@ -1,6 +1,7 @@
 package controllers;
 
 import javafx.geometry.Insets;
+import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.control.SplitPane;
 import javafx.scene.layout.*;
@@ -21,10 +22,16 @@ import java.io.IOException;
 public class UserPaneController extends Controller {
 
 
+    private static String clickedColor = "#2F4BA1";
+    private static String hoverColor = "#59809E";
+    private static String backgroundColor = "#221C35";
+
     private Pane currentPane = null;
 
     @FXML
     private AnchorPane booksPane;
+    @FXML
+    private SplitPane splitPaneGlobal;
 
     @FXML
     private AnchorPane transactionsPane;
@@ -62,12 +69,23 @@ public class UserPaneController extends Controller {
     private Label adminPaneButton;
     @FXML
     private SplitPane moderatorSplitPane;
+    @FXML
+    private AnchorPane menuPane;
+    @FXML
+    private AnchorPane viewPane;
+
 
     private Label currentLabel;
 
     private Requests requests;
 
     public void initialize() {
+        Background background = getBackground(backgroundColor);
+        viewPane.setBackground(background);
+        menuPane.setBackground(background);
+        for (Node node : splitPaneGlobal.lookupAll(".split-pane-divider")) {
+            node.setVisible(false);
+        }
         if (!UserModel.getInstance().getCurrentUser().hasRole("moderator")) moderatorSplitPane.setVisible(false);
         requests = Requests.getInstance();
         setBackground("file:src/resources/images/mainBg2.jpg", userPane, 1200, 685);
@@ -103,6 +121,7 @@ public class UserPaneController extends Controller {
     }
 
     public void showModeratorPane() {
+        changeLabelBackground(adminPaneButton);
         showPane(moderatorPane);
     }
 
@@ -115,13 +134,6 @@ public class UserPaneController extends Controller {
     public void showBookBrowser() {
         changeLabelBackground(browseBooksButton);
         showPane(browserPane);
-       /* Platform.runLater(() -> {
-            try {
-                SceneController.startScene("bookBrowser");
-            } catch (IOException e) {
-                AlertUtils.showAlert("Error while showing moderator pane");
-            }
-        });*/
     }
 
     public void showDonationPane() {
@@ -144,7 +156,6 @@ public class UserPaneController extends Controller {
     }
 
     public void showBooks() {
-
         changeLabelBackground(booksButton);
         showPane(booksPane);
     }
@@ -173,16 +184,15 @@ public class UserPaneController extends Controller {
         TaskRunner taskRunner = new TaskRunner(logoutRequest, onTaskComplete);
         taskRunner.run();
     }
-
     private void initButtons(Label... labels) {
         for (Label l : labels) {
             l.setBackground(getDefaultBackground());
             l.setOnMouseEntered(event -> {
-                if (!l.getBackground().getFills().get(0).getFill().equals(Paint.valueOf("rgb(135,206,250)")))
+                if (!l.getBackground().getFills().get(0).getFill().equals(Paint.valueOf(clickedColor)))
                     l.setBackground(getHoverBackground());
             });
             l.setOnMouseExited(event -> {
-                        if (!l.getBackground().getFills().get(0).getFill().equals(Paint.valueOf("rgb(135,206,250)")))
+                        if (!l.getBackground().getFills().get(0).getFill().equals(Paint.valueOf(clickedColor)))
                             l.setBackground(getDefaultBackground());
                     }
             );
@@ -195,14 +205,14 @@ public class UserPaneController extends Controller {
     }
 
     private Background getDefaultBackground() {
-        return new Background(new BackgroundFill(Paint.valueOf("white"), new CornerRadii(5.0), new Insets(-5.0)));
+        return getBackground("#63666A");
     }
 
     private Background getHoverBackground() {
-        return new Background(new BackgroundFill(Paint.valueOf("rgb(173,216,230)"), new CornerRadii(5.0), new Insets(-5.0)));
+        return getBackground(hoverColor);
     }
 
     private Background getClickedOnBackground() {
-        return new Background(new BackgroundFill(Paint.valueOf("rgb(135,206,250)"), new CornerRadii(5.0), new Insets(-5.0)));
+        return getBackground(clickedColor);
     }
 }

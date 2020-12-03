@@ -1,127 +1,156 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Rectangle2D?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
 <VBox fx:id="userPane" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.UserPaneController">
     <children>
-        <SplitPane dividerPositions="0.22" focusTraversable="true" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
+        <SplitPane fx:id="splitPaneGlobal" dividerPositions="0.22" focusTraversable="true" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
             <items>
-                <AnchorPane prefHeight="598.0" prefWidth="266.0">
+                <AnchorPane fx:id="menuPane" prefHeight="598.0" prefWidth="266.0">
                     <children>
-                        <VBox layoutY="106.0" prefHeight="492.0" prefWidth="195.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="106.0">
+                        <VBox layoutY="62.0" prefHeight="536.0" prefWidth="195.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="62.0">
                             <children>
-                        <SplitPane fx:id="moderatorSplitPane" dividerPositions="0.3886" layoutX="10.0" layoutY="10.0" prefHeight="50.0" prefWidth="200.0">
+                        <SplitPane fx:id="moderatorSplitPane" dividerPositions="0.3886" layoutX="10.0" layoutY="10.0" prefHeight="60.0" prefWidth="200.0">
                            <items>
                               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                                  <children>
-                                    <ImageView fitHeight="52.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                    <ImageView fitHeight="52.0" fitWidth="51.0" layoutX="21.0" layoutY="3.0" pickOnBounds="true" smooth="false" AnchorPane.leftAnchor="21.0" AnchorPane.topAnchor="3.0">
+                                       <image>
+                                          <Image url="@images/adminPaneIcon.png" />
+                                       </image>
+                                       <viewport>
+                                          <Rectangle2D />
+                                       </viewport></ImageView>
                                  </children>
                               </AnchorPane>
                               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                                  <children>
-                                    <Label fx:id="adminPaneButton" alignment="CENTER" contentDisplay="CENTER" onMouseClicked="#showModeratorPane" text="Admin pane" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                    <Label fx:id="adminPaneButton" alignment="CENTER" contentDisplay="CENTER" onMouseClicked="#showModeratorPane" text="Admin pane" textFill="WHITE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                                  </children>
                               </AnchorPane>
                            </items>
                         </SplitPane>
-                                <SplitPane dividerPositions="0.38860103626943004" prefHeight="50.0" prefWidth="200.0">
+                                <SplitPane dividerPositions="0.38860103626943004" prefHeight="60.0" prefWidth="200.0">
                                     <items>
                                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                                             <children>
-                                                <ImageView fitHeight="52.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                                <ImageView fitHeight="60.0" fitWidth="62.0" layoutX="5.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="3.2286529541015625" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="3.0">
+                                       <image>
+                                          <Image url="@images/booksIcon.png" />
+                                       </image></ImageView>
                                             </children>
                                         </AnchorPane>
                                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                                             <children>
-                                                <Label fx:id="booksButton" alignment="CENTER" contentDisplay="CENTER" onMouseClicked="#showBooks" text="Books" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                                <Label fx:id="booksButton" alignment="CENTER" contentDisplay="CENTER" onMouseClicked="#showBooks" text="Books" textFill="WHITE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                                             </children>
                                         </AnchorPane>
                                     </items>
                                 </SplitPane>
-                                <SplitPane dividerPositions="0.38860103626943004" prefHeight="50.0" prefWidth="200.0">
+                                <SplitPane dividerPositions="0.38860103626943004" prefHeight="60.0" prefWidth="200.0">
                                     <items>
                                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                                             <children>
-                                                <ImageView fitHeight="52.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                                <ImageView fitHeight="60.0" fitWidth="48.0" layoutX="24.0" layoutY="5.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="24.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="5.0">
+                                       <image>
+                                          <Image url="@images/searchIcon.png" />
+                                       </image></ImageView>
                                             </children>
                                         </AnchorPane>
                                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                                             <children>
-                                                <Label fx:id="browseBooksButton" alignment="CENTER" contentDisplay="CENTER" onMouseClicked="#showBookBrowser" text="Browse books" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                                <Label fx:id="browseBooksButton" alignment="CENTER" contentDisplay="CENTER" onMouseClicked="#showBookBrowser" text="Browse books" textFill="WHITE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                                             </children>
                                         </AnchorPane>
                                     </items>
                                 </SplitPane>
-                                <SplitPane dividerPositions="0.38860103626943004" prefHeight="50.0" prefWidth="200.0">
+                                <SplitPane dividerPositions="0.38860103626943004" prefHeight="60.0" prefWidth="200.0">
                                     <items>
                                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                                             <children>
-                                                <ImageView fitHeight="52.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                                <ImageView fitHeight="60.0" fitWidth="200.0" layoutX="21.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="-1.0" AnchorPane.leftAnchor="21.0" AnchorPane.rightAnchor="-9.0" AnchorPane.topAnchor="-1.0">
+                                       <image>
+                                          <Image url="@images/subscriptionIcon.png" />
+                                       </image></ImageView>
                                             </children>
                                         </AnchorPane>
                                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                                             <children>
-                                                <Label fx:id="subscribeButton" alignment="CENTER" contentDisplay="CENTER" onMouseClicked="#showSubscribePane" text="Subscribe" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                                <Label fx:id="subscribeButton" alignment="CENTER" contentDisplay="CENTER" onMouseClicked="#showSubscribePane" text="Subscribe" textFill="WHITE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                                             </children>
                                         </AnchorPane>
                                     </items>
                                 </SplitPane>
-                                <SplitPane dividerPositions="0.38860103626943004" layoutX="10.0" layoutY="110.0" prefHeight="50.0" prefWidth="200.0">
+                                <SplitPane dividerPositions="0.38860103626943004" layoutX="10.0" layoutY="110.0" prefHeight="60.0" prefWidth="200.0">
                                     <items>
                                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                                             <children>
-                                                <ImageView fitHeight="52.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                                <ImageView fitHeight="60.0" fitWidth="200.0" layoutX="14.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="-1.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="-2.0" AnchorPane.topAnchor="-1.0">
+                                       <image>
+                                          <Image url="@images/transactions.png" />
+                                       </image></ImageView>
                                             </children>
                                         </AnchorPane>
                                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                                             <children>
-                                                <Label fx:id="transactionsButton" alignment="CENTER" contentDisplay="CENTER" onMouseClicked="#showTransactions" text="Transactions" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                                <Label fx:id="transactionsButton" alignment="CENTER" contentDisplay="CENTER" onMouseClicked="#showTransactions" text="Transactions" textFill="WHITE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                                             </children>
                                         </AnchorPane>
                                     </items>
                                 </SplitPane>
-                                <SplitPane dividerPositions="0.38860103626943004" layoutX="10.0" layoutY="160.0" prefHeight="50.0" prefWidth="200.0">
+                                <SplitPane dividerPositions="0.38860103626943004" layoutX="10.0" layoutY="160.0" prefHeight="60.0" prefWidth="200.0">
                                     <items>
                                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                                             <children>
-                                                <ImageView fitHeight="52.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                                <ImageView fitHeight="60.0" fitWidth="200.0" layoutX="14.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="-1.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="-2.0" AnchorPane.topAnchor="-1.0">
+                                       <image>
+                                          <Image url="@images/transactionsIcon.png" />
+                                       </image></ImageView>
                                             </children>
                                         </AnchorPane>
                                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                                             <children>
-                                                <Label fx:id="refundsButton" alignment="CENTER" contentDisplay="CENTER" onMouseClicked="#showRefunds" text="Refunds" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                                <Label fx:id="refundsButton" alignment="CENTER" contentDisplay="CENTER" onMouseClicked="#showRefunds" text="Refunds" textFill="WHITE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                                             </children>
                                         </AnchorPane>
                                     </items>
                                 </SplitPane>
-                                <SplitPane dividerPositions="0.38860103626943004" layoutX="10.0" layoutY="210.0" prefHeight="50.0" prefWidth="200.0">
+                                <SplitPane dividerPositions="0.38860103626943004" layoutX="10.0" layoutY="210.0" prefHeight="60.0" prefWidth="200.0">
                                     <items>
                                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                                             <children>
-                                                <ImageView fitHeight="52.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                                <ImageView fitHeight="60.0" fitWidth="200.0" layoutX="14.0" layoutY="-1.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="-1.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="-2.0" AnchorPane.topAnchor="-1.0">
+                                       <image>
+                                          <Image url="@images/transactionsIcon.png" />
+                                       </image></ImageView>
                                             </children>
                                         </AnchorPane>
                                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                                             <children>
-                                                <Label fx:id="donateButton" alignment="CENTER" contentDisplay="CENTER" onMouseClicked="#showDonationPane" text="Donate" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                                <Label fx:id="donateButton" alignment="CENTER" contentDisplay="CENTER" onMouseClicked="#showDonationPane" text="Donate" textFill="WHITE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                                             </children>
                                         </AnchorPane>
                                     </items>
                                 </SplitPane>
-                                <SplitPane dividerPositions="0.38860103626943004" layoutX="10.0" layoutY="260.0" prefHeight="50.0" prefWidth="200.0">
+                                <SplitPane dividerPositions="0.38860103626943004" layoutX="10.0" layoutY="260.0" prefHeight="60.0" prefWidth="200.0">
                                     <items>
                                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                                             <children>
-                                                <ImageView fitHeight="52.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                                <ImageView fitHeight="60.0" fitWidth="200.0" layoutX="14.0" layoutY="-1.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="-1.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="-2.0" AnchorPane.topAnchor="-1.0">
+                                       <image>
+                                          <Image url="@images/logoutIcon.png" />
+                                       </image></ImageView>
                                             </children>
                                         </AnchorPane>
                                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                                             <children>
-                                                <Label fx:id="logoutButton" alignment="CENTER" contentDisplay="CENTER" onMouseClicked="#logout" text="Logout" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                                <Label fx:id="logoutButton" alignment="CENTER" contentDisplay="CENTER" onMouseClicked="#logout" text="Logout" textFill="WHITE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                                             </children>
                                         </AnchorPane>
                                     </items>
@@ -130,14 +159,14 @@
                         </VBox>
                     </children>
                 </AnchorPane>
-                <AnchorPane>
+                <AnchorPane fx:id="viewPane">
                     <fx:include fx:id="booksPane" source="booksPane.fxml" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                     <fx:include fx:id="cardDetailsPane" source="cardDetails.fxml" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                     <fx:include fx:id="transactionsPane" source="transactionPane.fxml" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                     <fx:include fx:id="refundsPane" source="refundsPane.fxml" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                     <fx:include fx:id="donationPane" source="donations.fxml" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-                    <fx:include fx:id="browserPane" source="bookBrowser.fxml" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" visible="false"/>
-                    <fx:include fx:id="moderatorPane" source="moderatorPane.fxml" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" visible="false"/>
+                    <fx:include fx:id="browserPane" source="bookBrowser.fxml" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                    <fx:include fx:id="moderatorPane" source="moderatorPane.fxml" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                 </AnchorPane>
             </items>
         </SplitPane>

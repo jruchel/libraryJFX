@@ -1,10 +1,12 @@
 package controllers;
 
+import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.TableView;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
+import javafx.scene.paint.Paint;
 import updating.ControllerAccess;
 import utils.Properties;
 import utils.fxUtils.SceneController;
@@ -23,7 +25,7 @@ public abstract class Controller {
         } catch (IOException ignored) {
         }
         requests = Requests.getInstance();
-        ControllerAccess.getInstance().add(this.getClass().getName(), this);
+        ControllerAccess.getInstance().put(this.getClass().getName(), this);
     }
 
     protected void setBackground(String url, Pane pane, int width, int height) {
@@ -40,6 +42,11 @@ public abstract class Controller {
     public String getAppURL() {
         return appURL;
     }
+
+    protected Background getBackground(String color) {
+        return new Background(new BackgroundFill(Paint.valueOf(color), new CornerRadii(5.0), new Insets(-5.0)));
+    }
+
 
     public static <E> void setTableMeasurements(TableView<E> tableView) {
         double ratio = 1 / (double) tableView.getColumns().size();
