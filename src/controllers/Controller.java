@@ -1,23 +1,47 @@
 package controllers;
 
+import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.Parent;
+import javafx.scene.control.Button;
 import javafx.scene.control.TableView;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Paint;
 import updating.ControllerAccess;
 import utils.Properties;
+import utils.Resources;
 import utils.fxUtils.SceneController;
 import web.Requests;
 
 import java.io.IOException;
+import java.lang.reflect.Field;
+import java.util.ArrayList;
+import java.util.List;
 
 
 public abstract class Controller {
     protected String appURL;
     protected Requests requests;
+    protected static String defaultButtonStyle;
+    protected static String clickedButtonStyle;
+
+    public static void setClickedButtonStyle(String clickedButtonStyle) {
+        Controller.clickedButtonStyle = clickedButtonStyle;
+    }
+
+    public static void setDefaultButtonStyle(String defaultButtonStyle) {
+        Controller.defaultButtonStyle = defaultButtonStyle;
+    }
+
+    public static String getClickedButtonStyle() {
+        return clickedButtonStyle;
+    }
+
+    public static String getDefaultButtonStyle() {
+        return defaultButtonStyle;
+    }
 
     public void initializeManually() {
         try {
@@ -26,6 +50,12 @@ public abstract class Controller {
         }
         requests = Requests.getInstance();
         ControllerAccess.getInstance().put(this.getClass().getName(), this);
+        try {
+            if (!defaultButtonStyle.isEmpty()) setButtonsStyle(defaultButtonStyle);
+            if (!clickedButtonStyle.isEmpty()) setButtonAnimation(clickedButtonStyle, 1000);
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        }
     }
 
     protected void setBackground(String url, Pane pane, int width, int height) {
@@ -62,6 +92,37 @@ public abstract class Controller {
             widthRatios[i] = ratio;
         }
         setTableMeasurements(tableView, widthRatios);
+    }
+
+    protected void setButtonsStyle(String style) throws IllegalAccessException {
+        findNode(Button.class).forEach(b -> b.setStyle(style));
+    }
+
+    protected void setButtonAnimation(String style, int time) throws IllegalAccessException {
+        findNode(Button.class).forEach(b -> b.setOnMouseClicked(event -> {
+            new Thread(() -> {
+                String defaultStyle = b.getStyle();
+                b.setStyle(style);
+                try {
+                    Thread.sleep(time);
+                    b.setDisable(true);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                b.setDisable(false);
+                b.setStyle(defaultStyle);
+            }).start();
+        }));
+    }
+
+    protected List<Node> findNode(Class<? extends Node> c) throws IllegalAccessException {
+        List<Node> nodes = new ArrayList<>();
+        for (Field f : this.getClass().getDeclaredFields()) {
+            if (f.getType().getName().equals(c.getName())) {
+                nodes.add((Node) f.get(this));
+            }
+        }
+        return nodes;
     }
 
     public static <E> void setTableMeasurements(TableView<E> tableView, double[] widthRatios) {

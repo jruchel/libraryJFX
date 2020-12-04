@@ -1,13 +1,14 @@
-package controllers.moderator;
+package controllers;
 
-import controllers.Controller;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextInputDialog;
 import models.ModeratorDataModel;
 import models.UserModel;
 import models.tableRepresentations.ModeratorRefundTableRepresentation;
 import updating.OnUpdate;
+import utils.Resources;
 import utils.tableUtils.JavaFXTableUtils;
 import web.Requests;
 import web.TaskRunner;
@@ -25,6 +26,10 @@ public class ModeratorRefundController extends Controller {
     private List<ModeratorRefundTableRepresentation> refunds;
     private Requests requests;
     private ModeratorDataModel moderatorDataModel;
+    @FXML
+    protected Button acceptButton;
+    @FXML
+    protected Button rejectButton;
 
     public void initialize() {
         moderatorDataModel = ModeratorDataModel.getInstance();

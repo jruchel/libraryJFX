@@ -1,13 +1,11 @@
-package controllers.transactions;
+package controllers;
 
-import controllers.Controller;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableView;
 import models.entities.Refund;
 import models.UserModel;
 import updating.OnUpdate;
 import utils.tableUtils.JavaFXTableUtils;
-
 import java.util.Arrays;
 import java.util.List;
 

@@ -1,20 +1,16 @@
-package controllers.books;
+package controllers;
 
-import controllers.Controller;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.ListView;
-import javafx.scene.control.Pagination;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
 import models.BookModel;
 import models.UserModel;
 import models.entities.Book;
 import tasks.BookDataRetrievalTask;
+import utils.Resources;
 import utils.fxUtils.AlertUtils;
-import utils.fxUtils.SceneController;
 import web.TaskRunner;
 
 import java.io.IOException;
@@ -24,24 +20,28 @@ import java.util.ArrayList;
 public class BookBrowserController extends Controller {
 
     @FXML
-    private Pagination booksOrAuthorsPagination;
+    protected Pagination booksOrAuthorsPagination;
     @FXML
-    private CheckBox authorsCheckBox;
+    protected CheckBox authorsCheckBox;
     @FXML
-    private TextField firstNameTextField;
+    protected TextField firstNameTextField;
     @FXML
-    private TextField lastNameTextField;
+    protected TextField lastNameTextField;
     @FXML
-    private TextField titleTextField;
-    private ListView<Book> currentPage;
+    protected TextField titleTextField;
+    protected ListView<Book> currentPage;
     @FXML
-    private BorderPane browserPane;
+    protected BorderPane browserPane;
+    @FXML
+    protected Button searchButton;
+    @FXML
+    protected Button reserveButton;
 
-    private BookModel bookModel;
-    private UserModel userModel;
+    protected BookModel bookModel;
+    protected UserModel userModel;
 
     public void initialize() {
-        //setBackground("file:src/resources/images/mainBg2.jpg", browserPane, 1200, 685);
+       
         booksOrAuthorsPagination.setPageFactory(param -> {
             currentPage = new ListView<>();
             currentPage.getItems().addAll(new ArrayList<>());
@@ -82,7 +82,7 @@ public class BookBrowserController extends Controller {
         });
     }
 
-    private Book getSelectedBook() {
+    protected Book getSelectedBook() {
         return currentPage.getSelectionModel().getSelectedItem();
     }
 
@@ -93,7 +93,7 @@ public class BookBrowserController extends Controller {
         titleTextField.setDisable(checked);
     }
 
-    private String getInputTitle() {
+    protected String getInputTitle() {
         return titleTextField.getText();
     }
 

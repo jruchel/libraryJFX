@@ -1,7 +1,9 @@
-package controllers.books;
+package controllers;
 
 import controllers.Controller;
+import javafx.scene.control.Button;
 import updating.OnUpdate;
+import utils.Resources;
 import web.Requests;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
@@ -17,10 +19,12 @@ import java.util.List;
 public class BooksController extends Controller {
 
     @FXML
-    private ListView<Book> booksListView;
+    protected ListView<Book> booksListView;
+    @FXML
+    protected Button returnButton;
 
-    private List<Book> userBooks;
-    private UserModel userModel;
+    protected List<Book> userBooks;
+    protected UserModel userModel;
 
     public void initialize() {
         userModel = UserModel.getInstance();

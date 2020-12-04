@@ -1,4 +1,6 @@
+import controllers.Controller;
 import javafx.scene.image.Image;
+import utils.Resources;
 import utils.fxUtils.SceneController;
 import javafx.application.Application;
 import javafx.stage.Stage;
@@ -10,6 +12,8 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception {
         primaryStage.getIcons().add(new Image("file:src/resources/images/appIcon.png"));
         primaryStage.setTitle("Library");
+        Controller.setDefaultButtonStyle(Resources.getStyle("button1"));
+        Controller.setClickedButtonStyle(Resources.getStyle("clickedButton"));
         SceneController.setPrimaryStage(primaryStage);
         SceneController.setWidth(1200);
         SceneController.setHeight(675);

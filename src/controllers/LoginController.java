@@ -2,6 +2,7 @@ package controllers;
 
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
+import utils.Resources;
 import web.Requests;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
@@ -19,28 +20,28 @@ import java.util.*;
 
 public class LoginController extends Controller {
 
-    private static String backgroundColor = "#221C35";
+    protected static String backgroundColor = "#221C35";
     @FXML
-    private CheckBox rememberCheckBox;
+    protected CheckBox rememberCheckBox;
     @FXML
-    private TextField usernameField;
+    protected TextField usernameField;
 
     @FXML
-    private ProgressIndicator progressIndicator;
+    protected ProgressIndicator progressIndicator;
 
     @FXML
-    private PasswordField passwordField;
+    protected PasswordField passwordField;
 
     @FXML
-    private Button loginButton;
+    protected Button loginButton;
 
     @FXML
-    private Button registerButton;
+    protected Button registerButton;
 
     @FXML
-    private AnchorPane loginPane;
+    protected AnchorPane loginPane;
 
-    private Requests requests;
+    protected Requests requests;
 
     public void initialize() {
         setBackground("file:src/resources/images/background.png", loginPane, 1200, 685);
@@ -64,7 +65,7 @@ public class LoginController extends Controller {
         performLogin(true);
     }
 
-    private void performLogin(boolean register) {
+    protected void performLogin(boolean register) {
         String username = usernameField.getText();
         String password = passwordField.getText();
         Map<String, String> properties = new HashMap<>();

@@ -1,7 +1,9 @@
-package controllers.transactions;
+package controllers;
 
 import controllers.Controller;
+import javafx.scene.control.Button;
 import models.ModeratorDataModel;
+import utils.Resources;
 import web.Requests;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
@@ -26,6 +28,8 @@ public class TransactionsPaneController extends Controller {
     private Requests requests;
     private UserModel userModel;
     private ModeratorDataModel moderatorDataModel;
+    @FXML
+    protected Button requestRefundButton;
 
     public void initialize() {
         transactions = new ArrayList<>();

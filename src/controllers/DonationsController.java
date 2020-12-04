@@ -1,4 +1,4 @@
-package controllers.transactions;
+package controllers;
 
 import controllers.Controller;
 import javafx.application.Platform;
@@ -8,12 +8,11 @@ import javafx.scene.paint.Color;
 import models.entities.CreditCard;
 import models.UserModel;
 import services.PaymentService;
+import utils.Resources;
 import utils.fxUtils.AlertUtils;
 import web.Requests;
 import web.TaskRunner;
 
-import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -36,6 +35,8 @@ public class DonationsController extends Controller {
     private Label currencyLabel;
     @FXML
     private Label descriptionLabel;
+    @FXML
+    protected Button sendDonationButton;
 
     private List<Double> amounts;
     private List<String> currencies;

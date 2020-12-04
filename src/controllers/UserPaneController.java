@@ -6,6 +6,7 @@ import javafx.scene.control.SplitPane;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Paint;
 import updating.OnUpdate;
+import utils.Resources;
 import web.Requests;
 import models.UserModel;
 import utils.fxUtils.AlertUtils;
@@ -80,6 +81,10 @@ public class UserPaneController extends Controller {
     private Requests requests;
 
     public void initialize() {
+        try {
+            setButtonsStyle(Resources.getStyle("button1"));
+        } catch (IllegalAccessException | IOException ignored) {
+        }
         Background background = getBackground(backgroundColor);
         viewPane.setBackground(background);
         menuPane.setBackground(background);

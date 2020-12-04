@@ -2,9 +2,32 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f9d0ae25-61cc-4b23-be1a-a68af21f1dbf" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/resources/styles/button1.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/resources/styles/clickedButton.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/utils/Resources.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/LibraryJFX/controllers/LoginController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/LibraryJFX/controllers/LoginController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/LibraryJFX/controllers/UserPaneController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/LibraryJFX/controllers/UserPaneController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controllers/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controllers/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/LoginController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controllers/UserPaneController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/UserPaneController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/userPane.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/userPane.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controllers/books/BookBrowserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/BookBrowserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controllers/books/BooksController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/BooksController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controllers/moderator/ModeratorPaneController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/ModeratorPaneController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controllers/moderator/ModeratorRefundController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/ModeratorRefundController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controllers/transactions/DonationsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/DonationsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controllers/transactions/RefundsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/RefundsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controllers/transactions/SubscriptionPaneController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/SubscriptionPaneController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controllers/transactions/TransactionsPaneController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/TransactionsPaneController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/bookBrowser.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/bookBrowser.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/booksPane.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/booksPane.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/cardDetails.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/cardDetails.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/donations.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/donations.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/moderatorPane.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/moderatorPane.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/moderatorRefundPane.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/moderatorRefundPane.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/refundsPane.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/refundsPane.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/transactionPane.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/transactionPane.fxml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -16,13 +39,45 @@
   <component name="DefaultGradleProjectSettings">
     <option name="isMigrated" value="true" />
   </component>
+  <component name="DockManager">
+    <window id="3">
+      <content type="file-editors">
+        <state>
+          <leaf>
+            <file pinned="false" current-in-tab="false">
+              <entry file="file://$PROJECT_DIR$/src/resources/transactionPane.fxml">
+                <provider editor-type-id="text-editor">
+                  <state relative-caret-position="204">
+                    <caret line="12" column="37" selection-start-line="12" selection-start-column="37" selection-end-line="12" selection-end-column="37" />
+                  </state>
+                </provider>
+                <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
+              </entry>
+            </file>
+            <file pinned="false" current-in-tab="true">
+              <entry file="file://$PROJECT_DIR$/src/resources/moderatorPane.fxml">
+                <provider editor-type-id="text-editor" />
+                <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
+              </entry>
+            </file>
+            <file pinned="false" current-in-tab="false">
+              <entry file="file://$PROJECT_DIR$/src/resources/moderatorRefundPane.fxml">
+                <provider editor-type-id="text-editor" />
+                <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
+              </entry>
+            </file>
+          </leaf>
+        </state>
+      </content>
+    </window>
+  </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/controllers/UserPaneController.java">
+        <entry file="file://$PROJECT_DIR$/src/controllers/ModeratorRefundController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="276">
-              <caret line="92" selection-start-line="92" selection-end-line="92" />
+            <state relative-caret-position="207">
+              <caret line="33" column="30" selection-start-line="33" selection-start-column="30" selection-end-line="33" selection-end-column="30" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -31,61 +86,46 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/controllers/moderator/ModeratorRefundController.java">
+        <entry file="file://$PROJECT_DIR$/src/controllers/RefundsController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="34" selection-start-line="34" selection-end-line="34" />
+            <state relative-caret-position="119">
+              <caret line="7" column="41" selection-start-line="7" selection-start-column="41" selection-end-line="7" selection-end-column="41" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/controllers/TransactionsPaneController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="621">
+              <caret line="39" column="22" selection-start-line="39" selection-start-column="22" selection-end-line="39" selection-end-column="22" />
               <folding>
-                <element signature="e#1678#1679#0" expanded="true" />
-                <element signature="e#1735#1736#0" expanded="true" />
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/models/ModeratorDataModel.java">
+        <entry file="file://$PROJECT_DIR$/src/utils/fxUtils/SceneController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="527">
-              <caret line="41" selection-start-line="41" selection-end-line="41" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#632#633#0" expanded="true" />
-                <element signature="e#680#681#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/controllers/Controller.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="510">
-              <caret line="46" column="58" selection-start-line="46" selection-start-column="58" selection-end-line="46" selection-end-column="58" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="309">
+              <caret line="83" column="30" selection-start-line="83" selection-start-column="30" selection-end-line="83" selection-end-column="30" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/resources/userPane.fxml">
-          <provider editor-type-id="text-editor">
-            <state relative-caret-position="219">
-              <caret line="161" column="29" selection-start-line="161" selection-start-column="29" selection-end-line="161" selection-end-column="29" />
-            </state>
-          </provider>
-          <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/controllers/LoginController.java">
+        <entry file="file://$PROJECT_DIR$/src/controllers/Controller.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="510">
-              <caret line="45" column="8" selection-start-line="45" selection-start-column="8" selection-end-line="45" selection-end-column="88" />
+            <state relative-caret-position="258">
+              <caret line="100" column="58" lean-forward="true" selection-start-line="100" selection-start-column="58" selection-end-line="100" selection-end-column="58" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#1093#1094#0" expanded="true" />
+                <element signature="e#1134#1135#0" expanded="true" />
+                <element signature="e#1186#1187#0" expanded="true" />
+                <element signature="e#1227#1228#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -94,8 +134,62 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="51">
-              <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+            <state>
+              <caret column="7" lean-forward="true" selection-start-column="7" selection-end-column="7" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/controllers/BooksController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="299">
+              <caret line="28" column="30" selection-start-line="28" selection-start-column="30" selection-end-line="28" selection-end-column="30" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/controllers/LoginController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="112">
+              <caret line="45" column="30" selection-start-line="45" selection-start-column="30" selection-end-line="45" selection-end-column="30" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#1823#1824#0" expanded="true" />
+                <element signature="e#1857#1858#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/controllers/ModeratorPaneController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="289">
+              <caret line="17" column="30" selection-start-line="17" selection-start-column="30" selection-end-line="17" selection-end-column="30" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#426#427#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/controllers/DonationsController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="258">
+              <caret line="65" column="30" selection-start-line="65" selection-start-column="30" selection-end-line="65" selection-end-column="30" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -106,8 +200,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="jfxMain" />
-        <option value="Class" />
         <option value="FxmlFile" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -130,6 +224,8 @@
       <find>Scene</find>
       <find>onMouseEntered</find>
       <find>fx:id=&quot;\w+Image\&quot;</find>
+      <find>Styles</find>
+      <find>private</find>
     </findStrings>
     <replaceStrings>
       <replace>.</replace>
@@ -143,6 +239,7 @@
       <replace>1 / (double)6</replace>
       <replace>method</replace>
       <replace>onMouseClicked</replace>
+      <replace>protected</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -156,57 +253,57 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/tasks/BookDataRetrievalTask.java" />
-        <option value="$PROJECT_DIR$/src/models/entities/User.java" />
-        <option value="$PROJECT_DIR$/src/resources/subscriptionPane.fxml" />
-        <option value="$PROJECT_DIR$/src/utils/fxUtils/AlertUtils.java" />
-        <option value="$PROJECT_DIR$/src/resources/application.properties" />
         <option value="$PROJECT_DIR$/src/tasks/Task.java" />
         <option value="$PROJECT_DIR$/src/tasks/DataCallback.java" />
         <option value="$PROJECT_DIR$/src/resources/userPaneNew.fxml" />
         <option value="$PROJECT_DIR$/src/services/PaymentService.java" />
         <option value="$PROJECT_DIR$/src/utils/tableUtils/Table.java" />
         <option value="$PROJECT_DIR$/src/updating/OnUpdate.java" />
-        <option value="$PROJECT_DIR$/src/controllers/TransactionsPaneController.java" />
-        <option value="$PROJECT_DIR$/src/controllers/BooksController.java" />
-        <option value="$PROJECT_DIR$/src/controllers/ModeratorRefundController.java" />
-        <option value="$PROJECT_DIR$/src/controllers/RefundsController.java" />
         <option value="$PROJECT_DIR$/src/models/BookModel.java" />
         <option value="$PROJECT_DIR$/src/models/UserModel.java" />
         <option value="$PROJECT_DIR$/src/resources/awgfmaw.fxml" />
         <option value="$PROJECT_DIR$/src/resources/styles/style.css" />
         <option value="$PROJECT_DIR$/src/utils/fxUtils/SceneController.java" />
         <option value="$PROJECT_DIR$/src/resources/login.fxml" />
-        <option value="$PROJECT_DIR$/src/Main.java" />
-        <option value="$PROJECT_DIR$/src/controllers/BookBrowserController.java" />
-        <option value="$PROJECT_DIR$/src/controllers/SubscriptionPaneController.java" />
-        <option value="$PROJECT_DIR$/src/controllers/DonationsController.java" />
-        <option value="$PROJECT_DIR$/src/controllers/ModeratorPaneController.java" />
         <option value="$PROJECT_DIR$/src/web/Requests.java" />
-        <option value="$PROJECT_DIR$/src/controllers/books/BooksController.java" />
         <option value="$PROJECT_DIR$/src/tasks/UserDataRetrievalTask.java" />
-        <option value="$PROJECT_DIR$/src/controllers/transactions/SubscriptionPaneController.java" />
-        <option value="$PROJECT_DIR$/src/controllers/transactions/DonationsController.java" />
         <option value="$PROJECT_DIR$/src/web/TaskRunner.java" />
         <option value="$PROJECT_DIR$/src/resources/newUserPane.fxml" />
         <option value="$PROJECT_DIR$/src/resources/transactionPane.fxml" />
-        <option value="$PROJECT_DIR$/src/resources/cardDetails.fxml" />
         <option value="$PROJECT_DIR$/src/resources/donations.fxml" />
         <option value="$PROJECT_DIR$/src/resources/refundsPane.fxml" />
-        <option value="$PROJECT_DIR$/src/resources/booksPane.fxml" />
-        <option value="$PROJECT_DIR$/src/controllers/books/BookBrowserController.java" />
-        <option value="$PROJECT_DIR$/src/resources/bookBrowser.fxml" />
-        <option value="$PROJECT_DIR$/src/resources/moderatorPane.fxml" />
-        <option value="$PROJECT_DIR$/src/controllers/moderator/ModeratorPaneController.java" />
         <option value="$PROJECT_DIR$/src/models/ModeratorDataModel.java" />
-        <option value="$PROJECT_DIR$/src/controllers/transactions/TransactionsPaneController.java" />
-        <option value="$PROJECT_DIR$/src/controllers/moderator/ModeratorRefundController.java" />
         <option value="$PROJECT_DIR$/src/updating/ControllerAccess.java" />
         <option value="$PROJECT_DIR$/src/updating/Updater.java" />
-        <option value="$PROJECT_DIR$/src/controllers/LoginController.java" />
-        <option value="$PROJECT_DIR$/src/controllers/Controller.java" />
-        <option value="$PROJECT_DIR$/src/controllers/UserPaneController.java" />
         <option value="$PROJECT_DIR$/src/resources/userPane.fxml" />
+        <option value="$PROJECT_DIR$/src/utils/Styles.java" />
+        <option value="$PROJECT_DIR$/src/resources/styles/button1.css" />
+        <option value="$PROJECT_DIR$/src/utils/Resources.java" />
+        <option value="$PROJECT_DIR$/src/controllers/UserPaneController.java" />
+        <option value="$PROJECT_DIR$/src/controllers/transactions/DonationsController.java" />
+        <option value="$PROJECT_DIR$/src/controllers/transactions/RefundsController.java" />
+        <option value="$PROJECT_DIR$/src/controllers/transactions/SubscriptionPaneController.java" />
+        <option value="$PROJECT_DIR$/src/controllers/transactions/TransactionsPaneController.java" />
+        <option value="$PROJECT_DIR$/src/controllers/moderator/ModeratorPaneController.java" />
+        <option value="$PROJECT_DIR$/src/controllers/moderator/ModeratorRefundController.java" />
+        <option value="$PROJECT_DIR$/src/resources/bookBrowser.fxml" />
+        <option value="$PROJECT_DIR$/src/resources/booksPane.fxml" />
+        <option value="$PROJECT_DIR$/src/controllers/books/BooksController.java" />
+        <option value="$PROJECT_DIR$/src/controllers/books/BookBrowserController.java" />
+        <option value="$PROJECT_DIR$/src/resources/cardDetails.fxml" />
+        <option value="$PROJECT_DIR$/src/resources/moderatorPane.fxml" />
+        <option value="$PROJECT_DIR$/src/controllers/SubscriptionPaneController.java" />
+        <option value="$PROJECT_DIR$/src/resources/styles/clickedButton.css" />
+        <option value="$PROJECT_DIR$/src/controllers/BookBrowserController.java" />
+        <option value="$PROJECT_DIR$/src/controllers/BooksController.java" />
+        <option value="$PROJECT_DIR$/src/controllers/DonationsController.java" />
+        <option value="$PROJECT_DIR$/src/controllers/LoginController.java" />
+        <option value="$PROJECT_DIR$/src/controllers/ModeratorPaneController.java" />
+        <option value="$PROJECT_DIR$/src/controllers/ModeratorRefundController.java" />
+        <option value="$PROJECT_DIR$/src/controllers/TransactionsPaneController.java" />
+        <option value="$PROJECT_DIR$/src/controllers/Controller.java" />
+        <option value="$PROJECT_DIR$/src/Main.java" />
+        <option value="$PROJECT_DIR$/src/controllers/RefundsController.java" />
       </list>
     </option>
   </component>
@@ -224,6 +321,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -246,13 +345,6 @@
               <item name="LibraryJFX" type="b2602c69:ProjectViewProjectNode" />
               <item name="LibraryJFX" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="controllers" type="462c0819:PsiDirectoryNode" />
-              <item name="books" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="LibraryJFX" type="b2602c69:ProjectViewProjectNode" />
-              <item name="LibraryJFX" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -260,20 +352,18 @@
               <item name="LibraryJFX" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="images" type="462c0819:PsiDirectoryNode" />
+              <item name="styles" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="LibraryJFX" type="b2602c69:ProjectViewProjectNode" />
               <item name="LibraryJFX" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="updating" type="462c0819:PsiDirectoryNode" />
+              <item name="utils" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -366,7 +456,7 @@
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49930653" visible="true" weight="0.21268657" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49930653" visible="true" weight="0.21481876" />
       <window_info id="Structure" order="1" sideWeight="0.5006935" side_tool="true" weight="0.20628998" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -438,14 +528,14 @@
           <option name="timeStamp" value="25" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/controllers/transactions/SubscriptionPaneController.java</url>
-          <line>87</line>
+          <url>file://$PROJECT_DIR$/src/controllers/SubscriptionPaneController.java</url>
+          <line>92</line>
           <properties />
           <option name="timeStamp" value="50" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/controllers/transactions/SubscriptionPaneController.java</url>
-          <line>78</line>
+          <url>file://$PROJECT_DIR$/src/controllers/SubscriptionPaneController.java</url>
+          <line>83</line>
           <properties>
             <option name="lambda-ordinal" value="1" />
           </properties>
@@ -459,9 +549,15 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/controllers/UserPaneController.java</url>
-          <line>82</line>
+          <line>87</line>
           <properties />
           <option name="timeStamp" value="68" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/controllers/BooksController.java</url>
+          <line>30</line>
+          <properties />
+          <option name="timeStamp" value="81" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -498,104 +594,53 @@
     </expressions>
     <expressions id="evaluateExpression">
       <expression>
-        <expression-string>ModeratorDataModel.getInstance()</expression-string>
+        <expression-string>(Node) f.get(this)</expression-string>
         <language-id>JAVA</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>ControllerAccess.getInstance()</expression-string>
-        <language-id>JAVA</language-id>
-        <custom-info>updating.ControllerAccess</custom-info>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>updateRequester</expression-string>
+        <expression-string>this.getClass().getDeclaredFields()</expression-string>
         <language-id>JAVA</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>requests.sendRequest(String.format(&quot;%s/registration&quot;, appURL), properties, &quot;POST&quot;).equals(&quot;true&quot;)</expression-string>
+        <expression-string>f.getType().getName().equals(c.getName())</expression-string>
         <language-id>JAVA</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>requests.sendRequest(String.format(&quot;%s/registration&quot;, appURL), properties, &quot;POST&quot;)</expression-string>
+        <expression-string>f.getType().getName()</expression-string>
         <language-id>JAVA</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>ModeratorDataModel.getInstance()</expression-string>
-        <language-id>JAVA</language-id>
-        <custom-info>models.ModeratorDataModel</custom-info>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>SceneController.class.getResource(resourceDirectory + &quot;styles/&quot; + &quot;style.css&quot;)</expression-string>
+        <expression-string>c.getName()</expression-string>
         <language-id>JAVA</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>scene.getStylesheets()</expression-string>
+        <expression-string>findNode(Button.class)</expression-string>
         <language-id>JAVA</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>scene.getStylesheets().addAll(SceneController.class.getResource(resourceDirectory + &quot;styles/&quot; + &quot;style.css&quot;).toExternalForm())</expression-string>
+        <expression-string>reader.readLine()</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>new FileReader(file).toString()</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>new FileReader(file)</expression-string>
         <language-id>JAVA</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/models/entities/Book.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/models/entities/CreditCard.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="20" column="29" selection-start-line="20" selection-start-column="29" selection-end-line="20" selection-end-column="29" />
-          <folding>
-            <element signature="e#505#506#0" expanded="true" />
-            <element signature="e#541#542#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/models/entities/Role.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/models/entities/Transaction.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/models/entities/User.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="693">
-          <caret line="53" lean-forward="true" selection-start-line="53" selection-end-line="53" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/models/tableRepresentations/ModeratorRefundTableRepresentation.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/tasks/UserDataRetrievalTask.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
@@ -671,48 +716,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/controllers/transactions/DonationsController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="88" column="41" selection-start-line="88" selection-start-column="41" selection-end-line="88" selection-end-column="41" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/controllers/transactions/SubscriptionPaneController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1188">
-          <caret line="20" column="13" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/web/Requests.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="320">
           <caret line="86" column="31" selection-start-line="86" selection-start-column="31" selection-end-line="86" selection-end-column="31" />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/resources/transactionPane.fxml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" column="37" selection-start-line="12" selection-start-column="37" selection-end-line="12" selection-end-column="37" />
-        </state>
-      </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/resources/donations.fxml">
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="26" selection-start-line="10" selection-start-column="26" selection-end-line="10" selection-end-column="26" />
-        </state>
-      </provider>
-      <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
     </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_191/src.zip!/java/lang/Runnable.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -739,46 +748,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/resources/cardDetails.fxml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="50" selection-start-line="8" selection-start-column="50" selection-end-line="8" selection-end-column="50" />
-        </state>
-      </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/resources/booksPane.fxml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="130" selection-start-line="8" selection-start-column="130" selection-end-line="8" selection-end-column="130" />
-        </state>
-      </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/resources/refundsPane.fxml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="31" selection-start-line="6" selection-start-column="31" selection-end-line="6" selection-end-column="31" />
-        </state>
-      </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/resources/moderatorRefundPane.fxml">
-      <provider selected="true" editor-type-id="text-editor" />
-      <provider editor-type-id="JavaFX-Scene-Builder" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/controllers/books/BooksController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="496">
-          <caret line="32" column="44" lean-forward="true" selection-start-line="32" selection-start-column="44" selection-end-line="32" selection-end-column="44" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1120#1121#0" expanded="true" />
-            <element signature="e#1202#1203#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/services/PaymentService.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="544">
@@ -793,40 +762,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="243">
           <caret line="64" column="37" lean-forward="true" selection-start-line="64" selection-start-column="37" selection-end-line="64" selection-end-column="37" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/controllers/moderator/ModeratorPaneController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="4" lean-forward="true" selection-start-line="8" selection-start-column="4" selection-end-line="8" selection-end-column="4" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#365#366#0" expanded="true" />
-            <element signature="e#401#402#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/resources/bookBrowser.fxml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="10" lean-forward="true" selection-start-line="9" selection-start-column="10" selection-end-line="9" selection-end-column="10" />
-        </state>
-      </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/resources/moderatorPane.fxml">
-      <provider selected="true" editor-type-id="text-editor" />
-      <provider editor-type-id="JavaFX-Scene-Builder" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/controllers/transactions/TransactionsPaneController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="145">
-          <caret line="32" column="62" selection-start-line="32" selection-start-column="62" selection-end-line="32" selection-end-column="62" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -858,16 +793,6 @@
     <entry file="file://$PROJECT_DIR$/src/resources/login.fxml">
       <provider editor-type-id="text-editor" />
       <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/controllers/books/BookBrowserController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="269">
-          <caret line="43" column="8" lean-forward="true" selection-start-line="43" selection-start-column="8" selection-end-line="43" selection-end-column="89" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
     </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_191/javafx-src.zip!/javafx/scene/paint/LinearGradient.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -901,36 +826,23 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/controllers/Controller.java">
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_191/javafx-src.zip!/javafx/fxml/FXMLLoader.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="46" column="58" selection-start-line="46" selection-start-column="58" selection-end-line="46" selection-end-column="58" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="17">
+          <caret line="2569" selection-start-line="2569" selection-end-line="2569" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/controllers/LoginController.java">
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_191/src.zip!/java/lang/reflect/Field.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="45" column="8" selection-start-line="45" selection-start-column="8" selection-end-line="45" selection-end-column="88" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+        <state relative-caret-position="809">
+          <caret line="383" column="18" selection-start-line="383" selection-start-column="18" selection-end-line="383" selection-end-column="18" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/models/ModeratorDataModel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="527">
+        <state relative-caret-position="377">
           <caret line="41" selection-start-line="41" selection-end-line="41" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -940,41 +852,224 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/controllers/moderator/ModeratorRefundController.java">
+    <entry file="file://$PROJECT_DIR$/src/utils/Resources.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="34" selection-start-line="34" selection-end-line="34" />
-          <folding>
-            <element signature="e#1678#1679#0" expanded="true" />
-            <element signature="e#1735#1736#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_191/javafx-src.zip!/javafx/fxml/FXMLLoader.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="2569" selection-start-line="2569" selection-end-line="2569" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/controllers/UserPaneController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="276">
-          <caret line="92" selection-start-line="92" selection-end-line="92" />
+        <state relative-caret-position="169">
+          <caret line="11" selection-start-line="11" selection-end-line="11" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/resources/bookBrowser.fxml">
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="10" lean-forward="true" selection-start-line="9" selection-start-column="10" selection-end-line="9" selection-end-column="10" />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/resources/booksPane.fxml">
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="130" selection-start-line="8" selection-start-column="130" selection-end-line="8" selection-end-column="130" />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/resources/refundsPane.fxml">
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="31" selection-start-line="6" selection-start-column="31" selection-end-line="6" selection-end-column="31" />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/resources/userPane.fxml">
       <provider editor-type-id="text-editor">
-        <state relative-caret-position="219">
+        <state relative-caret-position="562">
           <caret line="161" column="29" selection-start-line="161" selection-start-column="29" selection-end-line="161" selection-end-column="29" />
         </state>
       </provider>
       <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/resources/donations.fxml">
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="26" selection-start-line="10" selection-start-column="26" selection-end-line="10" selection-end-column="26" />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controllers/SubscriptionPaneController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="30" column="4" selection-start-line="30" selection-start-column="4" selection-end-line="31" selection-end-column="34" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/resources/cardDetails.fxml">
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="50" selection-start-line="8" selection-start-column="50" selection-end-line="8" selection-end-column="50" />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/resources/transactionPane.fxml">
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" column="37" selection-start-line="12" selection-start-column="37" selection-end-line="12" selection-end-column="37" />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/resources/moderatorPane.fxml">
+      <provider editor-type-id="text-editor" />
+      <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/resources/styles/button1.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret selection-end-column="54" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controllers/UserPaneController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="23" column="49" selection-start-line="23" selection-start-column="42" selection-end-line="23" selection-end-column="49" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/resources/styles/clickedButton.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="52" selection-start-column="52" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/resources/moderatorRefundPane.fxml">
+      <provider editor-type-id="text-editor" />
+      <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controllers/BookBrowserController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="218">
+          <caret line="46" column="37" selection-start-line="46" selection-start-column="37" selection-end-line="46" selection-end-column="37" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controllers/BooksController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="299">
+          <caret line="28" column="30" selection-start-line="28" selection-start-column="30" selection-end-line="28" selection-end-column="30" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controllers/DonationsController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="258">
+          <caret line="65" column="30" selection-start-line="65" selection-start-column="30" selection-end-line="65" selection-end-column="30" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controllers/LoginController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="112">
+          <caret line="45" column="30" selection-start-line="45" selection-start-column="30" selection-end-line="45" selection-end-column="30" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1823#1824#0" expanded="true" />
+            <element signature="e#1857#1858#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controllers/ModeratorPaneController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="17" column="30" selection-start-line="17" selection-start-column="30" selection-end-line="17" selection-end-column="30" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#426#427#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controllers/TransactionsPaneController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="621">
+          <caret line="39" column="22" selection-start-line="39" selection-start-column="22" selection-end-line="39" selection-end-column="22" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/utils/fxUtils/SceneController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="309">
+          <caret line="83" column="30" selection-start-line="83" selection-start-column="30" selection-end-line="83" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="7" lean-forward="true" selection-start-column="7" selection-end-column="7" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controllers/ModeratorRefundController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="207">
+          <caret line="33" column="30" selection-start-line="33" selection-start-column="30" selection-end-line="33" selection-end-column="30" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controllers/RefundsController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="41" selection-start-line="7" selection-start-column="41" selection-end-line="7" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controllers/Controller.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="258">
+          <caret line="100" column="58" lean-forward="true" selection-start-line="100" selection-start-column="58" selection-end-line="100" selection-end-column="58" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1093#1094#0" expanded="true" />
+            <element signature="e#1134#1135#0" expanded="true" />
+            <element signature="e#1186#1187#0" expanded="true" />
+            <element signature="e#1227#1228#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
     </entry>
   </component>
   <component name="masterDetails">

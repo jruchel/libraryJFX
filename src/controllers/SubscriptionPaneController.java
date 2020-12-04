@@ -1,17 +1,17 @@
-package controllers.transactions;
+package controllers;
 
 import controllers.Controller;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.scene.paint.Color;
 import models.UserModel;
 import models.entities.CreditCard;
-import models.entities.User;
 import services.PaymentService;
 import utils.Properties;
+import utils.Resources;
 import utils.fxUtils.AlertUtils;
 
 import java.io.IOException;
@@ -28,10 +28,16 @@ public class SubscriptionPaneController extends Controller {
     private TextField yearTextField;
     @FXML
     private PasswordField cvcTextField;
+    @FXML
+    protected Button acceptButton;
 
     private UserModel userModel;
 
     public void initialize() {
+        try {
+            setButtonsStyle(Resources.getStyle("button1"));
+        } catch (IllegalAccessException | IOException ignored) {
+        }
         userModel = UserModel.getInstance();
         userModel.updateUser();
         initializeManually();
