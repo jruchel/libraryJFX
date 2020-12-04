@@ -1,6 +1,5 @@
 package controllers;
 
-import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.Parent;
@@ -11,7 +10,6 @@ import javafx.scene.layout.*;
 import javafx.scene.paint.Paint;
 import updating.ControllerAccess;
 import utils.Properties;
-import utils.Resources;
 import utils.fxUtils.SceneController;
 import web.Requests;
 

@@ -41,7 +41,6 @@ public class BookBrowserController extends Controller {
     protected UserModel userModel;
 
     public void initialize() {
-       
         booksOrAuthorsPagination.setPageFactory(param -> {
             currentPage = new ListView<>();
             currentPage.getItems().addAll(new ArrayList<>());
@@ -98,15 +97,6 @@ public class BookBrowserController extends Controller {
     }
 
     public void onSearch() {
-        new Thread(() -> {
-            titleTextField.setDisable(true);
-            try {
-                Thread.sleep(200);
-            } catch (InterruptedException ignored) {
-
-            }
-            titleTextField.setDisable(false);
-        }).start();
         if (titleTextField.getText().isEmpty()) return;
         booksOrAuthorsPagination.setPageFactory(param -> {
             currentPage = new ListView<>();

@@ -1,9 +1,7 @@
 package controllers;
 
-import controllers.Controller;
 import javafx.scene.control.Button;
 import updating.OnUpdate;
-import utils.Resources;
 import web.Requests;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
@@ -12,8 +10,6 @@ import models.entities.Book;
 import models.UserModel;
 import web.TaskRunner;
 import utils.fxUtils.AlertUtils;
-
-import java.io.IOException;
 import java.util.List;
 
 public class BooksController extends Controller {
