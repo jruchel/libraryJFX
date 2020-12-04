@@ -104,8 +104,8 @@ public abstract class Controller {
                 String defaultStyle = b.getStyle();
                 b.setStyle(style);
                 try {
-                    Thread.sleep(time);
                     b.setDisable(true);
+                    Thread.sleep(time);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
