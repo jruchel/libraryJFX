@@ -6,12 +6,16 @@ import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableView;
 import javafx.scene.image.Image;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Paint;
 import updating.ControllerAccess;
 import utils.Properties;
+import utils.Resources;
 import utils.fxUtils.SceneController;
 import web.Requests;
+
+import javafx.event.EventHandler;
 
 import java.io.IOException;
 import java.lang.reflect.Field;
@@ -51,7 +55,8 @@ public abstract class Controller {
         try {
             if (!defaultButtonStyle.isEmpty()) setButtonsStyle(defaultButtonStyle);
             if (!clickedButtonStyle.isEmpty()) setButtonAnimation(clickedButtonStyle, 1000);
-        } catch (IllegalAccessException e) {
+            setNodeStyle(TableView.class, Resources.getStyle("table"));
+        } catch (IllegalAccessException | IOException e) {
             e.printStackTrace();
         }
     }
@@ -93,7 +98,11 @@ public abstract class Controller {
     }
 
     protected void setButtonsStyle(String style) throws IllegalAccessException {
-        findNode(Button.class).forEach(b -> b.setStyle(style));
+        setNodeStyle(Button.class, style);
+    }
+
+    protected void setNodeStyle(Class<? extends Node> c, String style) throws IllegalAccessException {
+        findNode(c).forEach(cls -> cls.setStyle(style));
     }
 
     protected void setButtonAnimation(String style, int time) throws IllegalAccessException {
@@ -113,11 +122,17 @@ public abstract class Controller {
         }));
     }
 
+    protected void setKeyPresses(Pane mainPane, EventHandler<KeyEvent> onEnter) {
+        mainPane.setOnKeyPressed(onEnter);
+    }
+
     protected List<Node> findNode(Class<? extends Node> c) throws IllegalAccessException {
         List<Node> nodes = new ArrayList<>();
         for (Field f : this.getClass().getDeclaredFields()) {
             if (f.getType().getName().equals(c.getName())) {
+                f.setAccessible(true);
                 nodes.add((Node) f.get(this));
+                f.setAccessible(false);
             }
         }
         return nodes;

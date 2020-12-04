@@ -4,6 +4,8 @@ import controllers.Controller;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.input.KeyCode;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import models.entities.CreditCard;
 import models.UserModel;
@@ -37,6 +39,8 @@ public class DonationsController extends Controller {
     private Label descriptionLabel;
     @FXML
     protected Button sendDonationButton;
+    @FXML
+    protected AnchorPane donationPane;
 
     private List<Double> amounts;
     private List<String> currencies;
@@ -73,6 +77,11 @@ public class DonationsController extends Controller {
         currencyChoiceBox.getItems().clear();
         currencyChoiceBox.getItems().addAll(currencies);
         initializeManually();
+        setKeyPresses(donationPane, event -> {
+            if (event.getCode().equals(KeyCode.ENTER)) {
+                sendDonation();
+            }
+        });
 
     }
 

@@ -12,9 +12,9 @@ import java.util.List;
 
 public class RefundsController extends Controller {
     @FXML
-    private TableView<Refund> refundsTableView;
-    private List<Refund> refunds;
-    private UserModel userModel;
+    protected TableView<Refund> refundsTableView;
+    protected List<Refund> refunds;
+    protected UserModel userModel;
 
     public void initialize() {
         userModel = UserModel.getInstance();
@@ -47,7 +47,7 @@ public class RefundsController extends Controller {
         refundsTableView.getColumns().forEach(c -> c.setResizable(false));
     }
 
-    private void updateRefunds() {
+    protected void updateRefunds() {
         refunds = userModel.getCurrentUser().getRefunds();
     }
 

@@ -1,22 +1,24 @@
 package controllers;
 
-import javafx.scene.layout.*;
-import javafx.scene.paint.Color;
-import utils.Resources;
-import web.Requests;
 import javafx.application.Platform;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.paint.Color;
 import tasks.UserDataRetrievalTask;
-
 import utils.Properties;
 import utils.fxUtils.AlertUtils;
 import utils.fxUtils.SceneController;
+import web.Requests;
 import web.TaskRunner;
 
 import java.io.IOException;
-import java.util.*;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 
 public class LoginController extends Controller {
 
@@ -59,7 +61,13 @@ public class LoginController extends Controller {
         }
         this.requests = Requests.getInstance();
         initializeManually();
+        setKeyPresses(loginPane, event -> {
+            if (event.getCode().equals(KeyCode.ENTER)) {
+                login();
+            }
+        });
     }
+
 
     public void register() {
         performLogin(true);

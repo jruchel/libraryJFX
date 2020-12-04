@@ -4,6 +4,7 @@ import javafx.application.Platform;
 import javafx.fxml.FXML;
 
 import javafx.scene.control.*;
+import javafx.scene.input.KeyCode;
 import javafx.scene.layout.BorderPane;
 import models.BookModel;
 import models.UserModel;
@@ -50,6 +51,11 @@ public class BookBrowserController extends Controller {
         bookModel = BookModel.getInstance();
         userModel = UserModel.getInstance();
         initializeManually();
+        setKeyPresses(browserPane, event -> {
+            if (event.getCode().equals(KeyCode.ENTER)) {
+                onSearch();
+            }
+        });
     }
 
     public void onReserve() {

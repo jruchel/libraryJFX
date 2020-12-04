@@ -1,5 +1,6 @@
 package controllers;
 
+import com.sun.org.glassfish.external.statistics.annotations.Reset;
 import controllers.Controller;
 import javafx.scene.control.Button;
 import models.ModeratorDataModel;
@@ -22,12 +23,12 @@ import java.util.*;
 public class TransactionsPaneController extends Controller {
 
     @FXML
-    private TableView<Transaction> transactionsTableView;
-    private List<Transaction> transactions;
-    private List<Refund> refunds;
-    private Requests requests;
-    private UserModel userModel;
-    private ModeratorDataModel moderatorDataModel;
+    protected TableView<Transaction> transactionsTableView;
+    protected List<Transaction> transactions;
+    protected List<Refund> refunds;
+    protected Requests requests;
+    protected UserModel userModel;
+    protected ModeratorDataModel moderatorDataModel;
     @FXML
     protected Button requestRefundButton;
 
@@ -47,6 +48,11 @@ public class TransactionsPaneController extends Controller {
         transactions = userModel.getCurrentUser().getTransactionList();
         transactionsTableView.getItems().removeAll(transactionsTableView.getItems());
         transactionsTableView.getItems().addAll(transactions);
+        try {
+            transactionsTableView.setStyle(Resources.getStyle("table"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public void initializeTransactions() {

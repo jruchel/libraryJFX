@@ -2,11 +2,15 @@ package controllers;
 
 import controllers.Controller;
 import javafx.application.Platform;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.AnchorPane;
 import models.UserModel;
 import models.entities.CreditCard;
 import services.PaymentService;
@@ -30,6 +34,8 @@ public class SubscriptionPaneController extends Controller {
     private PasswordField cvcTextField;
     @FXML
     protected Button acceptButton;
+    @FXML
+    protected AnchorPane cardDetailsPane;
 
     private UserModel userModel;
 
@@ -41,6 +47,11 @@ public class SubscriptionPaneController extends Controller {
         userModel = UserModel.getInstance();
         userModel.updateUser();
         initializeManually();
+        setKeyPresses(cardDetailsPane, event -> {
+            if (event.getCode().equals(KeyCode.ENTER)) {
+                onAccept();
+            }
+        });
     }
 
     public void onCreditCardInput() {

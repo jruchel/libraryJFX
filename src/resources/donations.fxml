@@ -8,7 +8,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane visible="false" prefHeight="200.0" prefWidth="721.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.DonationsController">
+<AnchorPane fx:id="donationPane" prefHeight="200.0" prefWidth="721.0" visible="false" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.DonationsController">
     <children>
         <Label fx:id="amountLabel" layoutX="233.0" layoutY="23.0" text="Amount" textFill="WHITE" AnchorPane.leftAnchor="225.0" />
         <TextField fx:id="otherAmountTextField" disable="true" layoutX="233.0" layoutY="68.0" AnchorPane.leftAnchor="225.0" AnchorPane.rightAnchor="225.0" />
