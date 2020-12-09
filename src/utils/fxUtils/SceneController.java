@@ -16,11 +16,9 @@ public class SceneController {
 
     private static Stage primaryStage;
     private static int width, height;
-    private static Map<String, Scene> scenes;
     private static String resourceDirectory = "src/resources/";
 
     static {
-        scenes = new HashMap<>();
         width = 600;
         height = 600;
     }
