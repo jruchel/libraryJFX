@@ -11,12 +11,15 @@ import javafx.scene.text.Font;
 import models.entities.CreditCard;
 import models.UserModel;
 import services.PaymentService;
+import updating.OnUpdate;
+import updating.Updater;
 import utils.Resources;
 import utils.fxUtils.AlertUtils;
 import web.Requests;
 import web.TaskRunner;
 
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -50,8 +53,11 @@ public class DonationsController extends Controller {
         String[] response = {""};
         Runnable onTaskComplete = () -> {
             currencies = parseCurrencies(response[0]);
-            currencyChoiceBox.getItems().removeAll(currencyChoiceBox.getItems());
-            currencyChoiceBox.getItems().addAll(currencies);
+            try {
+                Updater.update(this.getClass());
+            } catch (ClassNotFoundException | IOException | URISyntaxException e) {
+                e.printStackTrace();
+            }
         };
         TaskRunner taskRunner = new TaskRunner(() -> {
             try {
@@ -66,6 +72,12 @@ public class DonationsController extends Controller {
     private List<String> parseCurrencies(String response) {
         response = response.replaceAll("[\\[\\]\"]", "");
         return Arrays.asList(response.split(","));
+    }
+
+    @OnUpdate(updatedBy = DonationsController.class)
+    private void updateCurrencies() {
+        currencyChoiceBox.getItems().removeAll(currencyChoiceBox.getItems());
+        currencyChoiceBox.getItems().addAll(currencies);
     }
 
     public void initialize() {
@@ -87,6 +99,9 @@ public class DonationsController extends Controller {
             setFont(Button.class, Font.font (globalFontFamily, 14));
             setFont(Label.class, Font.font (globalFontFamily, 14));
         } catch (Exception ignored) {
+        }
+        if(currencyChoiceBox.getItems().isEmpty()) {
+            getAvailableCurrencies();
         }
     }
 

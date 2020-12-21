@@ -59,7 +59,9 @@ public class Updater {
                 Platform.runLater(() -> {
                     Controller controller = ControllerAccess.getInstance().get(c.getName());
                     try {
+                        m.setAccessible(true);
                         m.invoke(controller);
+                        m.setAccessible(false);
                     } catch (Exception ignored) {
                     }
                 });
