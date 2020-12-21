@@ -1,6 +1,8 @@
 package controllers;
 
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.text.Font;
 import updating.OnUpdate;
 import web.Requests;
 import javafx.application.Platform;
@@ -28,6 +30,11 @@ public class BooksController extends Controller {
         requests = Requests.getInstance();
         booksListView.getItems().addAll(userBooks);
         initializeManually();
+        try {
+            setFont(Button.class, Font.font (globalFontFamily, 14));
+            setFont(Label.class, Font.font (globalFontFamily, 14));
+        } catch (Exception ignored) {
+        }
     }
 
     @OnUpdate(updatedBy = {UserModel.class})

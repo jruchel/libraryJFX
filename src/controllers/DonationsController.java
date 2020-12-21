@@ -7,6 +7,7 @@ import javafx.scene.control.*;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 import models.entities.CreditCard;
 import models.UserModel;
 import services.PaymentService;
@@ -82,7 +83,11 @@ public class DonationsController extends Controller {
                 sendDonation();
             }
         });
-
+        try {
+            setFont(Button.class, Font.font (globalFontFamily, 14));
+            setFont(Label.class, Font.font (globalFontFamily, 14));
+        } catch (Exception ignored) {
+        }
     }
 
     public void otherPicked() {

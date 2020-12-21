@@ -12,8 +12,6 @@ public class ModeratorPaneController extends Controller {
 
     @FXML
     private BorderPane moderatorPane;
-    @FXML
-    protected Button refundsButton;
 
     public void initialize() {
         initializeManually();

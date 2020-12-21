@@ -3,12 +3,12 @@ package controllers;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.Parent;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Paint;
+import javafx.scene.text.Font;
 import updating.ControllerAccess;
 import utils.Properties;
 import utils.Resources;
@@ -21,6 +21,8 @@ import java.io.IOException;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 
 public abstract class Controller {
@@ -28,6 +30,11 @@ public abstract class Controller {
     protected Requests requests;
     protected static String defaultButtonStyle;
     protected static String clickedButtonStyle;
+    protected static String globalFontFamily;
+
+    public static void setGlobalFontFamily(String globalFontFamily) {
+        Controller.globalFontFamily = globalFontFamily;
+    }
 
     public static void setClickedButtonStyle(String clickedButtonStyle) {
         Controller.clickedButtonStyle = clickedButtonStyle;
@@ -59,6 +66,24 @@ public abstract class Controller {
         } catch (IllegalAccessException | IOException e) {
             e.printStackTrace();
         }
+    }
+
+    private void setFont(List<? extends Labeled> nodes, Font font) {
+        for (Labeled n : nodes) {
+            if (n != null) {
+                n.setFont(font);
+            }
+        }
+    }
+
+    public void setFont(String partialID, Font font) throws IllegalAccessException {
+        List<Node> nodes = findNodes(partialID);
+        setFont(nodes.stream().map(node -> (Labeled) node).collect(Collectors.toList()), font);
+    }
+
+    public void setFont(Class<? extends Labeled> cls, Font font) throws IllegalAccessException {
+        List<Node> buttons = findNodes(cls);
+        setFont(buttons.stream().map(node -> (Labeled) node).collect(Collectors.toList()), font);
     }
 
     protected void setBackground(String url, Pane pane, int width, int height) {
@@ -102,11 +127,11 @@ public abstract class Controller {
     }
 
     protected void setNodeStyle(Class<? extends Node> c, String style) throws IllegalAccessException {
-        findNode(c).forEach(cls -> cls.setStyle(style));
+        findNodes(c).forEach(cls -> cls.setStyle(style));
     }
 
     protected void setButtonAnimation(String style, int time) throws IllegalAccessException {
-        findNode(Button.class).forEach(b -> b.setOnMouseClicked(event -> {
+        findNodes(Button.class).forEach(b -> b.setOnMouseClicked(event -> {
             new Thread(() -> {
                 String defaultStyle = b.getStyle();
                 b.setStyle(style);
@@ -126,7 +151,29 @@ public abstract class Controller {
         mainPane.setOnKeyPressed(onEnter);
     }
 
-    protected List<Node> findNode(Class<? extends Node> c) throws IllegalAccessException {
+    protected Node findNode(String id) throws IllegalAccessException {
+        for (Field f : this.getClass().getDeclaredFields()) {
+            Node node = (Node) f.get(this);
+            if (node.getId().equals(id)) return node;
+        }
+        return null;
+    }
+
+    protected List<Node> findNodes(String partialID) throws IllegalAccessException {
+        List<Node> nodes = new ArrayList<>();
+        for (Field f : this.getClass().getDeclaredFields()) {
+            f.setAccessible(true);
+            if(f.get(this) instanceof Node) {
+                Node node = (Node) f.get(this);
+                if (node.getId().contains(partialID)) nodes.add(node);
+
+            }
+            f.setAccessible(false);
+        }
+        return nodes;
+    }
+
+    protected List<Node> findNodes(Class<? extends Node> c) throws IllegalAccessException {
         List<Node> nodes = new ArrayList<>();
         for (Field f : this.getClass().getDeclaredFields()) {
             if (f.getType().getName().equals(c.getName())) {

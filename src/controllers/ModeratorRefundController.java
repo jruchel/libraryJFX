@@ -2,8 +2,10 @@ package controllers;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextInputDialog;
+import javafx.scene.text.Font;
 import models.ModeratorDataModel;
 import models.UserModel;
 import models.tableRepresentations.ModeratorRefundTableRepresentation;
@@ -37,6 +39,11 @@ public class ModeratorRefundController extends Controller {
         initializeManually();
         requests = Requests.getInstance();
         initializeRefundsTable();
+        try {
+            setFont(Button.class, Font.font (globalFontFamily, 14));
+            setFont(Label.class, Font.font (globalFontFamily, 14));
+        } catch (Exception ignored) {
+        }
     }
 
     private TextInputDialog getInputDialog() {

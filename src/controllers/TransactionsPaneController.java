@@ -3,6 +3,8 @@ package controllers;
 import com.sun.org.glassfish.external.statistics.annotations.Reset;
 import controllers.Controller;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.text.Font;
 import models.ModeratorDataModel;
 import utils.Resources;
 import web.Requests;
@@ -41,6 +43,11 @@ public class TransactionsPaneController extends Controller {
         requests = Requests.getInstance();
         initializeTransactions();
         initializeManually();
+        try {
+            setFont(Button.class, Font.font (globalFontFamily, 14));
+            setFont(Label.class, Font.font (globalFontFamily, 14));
+        } catch (Exception ignored) {
+        }
     }
 
     @OnUpdate(updatedBy = {UserModel.class})

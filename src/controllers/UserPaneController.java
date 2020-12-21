@@ -1,10 +1,15 @@
 package controllers;
 
+import javafx.event.Event;
 import javafx.scene.Node;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.SplitPane;
+import javafx.scene.input.MouseButton;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Paint;
+import javafx.scene.text.Font;
 import updating.OnUpdate;
 import utils.Resources;
 import web.Requests;
@@ -24,6 +29,7 @@ public class UserPaneController extends Controller {
     private static String clickedColor = "#2F4BA1";
     private static String hoverColor = "#59809E";
     private static String backgroundColor = "linear-gradient(#782c41, #5a1e41, #221C35)";
+    private static String labelColor = "linear-gradient(to right, #2F4BA1, #1D4350)";
 
     private Pane currentPane = null;
 
@@ -74,7 +80,10 @@ public class UserPaneController extends Controller {
     private AnchorPane menuPane;
     @FXML
     private AnchorPane viewPane;
-
+    @FXML
+    private AnchorPane labelPane;
+    @FXML
+    private Label paneLabel;
 
     private Label currentLabel;
 
@@ -88,6 +97,8 @@ public class UserPaneController extends Controller {
         Background background = getBackground(backgroundColor);
         viewPane.setBackground(background);
         menuPane.setBackground(background);
+        labelPane.setBackground(getBackground(labelColor));
+        paneLabel.setText("");
         for (Node node : splitPaneGlobal.lookupAll(".split-pane-divider")) {
             node.setVisible(false);
         }
@@ -97,6 +108,17 @@ public class UserPaneController extends Controller {
         initializeManually();
         setStatusLabel();
         initButtons();
+        try {
+            setFont(Label.class, Font.font(globalFontFamily, 14));
+            setFont("paneLabel", Font.font(globalFontFamily, 25));
+        } catch (Exception ignored) {
+        }
+        //Selecting books pane by default
+        Event.fireEvent(booksButton, new MouseEvent(
+                MouseEvent.MOUSE_CLICKED, 0, 0, 0, 0, MouseButton.PRIMARY, 1,
+                true, true, true, true,
+                true, true, true,
+                true, true, true, null));
     }
 
 
@@ -116,10 +138,12 @@ public class UserPaneController extends Controller {
     }
 
     private void showPane(Pane pane) {
-        if (currentPane != null)
+        if (currentPane != null) {
             currentPane.setVisible(false);
+        }
         currentPane = pane;
         currentPane.setVisible(true);
+        paneLabel.setText(pane.getId());
     }
 
     public void showModeratorPane() {

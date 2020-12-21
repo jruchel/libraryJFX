@@ -3,10 +3,12 @@ package controllers;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.text.Font;
 import models.UserModel;
 import models.entities.CreditCard;
 import services.PaymentService;
@@ -48,6 +50,11 @@ public class SubscriptionPaneController extends Controller {
                 onAccept();
             }
         });
+        try {
+            setFont(Button.class, Font.font (globalFontFamily, 14));
+            setFont(Label.class, Font.font (globalFontFamily, 14));
+        } catch (Exception ignored) {
+        }
     }
 
     public void onCreditCardInput() {

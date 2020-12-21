@@ -6,15 +6,13 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.text.Font;
 import models.BookModel;
 import models.UserModel;
 import models.entities.Book;
 import tasks.BookDataRetrievalTask;
-import utils.Resources;
 import utils.fxUtils.AlertUtils;
 import web.TaskRunner;
-
-import java.io.IOException;
 import java.util.ArrayList;
 
 
@@ -56,6 +54,11 @@ public class BookBrowserController extends Controller {
                 onSearch();
             }
         });
+        try {
+            setFont(Button.class, Font.font (globalFontFamily, 14));
+            setFont(Label.class, Font.font (globalFontFamily, 14));
+        } catch (Exception ignored) {
+        }
     }
 
     public void onReserve() {
@@ -109,7 +112,6 @@ public class BookBrowserController extends Controller {
             Runnable getBooks = new BookDataRetrievalTask(BookBrowserController.this.getInputTitle(), param + 1);
 
             Runnable setBooks = () -> {
-
                 Platform.runLater(() -> {
                     currentPage.getItems().addAll(bookModel.getLastSearchedBooks());
                     booksOrAuthorsPagination.setPageCount(bookModel.getSearchedPages());
@@ -120,12 +122,4 @@ public class BookBrowserController extends Controller {
             return currentPage;
         });
     }
-
-   /* public void onReturn() {
-        try {
-            SceneController.startScene("userPane");
-        } catch (IOException e) {
-            AlertUtils.showAlert("Failure showing user pane");
-        }
-    }*/
 }

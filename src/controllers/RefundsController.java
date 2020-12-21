@@ -1,7 +1,10 @@
 package controllers;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableView;
+import javafx.scene.text.Font;
 import models.entities.Refund;
 import models.UserModel;
 import updating.OnUpdate;
@@ -21,6 +24,11 @@ public class RefundsController extends Controller {
         refunds = userModel.getCurrentUser().getRefunds();
         initializeRefundsTable();
         initializeManually();
+        try {
+            setFont(Button.class, Font.font (globalFontFamily, 14));
+            setFont(Label.class, Font.font (globalFontFamily, 14));
+        } catch (Exception ignored) {
+        }
     }
 
     @OnUpdate(updatedBy = UserModel.class)

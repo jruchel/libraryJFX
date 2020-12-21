@@ -14,6 +14,6 @@
         </columns>
       </TableView>
       <Button fx:id="acceptButton" layoutX="348.0" layoutY="310.0" mnemonicParsing="false" onAction="#onAccept" text="Accept" AnchorPane.bottomAnchor="2.0" AnchorPane.rightAnchor="5.0" />
-      <Button fx:id="rejectButton" layoutX="288.0" layoutY="310.0" mnemonicParsing="false" onAction="#onReject" text="Reject" AnchorPane.bottomAnchor="2.0" AnchorPane.rightAnchor="65.0" />
+      <Button fx:id="rejectButton" layoutX="288.0" layoutY="310.0" mnemonicParsing="false" onAction="#onReject" text="Reject" AnchorPane.bottomAnchor="2.0" AnchorPane.rightAnchor="75.0" />
    </children>
 </AnchorPane>

@@ -1,18 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.geometry.Rectangle2D?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
 
 <VBox fx:id="userPane" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.UserPaneController">
     <children>
         <SplitPane fx:id="splitPaneGlobal" dividerPositions="0.22" focusTraversable="true" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
             <items>
-                <AnchorPane fx:id="menuPane" prefHeight="598.0" prefWidth="266.0">
+                <AnchorPane fx:id="menuPane" maxWidth="270.0" minWidth="270.0" prefHeight="598.0" prefWidth="270.0">
                     <children>
                   <Label fx:id="statusLabel" alignment="CENTER" layoutY="12.0" minHeight="50.0" minWidth="60.0" text="Status: " textFill="WHITE" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                         <VBox layoutY="62.0" prefHeight="536.0" prefWidth="195.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="62.0">
@@ -151,7 +153,7 @@
                               </AnchorPane>
                               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                                  <children>
-                                    <Label fx:id="adminPaneButton" alignment="CENTER" contentDisplay="CENTER" onMouseClicked="#showModeratorPane" text="Admin panel" textFill="WHITE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                    <Label fx:id="adminPaneButton" alignment="CENTER" contentDisplay="CENTER" onMouseClicked="#showModeratorPane" text="Moderator Panel" textFill="WHITE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                                  </children>
                               </AnchorPane>
                            </items>
@@ -160,15 +162,29 @@
                         </VBox>
                     </children>
                 </AnchorPane>
-                <AnchorPane fx:id="viewPane">
-                    <fx:include fx:id="booksPane" source="booksPane.fxml" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-                    <fx:include fx:id="cardDetailsPane" source="cardDetails.fxml" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="200" />
-                    <fx:include fx:id="transactionsPane" source="transactionPane.fxml" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-                    <fx:include fx:id="refundsPane" source="refundsPane.fxml" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-                    <fx:include fx:id="donationPane" source="donations.fxml" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="150" />
-                    <fx:include fx:id="browserPane" source="bookBrowser.fxml" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-                    <fx:include fx:id="moderatorPane" source="moderatorPane.fxml" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-                </AnchorPane>
+            <BorderPane prefHeight="200.0" prefWidth="200.0">
+               <center>
+                      <AnchorPane fx:id="viewPane" BorderPane.alignment="CENTER">
+                          <fx:include fx:id="booksPane" source="booksPane.fxml" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                          <fx:include fx:id="cardDetailsPane" source="cardDetails.fxml" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="200" />
+                          <fx:include fx:id="transactionsPane" source="transactionPane.fxml" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                          <fx:include fx:id="refundsPane" source="refundsPane.fxml" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                          <fx:include fx:id="donationPane" source="donations.fxml" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="150" />
+                          <fx:include fx:id="browserPane" source="bookBrowser.fxml" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                          <fx:include fx:id="moderatorPane" source="moderatorPane.fxml" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                      </AnchorPane>
+               </center>
+               <top>
+                  <AnchorPane fx:id="labelPane" prefHeight="70.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <Label id="paneLabel" fx:id="paneLabel" alignment="CENTER" text="Label" textFill="WHITE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                     </children>
+                     <padding>
+                        <Insets bottom="15.0" />
+                     </padding>
+                  </AnchorPane>
+               </top>
+            </BorderPane>
             </items>
         </SplitPane>
     </children>

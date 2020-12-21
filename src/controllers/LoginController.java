@@ -8,6 +8,7 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 import tasks.UserDataRetrievalTask;
 import utils.Properties;
 import utils.fxUtils.AlertUtils;
@@ -46,7 +47,7 @@ public class LoginController extends Controller {
     protected Requests requests;
 
     public void initialize() {
-        setBackground("file:src/resources/images/background.png", loginPane, 1200, 685);
+        setBackground("file:src/resources/images/background.png", loginPane, 1500, 685);
         rememberCheckBox.setTextFill(Color.WHITE);
         try {
             String username = Properties.getProperty("username");
@@ -66,6 +67,11 @@ public class LoginController extends Controller {
                 login();
             }
         });
+        try {
+            setFont(Button.class, Font.font (globalFontFamily, 14));
+            setFont(Label.class, Font.font (globalFontFamily, 14));
+        } catch (Exception ignored) {
+        }
     }
 
 
